@@ -4,12 +4,19 @@
  */
 package GUI;
 
+import Classes.Usuario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class RegistrarUsuario extends javax.swing.JFrame {
-
+    private Usuario usuario;
+    private Login login;
     /**
      * Creates new form RegistrarUsuario
      */
@@ -17,6 +24,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.usuario = new Usuario();
     }
 
     /**
@@ -177,12 +185,22 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(255, 255, 51));
         btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Edad:");
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -311,6 +329,38 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void txtValidacionPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValidacionPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValidacionPasswordActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        
+        String name = txtNombre.getText();
+        String user = txtUsuario.getText();
+        String pass = txtPassword.getText();
+        String confirmPass = txtValidacionPassword.getText();
+        String mail = txtEmail.getText();
+        
+        if(pass.equals(confirmPass)){
+            if(siAcepta.isSelected()){
+                try {
+                    usuario.addUser(name, user, pass, mail);
+                    this.login = new Login();
+                    login.setVisible(true);
+                    this.dispose();
+                } catch (IOException ex) {
+                    Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Para porder registrarse acepte los terminos y condiciones.");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "La contraseña a confirmar es diferente a la contraseña ingresada.");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments

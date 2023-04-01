@@ -4,12 +4,22 @@
  */
 package GUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import Classes.Usuario;
+
+
 /**
  *
  * @author ASUS
  */
 public class Login extends javax.swing.JFrame {
-
+    private Usuario usuario;
+    private InicioAdmin inicioAdmin;
+    private InicioUsuario inicioUsuario;
+    private RegistrarUsuario registrarUsuario;
     /**
      * Creates new form Login
      */
@@ -17,6 +27,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.usuario = new Usuario();
     }
 
     /**
@@ -101,11 +112,20 @@ public class Login extends javax.swing.JFrame {
 
         btnIniciarSesion.setText("Iniciar");
         btnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
 
         btnRegistrarse.setText("Registrarse");
         btnRegistrarse.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarseActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel1.setText("Aun no te registras? Haz clic aqui!");
 
         jPanel5.setBackground(new java.awt.Color(86, 86, 86));
@@ -124,15 +144,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/image.png"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Explora lugares interensantes y conoce mas sobre");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("nuestro querido Norte de Santander Con Motiviator!");
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel9.setText("La aplicacion que te motiva a viajar ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -254,6 +271,43 @@ public class Login extends javax.swing.JFrame {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        String user = txtUsuario.getText();
+        String pass = txtPassword.getText();
+        
+        try {
+            
+            String id = usuario.getId(user, pass);
+            
+            if(id.equals("No existente")){
+                JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
+            }
+            else{
+               int lvl = usuario.getLevel(id);
+               
+               if (lvl == 3){
+                   this.inicioAdmin = new InicioAdmin();
+                   inicioAdmin.setVisible(true);
+                   this.dispose();
+               }
+               else{
+                   this.inicioUsuario = new InicioUsuario();
+                   inicioUsuario.setVisible(true);
+                   this.dispose();
+               }
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        this.registrarUsuario = new RegistrarUsuario();
+        registrarUsuario.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments
