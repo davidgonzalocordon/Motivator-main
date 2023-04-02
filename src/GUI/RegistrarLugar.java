@@ -66,7 +66,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(253, 123, 123));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,7 +93,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 70));
 
-        jPanel4.setBackground(new java.awt.Color(152, 152, 152));
+        jPanel4.setBackground(new java.awt.Color(255, 228, 196));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -135,13 +135,13 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
-        btDiurno.setBackground(new java.awt.Color(152, 152, 152));
+        btDiurno.setBackground(new java.awt.Color(255, 228, 196));
         btDiurno.setText("Diurno");
 
-        btNocturno.setBackground(new java.awt.Color(152, 152, 152));
+        btNocturno.setBackground(new java.awt.Color(255, 228, 196));
         btNocturno.setText("Nocturno");
 
-        btSiempre.setBackground(new java.awt.Color(152, 152, 152));
+        btSiempre.setBackground(new java.awt.Color(255, 228, 196));
         horario.add(btSiempre);
         btSiempre.setText("Ambos");
 
