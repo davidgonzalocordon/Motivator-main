@@ -9,6 +9,7 @@ package GUI;
  * @author ASUS
  */
 public class InicioUsuario extends javax.swing.JFrame {
+    private RegistrarLugar registrarLugar;
 
     /**
      * Creates new form InicioUsuario
@@ -289,6 +290,11 @@ public class InicioUsuario extends javax.swing.JFrame {
         btnAgregarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btnAgregarLugar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarLugar.setText("AGREGAR");
+        btnAgregarLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLugarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -361,12 +367,10 @@ public class InicioUsuario extends javax.swing.JFrame {
                         .addComponent(cmdTipoLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btVerLugares)
-                            .addComponent(btnAgregarLugar)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnBuscarLugar)))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btVerLugares)
+                        .addComponent(btnAgregarLugar))
+                    .addComponent(btnBuscarLugar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -654,6 +658,12 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLugarActionPerformed
+        registrarLugar = new RegistrarLugar();
+        registrarLugar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarLugarActionPerformed
 
     /**
      * @param args the command line arguments

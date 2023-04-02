@@ -34,11 +34,6 @@ public class Comentarios {
     
     public static void createComments(String nombre) throws IOException{
         
-        String ruta = "Sites.xlsx";
-        FileInputStream file = new FileInputStream(new File(ruta));
-        XSSFWorkbook wb = new XSSFWorkbook(file);
-        XSSFSheet sheetUbi = wb.getSheetAt(0);
-        
         Workbook book = new XSSFWorkbook();
         Sheet sheet = (Sheet) book.createSheet("Comentarios");
 

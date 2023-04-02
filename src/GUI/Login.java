@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
     private InicioAdmin inicioAdmin;
     private InicioUsuario inicioUsuario;
     private RegistrarUsuario registrarUsuario;
+    public static int level;
     /**
      * Creates new form Login
      */
@@ -288,13 +289,15 @@ public class Login extends javax.swing.JFrame {
                
                if (lvl == 3){
                    this.inicioAdmin = new InicioAdmin();
+                   level = lvl;
                    inicioAdmin.setVisible(true);
-                   this.dispose();
+                   this.setVisible(false);
                }
                else{
                    this.inicioUsuario = new InicioUsuario();
+                   level = lvl;
                    inicioUsuario.setVisible(true);
-                   this.dispose();
+                   this.setVisible(false);
                }
             }
             

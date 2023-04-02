@@ -23,7 +23,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Julian
  */
 public class Usuario {
-
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -84,9 +85,7 @@ public class Usuario {
         XSSFSheet sheet = wb.getSheetAt(0);
         
         int nFilas = sheet.getLastRowNum();
-        System.out.println("Filas:" + nFilas);
         for (int i = 1; i <= nFilas; i++) {
-            System.out.println(i);
             String confirmUser = sheet.getRow(i).getCell(1).getStringCellValue();
             String confirmPass = sheet.getRow(i).getCell(2).getStringCellValue();
             
@@ -117,5 +116,22 @@ public class Usuario {
             }
         }
         return 5;
+    }
+
+    public static boolean userExist(String user) throws IOException{
+        String ruta = "Users.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFila = sheet.getLastRowNum();
+        for (int i = 1; i <= nFila; i++) {
+            String userExist = sheet.getRow(i).getCell(1).getStringCellValue();
+            
+            if(user.equals(userExist)){
+                return false;
+            }
+        }
+        return true;
     }
 }

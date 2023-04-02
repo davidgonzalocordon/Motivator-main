@@ -9,6 +9,7 @@ package GUI;
  * @author ASUS
  */
 public class InicioAdmin extends javax.swing.JFrame {
+    private RegistrarLugar registrarLugar;
 
     /**
      * Creates new form InicioAdmin
@@ -315,6 +316,11 @@ public class InicioAdmin extends javax.swing.JFrame {
         btnAgregarlugar.setBackground(new java.awt.Color(255, 255, 51));
         btnAgregarlugar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarlugar.setText("AGREGAR");
+        btnAgregarlugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarlugarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -753,6 +759,12 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarlugarActionPerformed
+        registrarLugar = new RegistrarLugar();
+        registrarLugar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarlugarActionPerformed
 
     /**
      * @param args the command line arguments

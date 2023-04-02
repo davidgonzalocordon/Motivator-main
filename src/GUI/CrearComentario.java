@@ -4,11 +4,16 @@
  */
 package GUI;
 
+import Classes.Comentarios;
+
 /**
  *
  * @author ASUS
  */
 public class CrearComentario extends javax.swing.JFrame {
+    private VerLugar verLugar;
+    private VerRestaurante verRestaurante;
+    private Comentarios comentario;
 
     /**
      * Creates new form CrearComentario
@@ -92,7 +97,7 @@ public class CrearComentario extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Puntuacion: ");
+        jLabel9.setText("Estrellas:");
 
         btnCerrar.setBackground(new java.awt.Color(255, 255, 51));
         btnCerrar.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,7 +110,7 @@ public class CrearComentario extends javax.swing.JFrame {
 
         cmbCalificacionLugar.setBackground(new java.awt.Color(255, 255, 51));
         cmbCalificacionLugar.setForeground(new java.awt.Color(0, 0, 0));
-        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
+        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -162,7 +167,8 @@ public class CrearComentario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        // TODO add your handling code here:
+        String comentario = txtComentario.getText();
+        int puntuacion = Integer.parseInt((String) cmbCalificacionLugar.getSelectedItem());
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**

@@ -31,6 +31,10 @@ public class Lugares {
      * @param args the command line arguments
      */
     
+    public static void main(String[] args) {
+        createSite();
+    }
+    
     public static void createSite(){
         Workbook book = new XSSFWorkbook();
         Sheet sheet = (Sheet) book.createSheet("Ubicacion");
@@ -146,6 +150,24 @@ public class Lugares {
         if (!ok){
             System.out.println("Sitio no encontrado");
         }
+    }
+    
+    public static boolean linkExist(String link) throws IOException{
+        String ruta = "Sites.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFila = sheet.getLastRowNum();
+        
+        for (int i = 1; i <= nFila; i++) {
+            String linkExist = sheet.getRow(i).getCell(5).getStringCellValue();
+            
+            if(link.equals(linkExist)){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

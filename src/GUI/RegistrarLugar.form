@@ -150,11 +150,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jRadioButton1" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="btDiurno" min="-2" pref="91" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jRadioButton2" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="btNocturno" min="-2" pref="91" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jRadioButton3" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="btSiempre" min="-2" pref="91" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -233,9 +233,9 @@
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btDiurno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btSiempre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btNocturno" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -297,6 +297,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNombreLugar">
               <Properties>
@@ -330,7 +333,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextPane" name="txtDescipcion">
+                <Component class="javax.swing.JTextPane" name="txtDescripcion">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -408,7 +411,7 @@
                 <Property name="text" type="java.lang.String" value="Horario: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+            <Component class="javax.swing.JRadioButton" name="btDiurno">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="c1" red="66" type="rgb"/>
@@ -419,7 +422,7 @@
                 <Property name="text" type="java.lang.String" value="Diurno"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+            <Component class="javax.swing.JRadioButton" name="btNocturno">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="c1" red="66" type="rgb"/>
@@ -430,7 +433,7 @@
                 <Property name="text" type="java.lang.String" value="Nocturno"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+            <Component class="javax.swing.JRadioButton" name="btSiempre">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c1" green="c1" red="66" type="rgb"/>
@@ -452,7 +455,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Puntuacion: "/>
+                <Property name="text" type="java.lang.String" value="Estrellas:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cmbCalificacion">
@@ -465,11 +468,11 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
-                    <StringItem index="0" value="&#x2606;1"/>
-                    <StringItem index="1" value="&#x2606;2"/>
-                    <StringItem index="2" value="&#x2606;3"/>
-                    <StringItem index="3" value="&#x2606;4"/>
-                    <StringItem index="4" value="&#x2606;5"/>
+                    <StringItem index="0" value="1"/>
+                    <StringItem index="1" value="2"/>
+                    <StringItem index="2" value="3"/>
+                    <StringItem index="3" value="4"/>
+                    <StringItem index="4" value="5"/>
                   </StringArray>
                 </Property>
               </Properties>

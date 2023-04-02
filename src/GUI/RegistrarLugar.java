@@ -4,12 +4,20 @@
  */
 package GUI;
 
+import Classes.Lugares;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ASUS
  */
 public class RegistrarLugar extends javax.swing.JFrame {
-
+    private Lugares lugares;
+    private InicioUsuario inicioUsuario;
+    private InicioAdmin inicioAdmin;
+    Login login = new Login();
     /**
      * Creates new form RegistrarLugar
      */
@@ -17,6 +25,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.lugares = new Lugares();
     }
 
     /**
@@ -41,15 +50,15 @@ public class RegistrarLugar extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescipcion = new javax.swing.JTextPane();
+        txtDescripcion = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         cmdTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        btDiurno = new javax.swing.JRadioButton();
+        btNocturno = new javax.swing.JRadioButton();
+        btSiempre = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         cmbCalificacion = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -102,6 +111,11 @@ public class RegistrarLugar extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(255, 255, 51));
         btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         txtNombreLugar.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -111,9 +125,9 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Descripcion: ");
 
-        txtDescipcion.setBackground(new java.awt.Color(255, 255, 255));
-        txtDescipcion.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(txtDescipcion);
+        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(txtDescripcion);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -138,26 +152,26 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Horario: ");
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 193, 193));
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Diurno");
+        btDiurno.setBackground(new java.awt.Color(102, 193, 193));
+        btDiurno.setForeground(new java.awt.Color(0, 0, 0));
+        btDiurno.setText("Diurno");
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 193, 193));
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Nocturno");
+        btNocturno.setBackground(new java.awt.Color(102, 193, 193));
+        btNocturno.setForeground(new java.awt.Color(0, 0, 0));
+        btNocturno.setText("Nocturno");
 
-        jRadioButton3.setBackground(new java.awt.Color(102, 193, 193));
-        horario.add(jRadioButton3);
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton3.setText("Ambos");
+        btSiempre.setBackground(new java.awt.Color(102, 193, 193));
+        horario.add(btSiempre);
+        btSiempre.setForeground(new java.awt.Color(0, 0, 0));
+        btSiempre.setText("Ambos");
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Puntuacion: ");
+        jLabel9.setText("Estrellas:");
 
         cmbCalificacion.setBackground(new java.awt.Color(255, 255, 255));
         cmbCalificacion.setForeground(new java.awt.Color(0, 0, 0));
-        cmbCalificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
+        cmbCalificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -190,11 +204,11 @@ public class RegistrarLugar extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDiurno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btNocturno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSiempre, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -254,9 +268,9 @@ public class RegistrarLugar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2))
+                    .addComponent(btDiurno)
+                    .addComponent(btSiempre)
+                    .addComponent(btNocturno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -296,6 +310,48 @@ public class RegistrarLugar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        
+        String name = txtNombreLugar.getText();
+        String adress = txtDireccion.getText();
+        String cellphone = txtTelefono.getText();
+        String horario = "";
+        if(btDiurno.isSelected()){
+            horario = "Diurno";
+        }
+        else if(btNocturno.isSelected()){
+            horario = "Nocturno";
+        }
+        else if(btSiempre.isSelected()){
+            horario = "24 horas";
+        }
+        String link = txtLinkGoogleMaps.getText();
+        String descripcion = txtDescripcion.getText();
+        String tipo = (String) cmdTipo.getSelectedItem();
+        int puntuacion =  Integer.parseInt((String) cmbCalificacion.getSelectedItem());
+        
+        if(!horario.equals("")){
+            try {
+                if(lugares.linkExist(link)){
+                    lugares.addSite(name, adress, tipo, horario, puntuacion, link, cellphone, descripcion);
+                    if(login.level == 3){
+                        inicioAdmin = new InicioAdmin();
+                        inicioAdmin.setVisible(true);
+                        this.dispose();
+                    }
+                    else{
+                        inicioUsuario = new InicioUsuario();
+                        inicioUsuario.setVisible(true);
+                        this.dispose();
+                    }
+                    this.dispose();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(RegistrarLugar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +396,9 @@ public class RegistrarLugar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btDiurno;
+    private javax.swing.JRadioButton btNocturno;
+    private javax.swing.JRadioButton btSiempre;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbCalificacion;
     private javax.swing.JComboBox<String> cmdTipo;
@@ -357,11 +416,8 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane txtDescipcion;
+    private javax.swing.JTextPane txtDescripcion;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtLinkGoogleMaps;
     private javax.swing.JTextField txtNombreLugar;
