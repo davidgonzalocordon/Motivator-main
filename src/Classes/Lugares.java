@@ -31,8 +31,10 @@ public class Lugares {
      * @param args the command line arguments
      */
     
-    public static void main(String[] args) {
-        createSite();
+    public static void main(String[] args) throws IOException {
+        
+        
+        
     }
     
     public static void createSite(){
@@ -81,6 +83,8 @@ public class Lugares {
         
         File folder = new File("Img\\"+nombre);
         folder.mkdir();
+        
+        Comentarios.createComments(nombre);
         
         FileOutputStream output = new FileOutputStream(ruta);
         wb.write(output);
@@ -170,4 +174,54 @@ public class Lugares {
         return true;
     }
 
+    
+    public static String[] ReadSite(int i){
+        String almacen[] = new String[5];
+        String ruta = "Sites.xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+             
+                
+                for(int j=0; j<almacen.length; j++){
+                    Cell celda = sheet.getRow(i).getCell(j);
+                    
+                    switch (celda.getCellTypeEnum().toString()){
+                        case "NUMERIC":
+                            
+                            
+                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                            break;
+                            
+                        case "STRING":
+                            almacen[j]=celda.getStringCellValue();
+                            
+                            break;
+                        
+                }
+                
+            }
+              
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
+    } 
+    
+    public static int nfilas() throws IOException{
+        String ruta = "Sites.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFilas = sheet.getLastRowNum();
+       
+    return nFilas;
+    }
+    
 }
