@@ -6,6 +6,7 @@ package GUI;
 
 import Classes.Lugares;
 import Classes.Usuario;
+import static GUI.InicioUsuario.filaExcel;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +29,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Lugares myLugares = new Lugares();
     private Usuario myUsuario = new Usuario();
     private Login myLogin = new Login();
+    private VerLugar verLugar;
     
     
     /**
@@ -80,11 +83,9 @@ public class InicioAdmin extends javax.swing.JFrame {
         tablaUser.addColumn("NIVEL");
         
         for(int i=1; i<=filas; i++){
-            
             tablaUser.addRow(myUsuario.ReadUser(i));
-            tableUsuarios.setModel(tablaUser);
-        }      
-        
+        }
+        tableUsuarios.setModel(tablaUser);
     
     }
 
@@ -117,7 +118,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btEliminarUsuario = new javax.swing.JButton();
-        btnAgregarLugar = new javax.swing.JButton();
+        btnAscenderUsuario = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btVerLugar = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
@@ -233,7 +234,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NOMBRE", "USUARIO", "EMAIL ", "EDAD"
+                "NOMBRE", "USUARIO", "EMAIL ", "NIVEL"
             }
         ));
         jScrollPane6.setViewportView(tableUsuarios);
@@ -245,7 +246,12 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         btEliminarUsuario.setText("ELIMINAR");
 
-        btnAgregarLugar.setText("AGREGAR");
+        btnAscenderUsuario.setText("ASCENDER");
+        btnAscenderUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAscenderUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -274,7 +280,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                         .addGap(267, 267, 267)
                         .addComponent(btnBuscarUsuario)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAgregarLugar)
+                        .addComponent(btnAscenderUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btEliminarUsuario)
                         .addGap(272, 272, 272))))
@@ -294,7 +300,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarUsuario)
                     .addComponent(btEliminarUsuario)
-                    .addComponent(btnAgregarLugar))
+                    .addComponent(btnAscenderUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addContainerGap())
@@ -305,6 +311,11 @@ public class InicioAdmin extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 228, 196));
 
         btVerLugar.setText("VER");
+        btVerLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerLugarActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel18.setText("CALIFICACION");
@@ -683,6 +694,69 @@ public class InicioAdmin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
+    private void btVerLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugarActionPerformed
+        DefaultTableModel seleccion = tabla;
+        
+        int lugarSeleccionado = tableLugares.getSelectedRow();
+        if(lugarSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
+            String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));
+            String tipoSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 2));
+
+            try {
+                filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
+                verLugar = new VerLugar();
+                verLugar.setVisible(true);
+                this.setVisible(false);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
+        }
+    }//GEN-LAST:event_btVerLugarActionPerformed
+
+    private void btnAscenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscenderUsuarioActionPerformed
+        DefaultTableModel selecUser = tablaUser;
+        DefaultTableModel finalUserTable = new DefaultTableModel();
+        finalUserTable.addColumn("NOMBRE");
+        finalUserTable.addColumn("USUARIO");
+        finalUserTable.addColumn("EMAIL");
+        finalUserTable.addColumn("NIVEL");
+        
+        int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+        if(usuarioSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+
+            try {
+                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                
+                String [] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                int lvl = Integer.parseInt(datosUsu[4])+1;
+                int id = Integer.parseInt(datosUsu[5]);
+                int filas = myUsuario.nfilasUser();
+                
+                myUsuario.EditUser( datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
+                
+                for(int i=1; i<=filas; i++){
+                    finalUserTable.addRow(myUsuario.ReadUser(i));
+                }
+                tableUsuarios.setModel(finalUserTable);
+                JOptionPane.showMessageDialog(null, "Usuario ascendido de maneta satisfactoria.");
+                
+            } catch (IOException ex) {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
+        }
+    }//GEN-LAST:event_btnAscenderUsuarioActionPerformed
+
     private void SetImg(JLabel labelName, String ruta){
         ImageIcon image = new ImageIcon(ruta);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -748,8 +822,8 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btLugares;
     private javax.swing.JButton btUsuario;
     private javax.swing.JButton btVerLugar;
-    private javax.swing.JButton btnAgregarLugar;
     private javax.swing.JButton btnAgregarlugar;
+    private javax.swing.JButton btnAscenderUsuario;
     private javax.swing.JButton btnBuscarLugar;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;

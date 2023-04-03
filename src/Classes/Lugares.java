@@ -250,7 +250,6 @@ public class Lugares {
                             break;
                         
                 }
-                    System.out.println(almacen[j]);
             }
               
         } catch (FileNotFoundException ex) {

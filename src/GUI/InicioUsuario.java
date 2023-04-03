@@ -502,7 +502,6 @@ public class InicioUsuario extends javax.swing.JFrame {
         DefaultTableModel seleccion = tabla;
         
         int lugarSeleccionado = tableLugares.getSelectedRow();
-        System.out.println(lugarSeleccionado);
         if(lugarSeleccionado != -1){
             String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
             String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));

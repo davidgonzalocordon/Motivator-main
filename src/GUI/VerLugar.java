@@ -45,7 +45,6 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        System.out.println(myUsuario.filaExcel);
         setDatos(myUsuario.filaExcel);
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);

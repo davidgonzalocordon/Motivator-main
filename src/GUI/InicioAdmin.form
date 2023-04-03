@@ -209,7 +209,7 @@
                                   <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
                                   <Component id="btnBuscarUsuario" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnAgregarLugar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAscenderUsuario" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btEliminarUsuario" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
@@ -234,7 +234,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnBuscarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btEliminarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAgregarLugar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAscenderUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" pref="363" max="32767" attributes="0"/>
@@ -278,7 +278,7 @@
                             <Column editable="true" title="NOMBRE" type="java.lang.Object"/>
                             <Column editable="true" title="USUARIO" type="java.lang.Object"/>
                             <Column editable="true" title="EMAIL " type="java.lang.Object"/>
-                            <Column editable="true" title="EDAD" type="java.lang.Object"/>
+                            <Column editable="true" title="NIVEL" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -308,10 +308,13 @@
                     <Property name="text" type="java.lang.String" value="ELIMINAR"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnAgregarLugar">
+                <Component class="javax.swing.JButton" name="btnAscenderUsuario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="AGREGAR"/>
+                    <Property name="text" type="java.lang.String" value="ASCENDER"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAscenderUsuarioActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -426,6 +429,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="VER"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVerLugarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
