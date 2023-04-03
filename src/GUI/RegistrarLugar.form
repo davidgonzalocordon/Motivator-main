@@ -43,7 +43,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="7b" green="7b" red="fd" type="rgb"/>
+          <Color blue="0" green="0" red="dd" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -107,7 +107,7 @@
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="98" green="98" red="98" type="rgb"/>
+              <Color blue="c4" green="e4" red="ff" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -352,7 +352,7 @@
             <Component class="javax.swing.JRadioButton" name="btDiurno">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="98" green="98" red="98" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Diurno"/>
               </Properties>
@@ -360,7 +360,7 @@
             <Component class="javax.swing.JRadioButton" name="btNocturno">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="98" green="98" red="98" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nocturno"/>
               </Properties>
@@ -368,7 +368,7 @@
             <Component class="javax.swing.JRadioButton" name="btSiempre">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="98" green="98" red="98" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="horario"/>

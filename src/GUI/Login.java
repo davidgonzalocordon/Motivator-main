@@ -68,7 +68,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(253, 123, 123));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FotoJet.jpg"))); // NOI18N
 
@@ -100,7 +100,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(152, 152, 152));
+        jPanel4.setBackground(new java.awt.Color(255, 228, 196));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -133,8 +133,8 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setText("Aun no te registras? Haz clic aqui!");
 
-        jPanel5.setBackground(new java.awt.Color(86, 86, 86));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 86, 86)));
+        jPanel5.setBackground(new java.awt.Color(221, 0, 0));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(221, 0, 0)));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

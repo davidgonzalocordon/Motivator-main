@@ -64,7 +64,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(253, 123, 123));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,7 +104,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 320, 520));
 
-        jPanel4.setBackground(new java.awt.Color(152, 152, 152));
+        jPanel4.setBackground(new java.awt.Color(255, 228, 196));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -134,11 +134,11 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("Acepta los terminos y condiciones de MOTIVATOR: ");
 
-        siAcepta.setBackground(new java.awt.Color(152, 152, 152));
+        siAcepta.setBackground(new java.awt.Color(255, 228, 196));
         TerminosCondiciones.add(siAcepta);
         siAcepta.setText("SI");
 
-        noAcepta.setBackground(new java.awt.Color(152, 152, 152));
+        noAcepta.setBackground(new java.awt.Color(255, 228, 196));
         TerminosCondiciones.add(noAcepta);
         noAcepta.setText("NO");
 
