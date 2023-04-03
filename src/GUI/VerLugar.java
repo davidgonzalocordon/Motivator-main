@@ -10,6 +10,8 @@ package GUI;
  */
 public class VerLugar extends javax.swing.JFrame {
 
+    public static String nombreLugar="Locos al Carbon";
+    
     /**
      * Creates new form VerLugar
      */

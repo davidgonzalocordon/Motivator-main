@@ -121,10 +121,10 @@ public class Lugares {
         output.close();
     }
     
-    public static void countImg(String nombre){
+    public static int countImg(String nombre){
         File carpeta = new File("Img\\"+nombre); 
         File[] lista = carpeta.listFiles();
-        System.out.println("\n Hay " +  lista.length + " elementos");
+        return lista.length;
     }
     
     public static void link(String nombre) throws IOException, URISyntaxException{

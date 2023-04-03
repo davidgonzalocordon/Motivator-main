@@ -209,6 +209,11 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         btVerLugares.setBackground(new java.awt.Color(255, 255, 51));
         btVerLugares.setText("VER");
+        btVerLugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerLugaresActionPerformed(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
@@ -503,6 +508,10 @@ public class InicioUsuario extends javax.swing.JFrame {
         PanelUsuario.setEnabledAt(0,false);
         PanelUsuario.setEnabledAt(1,true);
     }//GEN-LAST:event_btConfiguracionActionPerformed
+
+    private void btVerLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugaresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btVerLugaresActionPerformed
 
     /**
      * @param args the command line arguments
