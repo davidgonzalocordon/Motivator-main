@@ -23,6 +23,8 @@ public class InicioUsuario extends javax.swing.JFrame {
     private Lugares myLugares = new Lugares();
     private Usuario myUsuario = new Usuario();
     private Login myLogin = new Login();
+    private VerLugar verLugar;
+    public static int filaExcel;
     
     public InicioUsuario() throws IOException {
         initComponents();
@@ -209,6 +211,11 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         btVerLugares.setBackground(new java.awt.Color(255, 255, 51));
         btVerLugares.setText("VER");
+        btVerLugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerLugaresActionPerformed(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
@@ -495,14 +502,41 @@ public class InicioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btBuscadorLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscadorLugaresActionPerformed
+        PanelUsuario.setSelectedIndex(0);
         PanelUsuario.setEnabledAt(0,true);
         PanelUsuario.setEnabledAt(1,false);
     }//GEN-LAST:event_btBuscadorLugaresActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
+       PanelUsuario.setSelectedIndex(1);
         PanelUsuario.setEnabledAt(0,false);
         PanelUsuario.setEnabledAt(1,true);
     }//GEN-LAST:event_btConfiguracionActionPerformed
+
+    private void btVerLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugaresActionPerformed
+        DefaultTableModel seleccion = tabla;
+        
+        int lugarSeleccionado = tableLugares.getSelectedRow();
+        System.out.println(lugarSeleccionado);
+        if(lugarSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
+            String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));
+            String tipoSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 2));
+
+            try {
+                filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
+                verLugar = new VerLugar();
+                verLugar.setVisible(true);
+                this.setVisible(false);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
+        }
+    }//GEN-LAST:event_btVerLugaresActionPerformed
 
     /**
      * @param args the command line arguments

@@ -121,39 +121,17 @@ public class Lugares {
         output.close();
     }
     
-    public static void countImg(String nombre){
+    public static int countImg(String nombre){
         File carpeta = new File("Img\\"+nombre); 
         File[] lista = carpeta.listFiles();
-        System.out.println("\n Hay " +  lista.length + " elementos");
+        return lista.length;
     }
     
-    public static void link(String nombre) throws IOException, URISyntaxException{
-    
-        boolean ok = false;
-        
-        String ruta = "Sites.xlsx";
-        FileInputStream file = new FileInputStream(new File(ruta));
-        XSSFWorkbook wb = new XSSFWorkbook(file);
-        XSSFSheet sheet = wb.getSheetAt(0);
-        
+    public static void link(String link) throws IOException, URISyntaxException{
+
         Desktop enlace = Desktop.getDesktop();
-        int nFilas = sheet.getLastRowNum();
+        enlace.browse(new URI(link));
         
-        for (int i = 1; i < nFilas; i++) {
-            Row fila = sheet.getRow(i);
-            Cell celda = fila.getCell(0);
-            
-            if(celda.getStringCellValue().equals(nombre)){
-                Cell celdaLink = fila.getCell(5);
-                enlace.browse(new URI(celdaLink.getStringCellValue()));
-                ok = true;
-                break;
-            }
-        }
-            
-        if (!ok){
-            System.out.println("Sitio no encontrado");
-        }
     }
     
     public static boolean linkExist(String link) throws IOException{
@@ -224,4 +202,56 @@ public class Lugares {
     return nFilas;
     }
     
+    public static int filaSeleccionada(String nombre, String direccion, String tipo) throws IOException{
+        int filaExcel = 0;
+        String ruta = "Sites.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFila = sheet.getLastRowNum();
+        
+        for (int i = 1; i <= nFila; i++) {
+                if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && direccion.equals(sheet.getRow(i).getCell(1).getStringCellValue()) && tipo.equals(sheet.getRow(i).getCell(2).getStringCellValue())){
+                    filaExcel = i;
+                }
+        }
+        return filaExcel;
+    }
+    
+    public static String[] obtenerSite(int i){
+        String almacen[] = new String[8];
+        String ruta = "Sites.xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+             
+                
+                for(int j=0; j<almacen.length; j++){
+                    Cell celda = sheet.getRow(i).getCell(j);
+                    
+                    switch (celda.getCellTypeEnum().toString()){
+                        case "NUMERIC":
+                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                            
+                            break;
+                            
+                        case "STRING":
+                            almacen[j]=celda.getStringCellValue();
+                            break;
+                        
+                }
+                    System.out.println(almacen[j]);
+            }
+              
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
+    }
 }

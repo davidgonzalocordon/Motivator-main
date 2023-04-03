@@ -233,10 +233,6 @@ public class Usuario {
                 }
             
             }
-            
-            
-            
-        
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -244,9 +240,6 @@ public class Usuario {
         }
         
         return datos;
-        
-
-        
     }
 
         public static int nfilasUser() throws IOException {

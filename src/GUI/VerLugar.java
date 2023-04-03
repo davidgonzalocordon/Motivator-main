@@ -4,19 +4,62 @@
  */
 package GUI;
 
+import Classes.Lugares;
+import static GUI.Login.ID;
+import static GUI.Login.level;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ASUS
  */
 public class VerLugar extends javax.swing.JFrame {
 
+    public static String nombreLugar;
+    public static String descripcionLugar;
+    public static String direccionLugar;
+    public static String telefonoLugar;
+    public static String tipoLugar;
+    public static String puntuacionLugar;
+    public static String horarioLugar;
+    public static String linkLugar;
+    private static Lugares lugares = new Lugares();
+    private InicioUsuario myUsuario = new InicioUsuario();
+    private InicioAdmin inicioAdmin;
+    
     /**
      * Creates new form VerLugar
      */
-    public VerLugar() {
+    public VerLugar() throws IOException {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        System.out.println(myUsuario.filaExcel);
+        setDatos(myUsuario.filaExcel);
+        txtNombreLugar.setText(nombreLugar);
+        txtDescipcion.setText(descripcionLugar);
+        txtDireccion.setText(direccionLugar);
+        txtTipo.setText(tipoLugar);
+        txtHorario.setText(horarioLugar);
+        txtTelefono.setText(telefonoLugar);
+        txtPuntuacion.setText(puntuacionLugar);
+        
+    }
+    
+    public static void setDatos(int filaExcel){
+        String info[] = new String[8];
+        info = lugares.obtenerSite(filaExcel);
+        nombreLugar = info[0];
+        direccionLugar = info[1];
+        tipoLugar = info[2];
+        horarioLugar = info[3];
+        puntuacionLugar = info[4];
+        linkLugar = info[5];
+        telefonoLugar = info[6];
+        descripcionLugar = info[7];   
     }
 
     /**
@@ -67,6 +110,11 @@ public class VerLugar extends javax.swing.JFrame {
         jLabel6.setText("Direccion: ");
 
         btnMapa.setText("Ir a ubicacion");
+        btnMapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapaActionPerformed(evt);
+            }
+        });
 
         txtNombreLugar.setEditable(false);
         txtNombreLugar.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,8 +179,18 @@ public class VerLugar extends javax.swing.JFrame {
         });
 
         btnCerrar.setText("Volver");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         btnComentarios.setText("Ver Comentarios");
+        btnComentarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComentariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -221,7 +279,7 @@ public class VerLugar extends javax.swing.JFrame {
                     .addComponent(btnMapa)
                     .addComponent(btnCerrar)
                     .addComponent(btnComentarios))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 350));
@@ -272,6 +330,38 @@ public class VerLugar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPuntuacionActionPerformed
 
+    private void btnMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapaActionPerformed
+        try {
+            lugares.link(linkLugar);
+        } catch (IOException ex) {
+            Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnMapaActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        if (level == 3){
+            
+            try {
+                this.inicioAdmin = new InicioAdmin();
+            } catch (IOException ex) {
+                Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+                   inicioAdmin.setVisible(true);
+                   this.dispose();
+               }
+               else{
+                   myUsuario.setVisible(true);
+                   this.dispose();
+               }
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnComentariosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,7 +399,11 @@ public class VerLugar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerLugar().setVisible(true);
+                try {
+                    new VerLugar().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
