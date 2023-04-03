@@ -7,10 +7,15 @@ package GUI;
 import Classes.Lugares;
 import static GUI.Login.ID;
 import static GUI.Login.level;
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +23,8 @@ import java.util.logging.Logger;
  */
 public class VerLugar extends javax.swing.JFrame {
 
+    private ImageIcon imagen;
+    private Icon icono;
     public static String nombreLugar;
     public static String descripcionLugar;
     public static String direccionLugar;
@@ -47,7 +54,7 @@ public class VerLugar extends javax.swing.JFrame {
         txtHorario.setText(horarioLugar);
         txtTelefono.setText(telefonoLugar);
         txtPuntuacion.setText(puntuacionLugar);
-        
+        setImg(nombreLugar);
     }
     
     public static void setDatos(int filaExcel){
@@ -60,7 +67,17 @@ public class VerLugar extends javax.swing.JFrame {
         puntuacionLugar = info[4];
         linkLugar = info[5];
         telefonoLugar = info[6];
-        descripcionLugar = info[7];   
+        descripcionLugar = info[7];
+    }
+    
+    public void setImg(String lugar){
+        int num = lugares.countImg(lugar);
+        String ruta = "IMG\\"+lugar+"\\"+num+".jpg";
+        if(num!=0){
+            this.mostrarImagen(lblImagen,ruta);
+        }else{
+            this.mostrarImagen(lblImagen,"src\\IMG\\noimagen.jpg");
+        }
     }
 
     /**
@@ -95,6 +112,9 @@ public class VerLugar extends javax.swing.JFrame {
         btnFotos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
+        btnPrevImg = new javax.swing.JButton();
+        btnNextImg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -284,13 +304,13 @@ public class VerLugar extends javax.swing.JFrame {
                     .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txtPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMapa)
                     .addComponent(btnCerrar)
                     .addComponent(btnComentarios)
                     .addComponent(btnFotos))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 350));
@@ -302,11 +322,27 @@ public class VerLugar extends javax.swing.JFrame {
         jLabel4.setText("jLabel1");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
 
+        lblImagen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel1.add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 410, 410));
+
+        btnPrevImg.setText("Anterior");
+        jPanel1.add(btnPrevImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, -1, -1));
+
+        btnNextImg.setText("Siguiente");
+        btnNextImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextImgActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNextImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 430, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,6 +415,10 @@ public class VerLugar extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnFotosActionPerformed
 
+    private void btnNextImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextImgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextImgActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -424,12 +464,21 @@ public class VerLugar extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void mostrarImagen(JLabel lbl, String ruta){
+        this.imagen = new ImageIcon(ruta);
+        this.icono = new ImageIcon(this.imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
+        lbl.setIcon(icono);
+        this.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnComentarios;
     private javax.swing.JButton btnFotos;
     private javax.swing.JButton btnMapa;
+    private javax.swing.JButton btnNextImg;
+    private javax.swing.JButton btnPrevImg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -442,6 +491,7 @@ public class VerLugar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblImagen;
     private javax.swing.JTextPane txtDescipcion;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtHorario;
