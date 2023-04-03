@@ -115,7 +115,7 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(219, 19, 19));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(201, 52, 52));
 
@@ -137,9 +137,8 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel3.setBackground(new java.awt.Color(255, 228, 196));
 
-        btConfiguracion.setBackground(new java.awt.Color(255, 255, 51));
         btConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/config.png"))); // NOI18N
         btConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +146,6 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        btBuscadorLugares.setBackground(new java.awt.Color(255, 255, 51));
         btBuscadorLugares.setText("Buscar");
         btBuscadorLugares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,30 +157,26 @@ public class InicioUsuario extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btBuscadorLugares, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
+                    .addComponent(btConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscadorLugares))
+                .addGap(38, 38, 38))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(btBuscadorLugares)
-                .addGap(93, 93, 93)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btConfiguracion)
-                .addGap(76, 76, 76))
+                .addGap(32, 32, 32))
         );
 
         PanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
-        PanelBuscar.setBackground(new java.awt.Color(102, 193, 193));
+        PanelBuscar.setBackground(new java.awt.Color(255, 228, 196));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel16.setText("NOMBRE: ");
@@ -203,13 +197,10 @@ public class InicioUsuario extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tableLugares);
 
-        cmbCalificacionLugar.setBackground(new java.awt.Color(255, 255, 51));
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
 
-        btnBuscarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btnBuscarLugar.setText("BUSCAR");
 
-        btVerLugares.setBackground(new java.awt.Color(255, 255, 51));
         btVerLugares.setText("VER");
         btVerLugares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,25 +211,23 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
 
-        cmdTipoLugar.setBackground(new java.awt.Color(255, 255, 51));
         cmdTipoLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton1.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton1);
         jRadioButton1.setText("Diurno");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton2.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton2);
         jRadioButton2.setText("Nocturno");
 
-        jRadioButton3.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton3.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton3);
         jRadioButton3.setText("Ambos");
 
-        btnAgregarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btnAgregarLugar.setText("AGREGAR");
         btnAgregarLugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,28 +240,15 @@ public class InicioUsuario extends javax.swing.JFrame {
         PanelBuscarLayout.setHorizontalGroup(
             PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBuscarLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(PanelBuscarLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3)
                             .addGroup(PanelBuscarLayout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelBuscarLayout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel21)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdTipoLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(PanelBuscarLayout.createSequentialGroup()
                                         .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,16 +258,28 @@ public class InicioUsuario extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 85, Short.MAX_VALUE))))
-                    .addGroup(PanelBuscarLayout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(btnBuscarLugar)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnAgregarLugar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btVerLugares, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(PanelBuscarLayout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btVerLugares, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(PanelBuscarLayout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel21)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmdTipoLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(PanelBuscarLayout.createSequentialGroup()
+                                .addComponent(btnBuscarLugar)
+                                .addGap(64, 64, 64)
+                                .addComponent(btnAgregarLugar)))
+                        .addGap(0, 137, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelBuscarLayout.setVerticalGroup(
@@ -315,12 +303,11 @@ public class InicioUsuario extends javax.swing.JFrame {
                     .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21)
                         .addComponent(cmdTipoLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
-                .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btVerLugares)
-                        .addComponent(btnAgregarLugar))
-                    .addComponent(btnBuscarLugar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
+                .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVerLugares)
+                    .addComponent(btnAgregarLugar)
+                    .addComponent(btnBuscarLugar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -328,7 +315,7 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Buscar", PanelBuscar);
 
-        PanelConfi.setBackground(new java.awt.Color(102, 193, 193));
+        PanelConfi.setBackground(new java.awt.Color(255, 228, 196));
 
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -350,7 +337,6 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel32.setText("DATOS DEL USUARIO ");
 
-        btActualizar.setBackground(new java.awt.Color(255, 255, 51));
         btActualizar.setText("Actualizar");
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,7 +344,6 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        btCerrarSesion.setBackground(new java.awt.Color(255, 255, 51));
         btCerrarSesion.setText("Cerrar Sesion");
         btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

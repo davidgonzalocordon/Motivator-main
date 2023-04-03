@@ -156,11 +156,10 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(219, 19, 19));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
 
-        jPanel10.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel10.setBackground(new java.awt.Color(255, 228, 196));
 
-        btUsuario.setBackground(new java.awt.Color(255, 255, 51));
         btUsuario.setText("Usuarios");
         btUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +167,6 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        btEmprezas.setBackground(new java.awt.Color(255, 255, 51));
         btEmprezas.setText("Empresas");
         btEmprezas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +174,6 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        btConfiguracion.setBackground(new java.awt.Color(255, 255, 51));
         btConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/config.png"))); // NOI18N
         btConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +181,6 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        btLugares.setBackground(new java.awt.Color(255, 255, 51));
         btLugares.setText("Lugares");
         btLugares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +220,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         PanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel5.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel5.setBackground(new java.awt.Color(255, 228, 196));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel31.setText("NOMBRE: ");
@@ -242,16 +238,13 @@ public class InicioAdmin extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tableUsuarios);
 
-        btnBuscarUsuario.setBackground(new java.awt.Color(255, 255, 51));
         btnBuscarUsuario.setText("BUSCAR");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("USUARIO: ");
 
-        btEliminarUsuario.setBackground(new java.awt.Color(255, 255, 51));
         btEliminarUsuario.setText("ELIMINAR");
 
-        btnAgregarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btnAgregarLugar.setText("AGREGAR");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -309,18 +302,15 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Usuarios", jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel6.setBackground(new java.awt.Color(255, 228, 196));
 
-        btVerLugar.setBackground(new java.awt.Color(255, 255, 51));
         btVerLugar.setText("VER");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel18.setText("CALIFICACION");
 
-        cmbCalificacionLugar.setBackground(new java.awt.Color(255, 255, 51));
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
 
-        btEliminarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btEliminarLugar.setText("ELIMINAR");
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -329,7 +319,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("DIRECCION");
 
-        btnBuscarLugar.setBackground(new java.awt.Color(255, 255, 51));
         btnBuscarLugar.setText("BUSCAR");
 
         tableLugares.setModel(new javax.swing.table.DefaultTableModel(
@@ -342,7 +331,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tableLugares);
 
-        btnAgregarlugar.setBackground(new java.awt.Color(255, 255, 51));
         btnAgregarlugar.setText("AGREGAR");
         btnAgregarlugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,22 +341,21 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton1.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton1);
         jRadioButton1.setText("Diurno");
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton2.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton2);
         jRadioButton2.setText("Nocturno");
 
-        jRadioButton3.setBackground(new java.awt.Color(102, 193, 193));
+        jRadioButton3.setBackground(new java.awt.Color(255, 228, 196));
         horarioLugar.add(jRadioButton3);
         jRadioButton3.setText("Ambos");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
 
-        cmbTipo.setBackground(new java.awt.Color(255, 255, 51));
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -452,7 +439,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Lugares", jPanel6);
 
-        jPanel8.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel8.setBackground(new java.awt.Color(255, 228, 196));
 
         Construccion.setText("jLabel4");
         Construccion.setMaximumSize(new java.awt.Dimension(300, 300));
@@ -477,9 +464,8 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Empresas", jPanel8);
 
-        jPanel9.setBackground(new java.awt.Color(102, 193, 193));
+        jPanel9.setBackground(new java.awt.Color(255, 228, 196));
 
-        btActualizar.setBackground(new java.awt.Color(255, 255, 51));
         btActualizar.setText("Actualizar");
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -487,7 +473,6 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        btCerrarSesion.setBackground(new java.awt.Color(255, 255, 51));
         btCerrarSesion.setText("Cerrar Sesion");
         btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

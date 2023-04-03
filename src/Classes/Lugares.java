@@ -34,7 +34,6 @@ public class Lugares {
     public static void main(String[] args) throws IOException {
         
         
-        
     }
     
     public static void createSite(){

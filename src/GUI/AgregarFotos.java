@@ -32,6 +32,8 @@ public class AgregarFotos extends javax.swing.JFrame {
    
     public AgregarFotos() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -60,7 +62,7 @@ public class AgregarFotos extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 228, 196));
 
         lblImagen.setBackground(new java.awt.Color(255, 255, 255));
-        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/imagen rota.png"))); // NOI18N
+        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/imagenRota.png"))); // NOI18N
 
         jLabel2.setText("Agregue las imagenes aqui");
 
@@ -193,13 +195,11 @@ public class AgregarFotos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSubirActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        
         try {
             verLugar = new VerLugar();
         } catch (IOException ex) {
             Logger.getLogger(AgregarFotos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         verLugar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed

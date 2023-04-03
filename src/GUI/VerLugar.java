@@ -27,6 +27,7 @@ public class VerLugar extends javax.swing.JFrame {
     public static String horarioLugar;
     public static String linkLugar;
     private static Lugares lugares = new Lugares();
+    private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
     private InicioAdmin inicioAdmin;
     
@@ -91,6 +92,7 @@ public class VerLugar extends javax.swing.JFrame {
         txtPuntuacion = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         btnComentarios = new javax.swing.JButton();
+        btnFotos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -192,6 +194,13 @@ public class VerLugar extends javax.swing.JFrame {
             }
         });
 
+        btnFotos.setText("Agregar Fotos");
+        btnFotos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -218,7 +227,7 @@ public class VerLugar extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(28, 28, 28)
                                 .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 1, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -239,15 +248,13 @@ public class VerLugar extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(209, 209, 209))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnComentarios)
-                        .addGap(343, 343, 343)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(btnComentarios)
+                .addGap(40, 40, 40)
+                .addComponent(btnMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnFotos)
+                .addGap(38, 38, 38)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -281,8 +288,9 @@ public class VerLugar extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMapa)
                     .addComponent(btnCerrar)
-                    .addComponent(btnComentarios))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(btnComentarios)
+                    .addComponent(btnFotos))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 350));
@@ -365,6 +373,12 @@ public class VerLugar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnComentariosActionPerformed
 
+    private void btnFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotosActionPerformed
+        agregarFotos = new AgregarFotos();
+        agregarFotos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnFotosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +428,7 @@ public class VerLugar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnComentarios;
+    private javax.swing.JButton btnFotos;
     private javax.swing.JButton btnMapa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

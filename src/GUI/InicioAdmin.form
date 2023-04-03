@@ -42,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="13" green="13" red="db" type="rgb"/>
+          <Color blue="0" green="0" red="dd" type="rgb"/>
         </Property>
       </Properties>
 
@@ -82,7 +82,7 @@
         <Container class="javax.swing.JPanel" name="jPanel10">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c1" green="c1" red="66" type="rgb"/>
+              <Color blue="c4" green="e4" red="ff" type="rgb"/>
             </Property>
           </Properties>
 
@@ -124,9 +124,6 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btUsuario">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Usuarios"/>
               </Properties>
               <Events>
@@ -135,9 +132,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btEmprezas">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Empresas"/>
               </Properties>
               <Events>
@@ -146,9 +140,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btConfiguracion">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/IMG/config.png"/>
                 </Property>
@@ -159,9 +150,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btLugares">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Lugares"/>
               </Properties>
               <Events>
@@ -182,7 +170,7 @@
             <Container class="javax.swing.JPanel" name="jPanel5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c1" green="c1" red="66" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -302,9 +290,6 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnBuscarUsuario">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="BUSCAR"/>
                   </Properties>
                 </Component>
@@ -320,17 +305,11 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btEliminarUsuario">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="ELIMINAR"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAgregarLugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="AGREGAR"/>
                   </Properties>
                 </Component>
@@ -339,7 +318,7 @@
             <Container class="javax.swing.JPanel" name="jPanel6">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c1" green="c1" red="66" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -445,9 +424,6 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btVerLugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="VER"/>
                   </Properties>
                 </Component>
@@ -461,9 +437,6 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbCalificacionLugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="5">
                         <StringItem index="0" value="&#x2606;1"/>
@@ -480,9 +453,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btEliminarLugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="ELIMINAR"/>
                   </Properties>
                 </Component>
@@ -508,9 +478,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnBuscarLugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="BUSCAR"/>
                   </Properties>
                 </Component>
@@ -564,9 +531,6 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnAgregarlugar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="AGREGAR"/>
                   </Properties>
                   <Events>
@@ -584,7 +548,7 @@
                 <Component class="javax.swing.JRadioButton" name="jRadioButton1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="c1" red="66" type="rgb"/>
+                      <Color blue="c4" green="e4" red="ff" type="rgb"/>
                     </Property>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="horarioLugar"/>
@@ -595,7 +559,7 @@
                 <Component class="javax.swing.JRadioButton" name="jRadioButton2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="c1" red="66" type="rgb"/>
+                      <Color blue="c4" green="e4" red="ff" type="rgb"/>
                     </Property>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="horarioLugar"/>
@@ -606,7 +570,7 @@
                 <Component class="javax.swing.JRadioButton" name="jRadioButton3">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c1" green="c1" red="66" type="rgb"/>
+                      <Color blue="c4" green="e4" red="ff" type="rgb"/>
                     </Property>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="horarioLugar"/>
@@ -624,9 +588,6 @@
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cmbTipo">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
                         <StringItem index="0" value="Centro Comercial"/>
@@ -647,7 +608,7 @@
             <Container class="javax.swing.JPanel" name="jPanel8">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c1" green="c1" red="66" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -695,7 +656,7 @@
             <Container class="javax.swing.JPanel" name="jPanel9">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c1" green="c1" red="66" type="rgb"/>
+                  <Color blue="c4" green="e4" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -787,9 +748,6 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btActualizar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                   </Properties>
                   <Events>
@@ -798,9 +756,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btCerrarSesion">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
                   </Properties>
                   <Events>
