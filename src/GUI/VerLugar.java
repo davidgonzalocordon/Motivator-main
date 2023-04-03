@@ -416,7 +416,7 @@ public class VerLugar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFotosActionPerformed
 
     private void btnNextImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextImgActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnNextImgActionPerformed
 
     /**
