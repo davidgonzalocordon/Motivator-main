@@ -62,7 +62,7 @@ public class AgregarFotos extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 228, 196));
 
         lblImagen.setBackground(new java.awt.Color(255, 255, 255));
-        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/imagenRota.png"))); // NOI18N
+        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/noimagen.jpg"))); // NOI18N
 
         jLabel2.setText("Agregue las imagenes aqui");
 
