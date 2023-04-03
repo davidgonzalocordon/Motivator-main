@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -82,6 +84,11 @@ public class Lugares {
         
         File folder = new File("Img\\"+nombre);
         folder.mkdir();
+        File img = new File("src\\IMG\\noimagen.jpg");
+        Path rutaOrigen = Path.of(img.getAbsolutePath());
+        Path rutaDestino = Path.of(folder.getAbsolutePath()+"\\noimagen.jpg");
+        byte[] imageBytes = Files.readAllBytes(rutaOrigen);
+        Files.write(rutaDestino,imageBytes);
         
         Comentarios.createComments(nombre);
         
@@ -123,7 +130,7 @@ public class Lugares {
     public static int countImg(String nombre){
         File carpeta = new File("Img\\"+nombre); 
         File[] lista = carpeta.listFiles();
-        return lista.length;
+        return lista.length-1;
     }
     
     public static void link(String link) throws IOException, URISyntaxException{
