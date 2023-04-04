@@ -19,7 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InicioUsuario extends javax.swing.JFrame {
     private RegistrarLugar registrarLugar;
-    private DefaultTableModel tabla = new DefaultTableModel();
+    private DefaultTableModel tabla = new DefaultTableModel(){ 
+        @Override 
+        public boolean isCellEditable(int row, int column){
+            return false;
+        }
+    };
     private Lugares myLugares = new Lugares();
     private Usuario myUsuario = new Usuario();
     private Login myLogin = new Login();
