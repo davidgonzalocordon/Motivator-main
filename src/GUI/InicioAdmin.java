@@ -32,6 +32,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Usuario myUsuario = new Usuario();
     private Login myLogin = new Login();
     private VerLugar verLugar;
+    public static int filaExcel;
     
     
     /**
@@ -66,15 +67,15 @@ public class InicioAdmin extends javax.swing.JFrame {
         tabla.addColumn("TIPO");
         tabla.addColumn("HORARIO");
         tabla.addColumn("CALIFICACION");
+        String [] confirm = new String[5];
         
         for(int i=1; i<=filas; i++){
-            
-            tabla.addRow(myLugares.ReadSite(i));
-            tableLugares.setModel(tabla);
+            confirm = myLugares.ReadSite(i);
+            if (confirm[0] != null) {
+                tabla.addRow(confirm);
+            }
         }        
-        
-        
-        
+        tableLugares.setModel(tabla);
     }
     
     public void LeerUser() throws IOException{
@@ -84,9 +85,13 @@ public class InicioAdmin extends javax.swing.JFrame {
         tablaUser.addColumn("USUARIO");
         tablaUser.addColumn("EMAIL");
         tablaUser.addColumn("NIVEL");
+        String [] confirm = new String[4];
         
         for(int i=1; i<=filas; i++){
-            tablaUser.addRow(myUsuario.ReadUser(i));
+            confirm = myUsuario.ReadUser(i);
+            if (confirm[0] != null) {
+                tablaUser.addRow(confirm);
+            }
         }
         tableUsuarios.setModel(tablaUser);
     
@@ -239,7 +244,15 @@ public class InicioAdmin extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE", "USUARIO", "EMAIL ", "NIVEL"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane6.setViewportView(tableUsuarios);
 
         btnBuscarUsuario.setText("BUSCAR");
@@ -336,6 +349,11 @@ public class InicioAdmin extends javax.swing.JFrame {
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
 
         btEliminarLugar.setText("ELIMINAR");
+        btEliminarLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarLugarActionPerformed(evt);
+            }
+        });
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel34.setText("NOMBRE: ");
@@ -357,7 +375,15 @@ public class InicioAdmin extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE", "DIRECCION", "TIPO", "CALIFICACCION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tableLugares);
 
         btnAgregarlugar.setText("AGREGAR");
@@ -723,14 +749,14 @@ public class InicioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugarActionPerformed
-        DefaultTableModel seleccion = tabla;
-        
-        int lugarSeleccionado = tableLugares.getSelectedRow();
-        if(lugarSeleccionado != -1){
-            String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
-            String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));
-            String tipoSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 2));
 
+        int lugarSeleccionado = tableLugares.getSelectedRow();
+        
+        if(lugarSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 0));
+            String direccionSeleccionada = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 1));
+            String tipoSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 2));
+            
             try {
                 filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
@@ -747,6 +773,8 @@ public class InicioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btVerLugarActionPerformed
 
     private void btnAscenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscenderUsuarioActionPerformed
+        
+        String[] confirm = new String[4];
         DefaultTableModel selecUser = tablaUser;
         DefaultTableModel finalUserTable = new DefaultTableModel();
         finalUserTable.addColumn("NOMBRE");
@@ -772,7 +800,10 @@ public class InicioAdmin extends javax.swing.JFrame {
                 myUsuario.EditUser( datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
                 
                 for(int i=1; i<=filas; i++){
-                    finalUserTable.addRow(myUsuario.ReadUser(i));
+                    confirm = myUsuario.ReadUser(i);
+                    if (confirm[0] != null) {
+                        finalUserTable.addRow(confirm);
+                    }
                 }
                 tableUsuarios.setModel(finalUserTable);
                 JOptionPane.showMessageDialog(null, "Usuario ascendido de maneta satisfactoria.");
@@ -804,30 +835,17 @@ public class InicioAdmin extends javax.swing.JFrame {
         
         
         for (int i=0; i<tablaUser.getRowCount(); i++){
-            
-            
-                
-                if(tablaUser.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
-                
-                    tableUsuarios.changeSelection(i, j, false, false);
-                    
-                }
-                
-            
-            
-        }
-        
-        
-        
-        
+            if(tablaUser.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
+                tableUsuarios.changeSelection(i, j, false, false);
+            }
+        }   
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
-        int fila=tableUsuarios.getSelectedRow();
+
         DefaultTableModel selecUser = tablaUser;
         
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
-        
         
         if(usuarioSeleccionado != -1){
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
@@ -836,30 +854,18 @@ public class InicioAdmin extends javax.swing.JFrame {
 
             try {
                 int excelFill = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-               
                 myUsuario.DeleteUser(excelFill);    
-                
-                
-                
-                
+
              } catch (IOException ex) {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
              }
             
-            if(fila>=0){
-            tablaUser.removeRow(fila);
-        }else{
-        JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
-        }        
-        
-        
-        DefaultTableModel finalUserTable = new DefaultTableModel();
-        finalUserTable.addColumn("NOMBRE");
-        finalUserTable.addColumn("USUARIO");
-        finalUserTable.addColumn("EMAIL");
-        finalUserTable.addColumn("NIVEL");
-            
-            
+            if(usuarioSeleccionado>=0){
+            tablaUser.removeRow(usuarioSeleccionado);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
+            }
         }
     }//GEN-LAST:event_btEliminarUsuarioActionPerformed
    
@@ -907,8 +913,7 @@ public class InicioAdmin extends javax.swing.JFrame {
             j=2;
             
         }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& tipo.equals(" ")){
-            buscar=hora;
-            
+            buscar=hora;    
             j=3;
         }
         
@@ -938,6 +943,33 @@ public class InicioAdmin extends javax.swing.JFrame {
         tableLugares.setModel(tabla);
         
     }//GEN-LAST:event_btnLimpliarActionPerformed
+
+    private void btEliminarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarLugarActionPerformed
+        DefaultTableModel selecUser = tabla;
+        
+        int usuarioSeleccionado = tableLugares.getSelectedRow();
+        
+        if(usuarioSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+
+            try {
+                int excelFill = myLugares.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                myLugares.deleteSite(excelFill);    
+
+             } catch (IOException ex) {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            
+            if(usuarioSeleccionado>=0){
+            tabla.removeRow(usuarioSeleccionado);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
+            }
+        }
+    }//GEN-LAST:event_btEliminarLugarActionPerformed
     
     
         

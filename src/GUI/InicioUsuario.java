@@ -192,7 +192,15 @@ public class InicioUsuario extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE", "DIRECCION", " TIPO", "HORARIO", "CALIFICACCION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tableLugares);
 
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
@@ -512,13 +520,13 @@ public class InicioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugaresActionPerformed
-        DefaultTableModel seleccion = tabla;
-        
+  
         int lugarSeleccionado = tableLugares.getSelectedRow();
+        
         if(lugarSeleccionado != -1){
-            String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
-            String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));
-            String tipoSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 2));
+            String nombreSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 0));
+            String direccionSeleccionada = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 1));
+            String tipoSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 2));
 
             try {
                 filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);

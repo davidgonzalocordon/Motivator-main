@@ -36,9 +36,10 @@ public class VerLugar extends javax.swing.JFrame {
     private static Lugares lugares = new Lugares();
     private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
-    private InicioAdmin inicioAdmin;
+    private InicioAdmin inicioAdmin = new InicioAdmin();
     private CajaDeComentarios cajaDeComentarios;
     private int contadorImg=1;
+    
     
     /**
      * Creates new form VerLugar
@@ -47,7 +48,13 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        setDatos(myUsuario.filaExcel);
+        if (Login.level == 3){
+            setDatos(inicioAdmin.filaExcel);
+        }
+        else{
+            setDatos(myUsuario.filaExcel);
+        }
+        
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);
         txtDireccion.setText(direccionLugar);
@@ -73,8 +80,9 @@ public class VerLugar extends javax.swing.JFrame {
     
     public void setImg(String lugar){
         int num = lugares.countImg(lugar);
-        String ruta = "IMG\\"+lugar+"\\"+num+".jpg";
         if(num!=0){
+            num = 1;
+            String ruta = "IMG\\"+lugar+"\\"+num+".jpg";
             this.mostrarImagen(lblImagen,ruta);
         }else{
             this.mostrarImagen(lblImagen,"src\\IMG\\noimagen.jpg");

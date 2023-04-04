@@ -71,16 +71,33 @@ public class Lugares {
         XSSFSheet sheet = wb.getSheetAt(0);
         
         int nFilas = sheet.getLastRowNum()+1;
-        Row fila = sheet.createRow(nFilas);
         
-        fila.createCell(0).setCellValue(nombre);
-        fila.createCell(1).setCellValue(localizacion);
-        fila.createCell(2).setCellValue(tipo);
-        fila.createCell(3).setCellValue(horario);
-        fila.createCell(4).setCellValue(puntuacion);
-        fila.createCell(5).setCellValue(mapa);
-        fila.createCell(6).setCellValue(telefono);
-        fila.createCell(7).setCellValue(descripcion);
+        for (int i = 1; i <= nFilas; i++) {
+            if (sheet.getRow(i) == null) {
+                sheet.createRow(i);
+                sheet.getRow(i).createCell(0).setCellValue(nombre);
+                sheet.getRow(i).createCell(1).setCellValue(localizacion);
+                sheet.getRow(i).createCell(2).setCellValue(tipo);
+                sheet.getRow(i).createCell(3).setCellValue(horario);
+                sheet.getRow(i).createCell(4).setCellValue(puntuacion);
+                sheet.getRow(i).createCell(5).setCellValue(mapa);
+                sheet.getRow(i).createCell(6).setCellValue(telefono);
+                sheet.getRow(i).createCell(7).setCellValue(descripcion);
+                break;
+            }
+            
+            if(i == nFilas){ 
+                sheet.createRow(i);
+                sheet.getRow(i).createCell(0).setCellValue(nombre);
+                sheet.getRow(i).createCell(1).setCellValue(localizacion);
+                sheet.getRow(i).createCell(2).setCellValue(tipo);
+                sheet.getRow(i).createCell(3).setCellValue(horario);
+                sheet.getRow(i).createCell(4).setCellValue(puntuacion);
+                sheet.getRow(i).createCell(5).setCellValue(mapa);
+                sheet.getRow(i).createCell(6).setCellValue(telefono);
+                sheet.getRow(i).createCell(7).setCellValue(descripcion);
+            }
+        }
         
         File folder = new File("Img\\"+nombre);
         folder.mkdir();
@@ -107,19 +124,20 @@ public class Lugares {
         
         for (int i = 1; i < nFilas; i++) {
             Row fila = sheet.getRow(i);
-            
-            if(fila.getCell(0).getStringCellValue().equals(nombre)){
+            if( fila != null){
+                if(fila.getCell(0).getStringCellValue().equals(nombre)){
                 
-                fila.getCell(0).setCellValue(newName);
-                fila.getCell(1).setCellValue(localizacion);
-                fila.getCell(2).setCellValue(tipo);
-                fila.getCell(3).setCellValue(horario);
-                fila.getCell(4).setCellValue(puntuacion);
-                fila.getCell(5).setCellValue(mapa);
-                fila.getCell(6).setCellValue(telefono);
-                fila.getCell(7).setCellValue(descripcion);
-                break;
-            }
+                    fila.getCell(0).setCellValue(newName);
+                    fila.getCell(1).setCellValue(localizacion);
+                    fila.getCell(2).setCellValue(tipo);
+                    fila.getCell(3).setCellValue(horario);
+                    fila.getCell(4).setCellValue(puntuacion);
+                    fila.getCell(5).setCellValue(mapa);
+                    fila.getCell(6).setCellValue(telefono);
+                    fila.getCell(7).setCellValue(descripcion);
+                    break;
+                }
+            }   
         }
         
         FileOutputStream output = new FileOutputStream(ruta);
@@ -149,11 +167,13 @@ public class Lugares {
         int nFila = sheet.getLastRowNum();
         
         for (int i = 1; i <= nFila; i++) {
-            String linkExist = sheet.getRow(i).getCell(5).getStringCellValue();
+            if (sheet.getRow(i) != null) {
+                String linkExist = sheet.getRow(i).getCell(5).getStringCellValue();
             
-            if(link.equals(linkExist)){
-                return false;
-            }
+                if(link.equals(linkExist)){
+                    return false;
+                }
+            } 
         }
         return true;
     }
@@ -171,21 +191,21 @@ public class Lugares {
              
                 
                 for(int j=0; j<almacen.length; j++){
-                    Cell celda = sheet.getRow(i).getCell(j);
                     
-                    switch (celda.getCellTypeEnum().toString()){
-                        case "NUMERIC":
-                            
-                            
-                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
-                            break;
-                            
-                        case "STRING":
-                            almacen[j]=celda.getStringCellValue();
-                            
-                            break;
-                        
-                }
+                    if (sheet.getRow(i) != null) {
+                        Cell celda = sheet.getRow(i).getCell(j);
+                    
+                        switch (celda.getCellTypeEnum().toString()){
+                            case "NUMERIC":
+                                almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                                break;
+
+                            case "STRING":
+                                almacen[j]=celda.getStringCellValue();
+                                break;
+                        }
+                    }
+                    
                 
             }
               
@@ -218,9 +238,11 @@ public class Lugares {
         int nFila = sheet.getLastRowNum();
         
         for (int i = 1; i <= nFila; i++) {
+            if (sheet.getRow(i) != null) {
                 if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && direccion.equals(sheet.getRow(i).getCell(1).getStringCellValue()) && tipo.equals(sheet.getRow(i).getCell(2).getStringCellValue())){
                     filaExcel = i;
                 }
+            }    
         }
         return filaExcel;
     }
@@ -258,5 +280,38 @@ public class Lugares {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return almacen;
+    }
+    
+    public static void deleteSite(int fila){
+        String ruta = "Sites.xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            
+            File comentarios = new File("Comments\\Comentarios-" + sheet.getRow(fila).getCell(0).getStringCellValue() +".xlsx");
+            comentarios.delete();
+            
+            File img = new File("IMG\\" + sheet.getRow(fila).getCell(0).getStringCellValue());
+            File[] lista = img.listFiles();
+            
+            for (int i = 0; i < lista.length; i++) {
+                lista[i].delete();
+            }
+            
+            img.delete();
+            
+            sheet.removeRow(sheet.getRow(fila));
+            
+            FileOutputStream fileout = new FileOutputStream("Sites.xlsx");
+            wb.write(fileout);
+            fileout.close();    
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 }
