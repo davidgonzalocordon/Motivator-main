@@ -96,7 +96,7 @@ public class Usuario {
     }
     
     
-    public static void EditUser(String nombre, String mail, String password, String user, int id, int lvl) throws IOException{
+    public static void EditUser(String nombre, String user, String password, String mail, int id, int lvl) throws IOException{
         String ruta = "Users.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -344,7 +344,6 @@ public class Usuario {
                         almacen[j]=celda.getStringCellValue();
                         break;
                 }
-                
             }
               
         } catch (FileNotFoundException ex) {

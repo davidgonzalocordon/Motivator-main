@@ -796,10 +796,8 @@ public class InicioAdmin extends javax.swing.JFrame {
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
-
             try {
                 filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                
                 String [] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
                 int lvl = Integer.parseInt(datosUsu[4])+1;
                 int id = Integer.parseInt(datosUsu[5]);
