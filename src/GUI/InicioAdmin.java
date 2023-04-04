@@ -6,19 +6,15 @@ package GUI;
 
 import Classes.Lugares;
 import Classes.Usuario;
-import static GUI.InicioUsuario.filaExcel;
 import java.awt.Image;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *

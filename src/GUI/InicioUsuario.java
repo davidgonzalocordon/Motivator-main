@@ -52,11 +52,13 @@ public class InicioUsuario extends javax.swing.JFrame {
         tabla.addColumn("TIPO");
         tabla.addColumn("HORARIO");
         tabla.addColumn("CALIFICACION");
+        String [] confirm = new String[5];
         
-        for(int i=1; i<=filas; i++){
-            
-            tabla.addRow(myLugares.ReadSite(i));
-            tableLugares.setModel(tabla);
+        for(int i=1; i<=filas; i++){            
+            confirm = myLugares.ReadSite(i);
+            if (confirm[0] != null) {
+                tabla.addRow(confirm);
+            }
         }        
         
     }

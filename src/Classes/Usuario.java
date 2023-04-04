@@ -127,6 +127,8 @@ public class Usuario {
     
     
     public static String getId(String user, String pass) throws IOException{
+        String confirmUser = "";
+        String confirmPass = "";
         String ruta = "Users.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -136,9 +138,27 @@ public class Usuario {
         for (int i = 1; i <= nFilas; i++) {
             
             if (sheet.getRow(i)!=null) {
-                String confirmUser = sheet.getRow(i).getCell(1).getStringCellValue();
-                String confirmPass = sheet.getRow(i).getCell(2).getStringCellValue();
-            
+                
+                switch (sheet.getRow(i).getCell(1).getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        confirmUser = String.valueOf( (int) sheet.getRow(i).getCell(1).getNumericCellValue());
+                        break;
+                    
+                    case "STRING":
+                        confirmUser = sheet.getRow(i).getCell(1).getStringCellValue();
+                        break;
+                }
+                
+                switch (sheet.getRow(i).getCell(2).getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        confirmPass = String.valueOf((int) sheet.getRow(i).getCell(2).getNumericCellValue());
+                        break;
+                    
+                    case "STRING":
+                        confirmPass = sheet.getRow(i).getCell(2).getStringCellValue();
+                        break;
+                }
+                
                 if(user.equals(confirmUser) && pass.equals(confirmPass)){
                     String id = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());;
                     return id;
@@ -249,8 +269,16 @@ public class Usuario {
                     if(id == (int)sheet.getRow(i).getCell(5).getNumericCellValue()){
 
                         for(int j=0; j<datos.length; j++){
-                            datos[j]=sheet.getRow(i).getCell(j).getStringCellValue();
+                            
+                            switch (sheet.getRow(i).getCell(j).getCellTypeEnum().toString()){
+                                case "NUMERIC":
+                                    datos[j]=String.valueOf(sheet.getRow(i).getCell(j).getNumericCellValue());
+                                    break;
 
+                                case "STRING":
+                                    datos[j]=sheet.getRow(i).getCell(j).getStringCellValue();
+                                    break;
+                            }        
                         }
                         break;
                     }
