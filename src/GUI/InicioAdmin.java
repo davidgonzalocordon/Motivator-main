@@ -791,7 +791,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         finalUserTable.addColumn("NIVEL");
         
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
-        System.out.println(usuarioSeleccionado);
+
         if(usuarioSeleccionado != -1){
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
@@ -854,7 +854,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         DefaultTableModel selecUser = tablaUser;
         
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
-        
         if(usuarioSeleccionado != -1){
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
@@ -870,6 +869,7 @@ public class InicioAdmin extends javax.swing.JFrame {
             
             if(usuarioSeleccionado>=0){
             tablaUser.removeRow(usuarioSeleccionado);
+            tableUsuarios.setModel(tablaUser);
             }
             else{
                 JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
