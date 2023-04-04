@@ -5,15 +5,25 @@
 package GUI;
 
 import Classes.Comentarios;
+import Classes.Usuario;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ASUS
  */
 public class CrearComentario extends javax.swing.JFrame {
+    
+    private Comentarios myComentario = new Comentarios();
+    private CajaDeComentarios cajaDeComentarios;
     private VerLugar verLugar;
     private VerRestaurante verRestaurante;
     private Comentarios comentario;
+    private Usuario myUsuario = new Usuario();
+    private Login myLogin;
 
     /**
      * Creates new form CrearComentario
@@ -34,83 +44,50 @@ public class CrearComentario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtComentario = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
-        btnCerrar = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
         cmbCalificacionLugar = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(219, 19, 19));
+        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(201, 52, 52));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/yo amo cucuta Registro.png"))); // NOI18N
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/logo.png"))); // NOI18N
-        jLabel4.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(3, 3, 3))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, 90));
-
-        jPanel4.setBackground(new java.awt.Color(102, 193, 193));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setBackground(new java.awt.Color(255, 228, 196));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Comentario: ");
 
-        txtComentario.setEditable(false);
         txtComentario.setBackground(new java.awt.Color(255, 255, 255));
-        txtComentario.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(txtComentario);
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estrellas:");
 
-        btnCerrar.setBackground(new java.awt.Color(255, 255, 51));
-        btnCerrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCerrar.setText("ENVIAR COMENTARIO");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviar.setText("Enviar Comentario");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnEnviarActionPerformed(evt);
             }
         });
 
-        cmbCalificacionLugar.setBackground(new java.awt.Color(255, 255, 51));
-        cmbCalificacionLugar.setForeground(new java.awt.Color(0, 0, 0));
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -127,12 +104,14 @@ public class CrearComentario extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 422, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(btnCerrar)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addComponent(btnEnviar)
+                .addGap(112, 112, 112)
+                .addComponent(btnVolver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,12 +124,20 @@ public class CrearComentario extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(btnCerrar)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviar)
+                    .addComponent(btnVolver))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 570, 300));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 570, 280));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/yo amo cucuta Registro.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 90));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/logo.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,10 +153,31 @@ public class CrearComentario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         String comentario = txtComentario.getText();
         int puntuacion = Integer.parseInt((String) cmbCalificacionLugar.getSelectedItem());
-    }//GEN-LAST:event_btnCerrarActionPerformed
+        String autor = myUsuario.ObtenerDato(myLogin.ID)[0];
+        //ObtenerDato retorna un array con la info del usuario, en este caso, del usuario logueado. En la posicion 0 indica el nombre del usuario
+        String nombre = verLugar.nombreLugar;
+        
+        try {
+            myComentario.addComment(nombre,autor,comentario,puntuacion);
+            JOptionPane.showMessageDialog(null,"Comentario enviado exitosamente");
+            txtComentario.setText(" ");
+        } catch (IOException ex) {
+            Logger.getLogger(CrearComentario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        try {
+            cajaDeComentarios = new CajaDeComentarios();
+        } catch (IOException ex) {
+            Logger.getLogger(CrearComentario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cajaDeComentarios.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,14 +222,14 @@ public class CrearComentario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane txtComentario;

@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,8 +64,9 @@ public class Comentarios {
         XSSFWorkbook wb = new XSSFWorkbook(file);
         XSSFSheet sheet = wb.getSheetAt(0);
         
-        Date fecha = new Date();
-        String fechas = fecha.getDate()+ "/" + (fecha.getMonth()+1)+ "/" + (fecha.getYear()+1900);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaActual = dateFormat.format(calendar.getTime());
         
         int nFilas = sheet.getLastRowNum()+1;
         Row fila = sheet.createRow(nFilas);
@@ -71,10 +74,59 @@ public class Comentarios {
         fila.createCell(0).setCellValue(autor);
         fila.createCell(1).setCellValue(comentario);
         fila.createCell(2).setCellValue(puntuacion);
-        fila.createCell(3).setCellValue(fechas);
+        fila.createCell(3).setCellValue(fechaActual);
         
         FileOutputStream output = new FileOutputStream(ruta);
         wb.write(output);
         output.close();
+    }
+    
+    public static String[] readComment(int i, String name){
+        String almacen[] = new String[4];
+        String ruta = "Comments\\Comentarios-"+name+".xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+             
+                
+                for(int j=0; j<almacen.length; j++){
+                    Cell celda = sheet.getRow(i).getCell(j);
+                    
+                    switch (celda.getCellTypeEnum().toString()){
+                        case "NUMERIC":
+                            
+                            
+                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                            break;
+                            
+                        case "STRING":
+                            almacen[j]=celda.getStringCellValue();
+                            
+                            break;
+                        
+                }
+                
+            }
+              
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
+    }
+    
+    public static int nfilas(String name) throws IOException{
+        String ruta = "Comments\\Comentarios-"+name+".xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFilas = sheet.getLastRowNum();
+       
+        return nFilas;
     }
 }

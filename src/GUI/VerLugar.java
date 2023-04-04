@@ -37,6 +37,7 @@ public class VerLugar extends javax.swing.JFrame {
     private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
     private InicioAdmin inicioAdmin;
+    private CajaDeComentarios cajaDeComentarios;
     private int contadorImg=1;
     
     /**
@@ -411,7 +412,12 @@ public class VerLugar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentariosActionPerformed
-        // TODO add your handling code here:
+        try {
+            cajaDeComentarios = new CajaDeComentarios();
+        } catch (IOException ex) {
+            Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cajaDeComentarios.setVisible(true);
     }//GEN-LAST:event_btnComentariosActionPerformed
 
     private void btnFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotosActionPerformed

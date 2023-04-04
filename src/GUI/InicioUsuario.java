@@ -55,12 +55,9 @@ public class InicioUsuario extends javax.swing.JFrame {
         
         for(int i=1; i<=filas; i++){
             
-            
             tabla.addRow(myLugares.ReadSite(i));
             tableLugares.setModel(tabla);
         }        
-        
-        
         
     }
 
