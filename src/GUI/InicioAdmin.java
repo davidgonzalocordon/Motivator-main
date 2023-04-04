@@ -16,7 +16,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -41,6 +43,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         Leer();
         LeerUser();
+        this.tableUsuarios.setModel(tablaUser);
         SetImg(Construccion, "src\\IMG\\Proyecto_en_constuccion.jpeg");
         String datos[]= new String[4];
         datos=myUsuario.ObtenerDato(myLogin.ID);
@@ -99,7 +102,6 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         horarioLugar = new javax.swing.ButtonGroup();
-        horarioRestaurante = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         btUsuario = new javax.swing.JButton();
@@ -127,17 +129,18 @@ public class InicioAdmin extends javax.swing.JFrame {
         txtNombreLugar = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtDireccionLugarr = new javax.swing.JTextField();
+        txtDireccionLugar = new javax.swing.JTextField();
         btnBuscarLugar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableLugares = new javax.swing.JTable();
         btnAgregarlugar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        btnDia = new javax.swing.JRadioButton();
+        btnNoche = new javax.swing.JRadioButton();
+        btn24h = new javax.swing.JRadioButton();
         jLabel21 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
+        btnLimpliar = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         Construccion = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -240,11 +243,21 @@ public class InicioAdmin extends javax.swing.JFrame {
         jScrollPane6.setViewportView(tableUsuarios);
 
         btnBuscarUsuario.setText("BUSCAR");
+        btnBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("USUARIO: ");
 
         btEliminarUsuario.setText("ELIMINAR");
+        btEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarUsuarioActionPerformed(evt);
+            }
+        });
 
         btnAscenderUsuario.setText("ASCENDER");
         btnAscenderUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +333,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel18.setText("CALIFICACION");
 
-        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
+        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
 
         btEliminarLugar.setText("ELIMINAR");
 
@@ -331,6 +344,11 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel3.setText("DIRECCION");
 
         btnBuscarLugar.setText("BUSCAR");
+        btnBuscarLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarLugarActionPerformed(evt);
+            }
+        });
 
         tableLugares.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -352,22 +370,29 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton1);
-        jRadioButton1.setText("Diurno");
+        btnDia.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btnDia);
+        btnDia.setText("Diurno");
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton2);
-        jRadioButton2.setText("Nocturno");
+        btnNoche.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btnNoche);
+        btnNoche.setText("Nocturno");
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton3);
-        jRadioButton3.setText("Ambos");
+        btn24h.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btn24h);
+        btn24h.setText("Ambos");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
+
+        btnLimpliar.setText("LIMPIAR");
+        btnLimpliar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpliarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -383,21 +408,23 @@ public class InicioAdmin extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(btVerLugar)
                         .addGap(27, 27, 27)
-                        .addComponent(btEliminarLugar))
+                        .addComponent(btEliminarLugar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpliar))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn24h, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,7 +435,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addComponent(jLabel3)
                         .addGap(13, 13, 13)
-                        .addComponent(txtDireccionLugarr, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addComponent(txtDireccionLugar, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                         .addGap(39, 39, 39)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,21 +455,22 @@ public class InicioAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(txtDireccionLugarr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDireccionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2))
+                    .addComponent(btnDia)
+                    .addComponent(btn24h)
+                    .addComponent(btnNoche))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarLugar)
                     .addComponent(btEliminarLugar)
                     .addComponent(btVerLugar)
-                    .addComponent(btnAgregarlugar))
+                    .addComponent(btnAgregarlugar)
+                    .addComponent(btnLimpliar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addContainerGap())
@@ -601,12 +629,12 @@ public class InicioAdmin extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelUsuario))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -727,6 +755,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         finalUserTable.addColumn("NIVEL");
         
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+        System.out.println(usuarioSeleccionado);
         if(usuarioSeleccionado != -1){
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
@@ -757,6 +786,163 @@ public class InicioAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAscenderUsuarioActionPerformed
 
+    private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
+        
+        int j=0;
+        String buscar="";
+        
+        if(txtNombre.getText().isEmpty() && txtEmail.getText().isEmpty()){
+            buscar = txtUsuario.getText();
+            j=1;
+        }else if(txtUsuario.getText().isEmpty() && txtEmail.getText().isEmpty()){
+            buscar = txtNombre.getText();
+            j=0;
+        }else if(txtNombre.getText().isEmpty() && txtUsuario.getText().isEmpty()){
+            buscar = txtEmail.getText();
+            j=2;
+        }
+        
+        
+        for (int i=0; i<tablaUser.getRowCount(); i++){
+            
+            
+                
+                if(tablaUser.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
+                
+                    tableUsuarios.changeSelection(i, j, false, false);
+                    
+                }
+                
+            
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
+
+    private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
+        int fila=tableUsuarios.getSelectedRow();
+        DefaultTableModel selecUser = tablaUser;
+        
+        int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+        
+        
+        if(usuarioSeleccionado != -1){
+            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+
+            try {
+                int excelFill = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+               
+                myUsuario.DeleteUser(excelFill);    
+                
+                
+                
+                
+             } catch (IOException ex) {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            
+            if(fila>=0){
+            tablaUser.removeRow(fila);
+        }else{
+        JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
+        }        
+        
+        
+        DefaultTableModel finalUserTable = new DefaultTableModel();
+        finalUserTable.addColumn("NOMBRE");
+        finalUserTable.addColumn("USUARIO");
+        finalUserTable.addColumn("EMAIL");
+        finalUserTable.addColumn("NIVEL");
+            
+            
+        }
+    }//GEN-LAST:event_btEliminarUsuarioActionPerformed
+   
+    
+    private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
+        String buscar="";
+        int j=0;
+        String hora=" ";
+        String []aux = new String[5];
+        
+        DefaultTableModel tablaaux = new DefaultTableModel();
+        tablaaux.addColumn("NOMBRE");
+        tablaaux.addColumn("DIRECCION");
+        tablaaux.addColumn("TIPO"); 
+        tablaaux.addColumn("HORARIO");
+        tablaaux.addColumn("CALIFICACION");
+        
+        
+        
+        String calificacion = (String)cmbCalificacionLugar.getSelectedItem();
+        String tipo = (String)cmbTipo.getSelectedItem();
+        
+        if(btnDia.isSelected()){
+            hora="Diurno";
+        }else if(btnNoche.isSelected()){
+            hora="Nocturno";
+        }else if(btn24h.isSelected()){
+            hora="24 horas";
+        }
+        
+        if(txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" ")){
+            buscar = txtDireccionLugar.getText();
+            j=1;
+            
+        }else if(txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ")&& hora.equals(" ")){
+            buscar = txtNombreLugar.getText();
+            j=0;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ")&& hora.equals(" ")){
+            buscar=calificacion;
+            j=4;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& hora.equals(" ")){
+            buscar=tipo;
+            j=2;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& tipo.equals(" ")){
+            buscar=hora;
+            
+            j=3;
+        }
+        
+        
+        for (int i=0; i<tabla.getRowCount(); i++){
+              
+                if(tabla.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
+                    for(int h=0; h<=4 ;h++){
+                        aux[h]=(String)tabla.getValueAt(i, h);
+                    }
+                        tablaaux.addRow(aux);
+                        tableLugares.changeSelection(i, j, false, false);
+                }
+          
+        }
+        tableLugares.setModel(tablaaux);
+        
+        
+    }//GEN-LAST:event_btnBuscarLugarActionPerformed
+
+    private void btnLimpliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliarActionPerformed
+        txtNombreLugar.setText("");
+        txtDireccionLugar.setText("");
+        cmbCalificacionLugar.setSelectedIndex(0);
+        cmbTipo.setSelectedIndex(0);
+        horarioLugar.clearSelection();
+        tableLugares.setModel(tabla);
+        
+    }//GEN-LAST:event_btnLimpliarActionPerformed
+    
+    
+        
+    
+    
     private void SetImg(JLabel labelName, String ruta){
         ImageIcon image = new ImageIcon(ruta);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -822,14 +1008,17 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btLugares;
     private javax.swing.JButton btUsuario;
     private javax.swing.JButton btVerLugar;
+    private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
     private javax.swing.JButton btnAscenderUsuario;
     private javax.swing.JButton btnBuscarLugar;
     private javax.swing.JButton btnBuscarUsuario;
+    private javax.swing.JRadioButton btnDia;
+    private javax.swing.JButton btnLimpliar;
+    private javax.swing.JRadioButton btnNoche;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.ButtonGroup horarioLugar;
-    private javax.swing.ButtonGroup horarioRestaurante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -851,14 +1040,11 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable tableLugares;
     private javax.swing.JTable tableUsuarios;
-    private javax.swing.JTextField txtDireccionLugarr;
+    private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailAdmin;
     private javax.swing.JTextField txtNombre;

@@ -27,50 +27,13 @@ public class Tester {
         
         
     }
-    public static void ReadSite(){
-        
-        String ruta = "Sites.xlsx";
-        
-        try {
-            FileInputStream file = new FileInputStream(new File(ruta));
+    public static void ReadSite() throws IOException{
+            FileInputStream file = new FileInputStream(new File("Sites.xlsx"));
             
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
             
-            int numfilas = sheet.getLastRowNum();
-            
-            for(int i=1; i<=numfilas; i++){
-                Row fila = sheet.getRow(i);
-                int numcolum = fila.getLastCellNum();
-                
-                
-                for(int j=0; j<numcolum; j++){
-                    Cell celda = fila.getCell(j);
-                    
-                    
-                    switch (celda.getCellTypeEnum().toString()){
-                        case "NUMERIC":
-                            
-                            System.out.println(celda.getNumericCellValue()+" ");
-                            break;
-                            
-                        case "STRING":
-                            System.out.println(celda.getStringCellValue()+" ");
-                            break;
-                            
-                    }
-                    
-                }
-                System.out.println("");
-            }
-             
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
-        }
-             
-    
+            boolean test=sheet.isDeleteRowsLocked();
+            System.out.println(test);
     }
 }

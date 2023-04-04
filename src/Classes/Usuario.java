@@ -4,11 +4,14 @@
  */
 package Classes;
 
+import com.aspose.cells.WorksheetCollection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -295,5 +298,34 @@ public class Usuario {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return almacen;
+    }
+    
+    public static void DeleteUser(int fila){
+            
+            String ruta = "Users.xlsx";
+            
+
+           
+            try {
+                FileInputStream file = new FileInputStream(new File(ruta));
+
+                XSSFWorkbook wb = new XSSFWorkbook(file);
+                XSSFSheet sheet = wb.getSheetAt(0);
+               
+
+                
+                sheet.removeRow(sheet.getRow(fila));
+                
+                FileOutputStream fileout = new FileOutputStream("Users.xlsx");
+                wb.write(fileout);
+                fileout.close();
+                
+                
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
     }
 }
