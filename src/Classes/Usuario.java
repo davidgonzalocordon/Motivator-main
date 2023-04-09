@@ -4,6 +4,7 @@
  */
 package Classes;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -64,14 +65,30 @@ public class Usuario {
         XSSFSheet sheet = wb.getSheetAt(0);
         
         int nFilas = sheet.getLastRowNum()+1;
-        sheet.createRow(nFilas);
         
-        sheet.getRow(nFilas).createCell(0).setCellValue(nombre);
-        sheet.getRow(nFilas).createCell(1).setCellValue(usuario);
-        sheet.getRow(nFilas).createCell(2).setCellValue(password);
-        sheet.getRow(nFilas).createCell(3).setCellValue(mail);
-        sheet.getRow(nFilas).createCell(4).setCellValue(1);
-        sheet.getRow(nFilas).createCell(5).setCellValue(nFilas);
+        for (int i = 1; i <= nFilas; i++) {
+            if (sheet.getRow(i) == null) {
+                sheet.createRow(i);
+                sheet.getRow(i).createCell(0).setCellValue(nombre);
+                sheet.getRow(i).createCell(1).setCellValue(usuario);
+                sheet.getRow(i).createCell(2).setCellValue(password);
+                sheet.getRow(i).createCell(3).setCellValue(mail);
+                sheet.getRow(i).createCell(4).setCellValue(1);
+                sheet.getRow(i).createCell(5).setCellValue(i);
+                break;
+            }
+            
+            if (i == nFilas) {
+                sheet.createRow(i);
+                sheet.getRow(nFilas).createCell(0).setCellValue(nombre);
+                sheet.getRow(nFilas).createCell(1).setCellValue(usuario);
+                sheet.getRow(nFilas).createCell(2).setCellValue(password);
+                sheet.getRow(nFilas).createCell(3).setCellValue(mail);
+                sheet.getRow(nFilas).createCell(4).setCellValue(1);
+                sheet.getRow(nFilas).createCell(5).setCellValue(i);
+            }
+        }
+        
         
         FileOutputStream output = new FileOutputStream(ruta);
         wb.write(output);
@@ -79,7 +96,7 @@ public class Usuario {
     }
     
     
-    public static void EditUser(String nombre, String mail, String password, String user, int id, int lvl) throws IOException{
+    public static void EditUser(String nombre, String user, String password, String mail, int id, int lvl) throws IOException{
         String ruta = "Users.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -90,15 +107,17 @@ public class Usuario {
         for (int i = 1; i <=nFilas; i++) {
             Row fila = sheet.getRow(i);
             
-            if(id==(int)fila.getCell(5).getNumericCellValue()){
-                
-                fila.getCell(0).setCellValue(nombre);
-                fila.getCell(1).setCellValue(user);
-                fila.getCell(2).setCellValue(password);
-                fila.getCell(3).setCellValue(mail);
-                fila.getCell(4).setCellValue(lvl);
-                break;
-            }
+            if (fila != null) {
+                if(id==(int)fila.getCell(5).getNumericCellValue()){
+
+                    fila.getCell(0).setCellValue(nombre);
+                    fila.getCell(1).setCellValue(user);
+                    fila.getCell(2).setCellValue(password);
+                    fila.getCell(3).setCellValue(mail);
+                    fila.getCell(4).setCellValue(lvl);
+                    break;
+                }
+            }    
         }
         
         FileOutputStream output = new FileOutputStream(ruta);
@@ -108,6 +127,8 @@ public class Usuario {
     
     
     public static String getId(String user, String pass) throws IOException{
+        String confirmUser = "";
+        String confirmPass = "";
         String ruta = "Users.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -115,13 +136,35 @@ public class Usuario {
         
         int nFilas = sheet.getLastRowNum();
         for (int i = 1; i <= nFilas; i++) {
-            String confirmUser = sheet.getRow(i).getCell(1).getStringCellValue();
-            String confirmPass = sheet.getRow(i).getCell(2).getStringCellValue();
             
-            if(user.equals(confirmUser) && pass.equals(confirmPass)){
-                String id = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());;
-                return id;
+            if (sheet.getRow(i)!=null) {
+                
+                switch (sheet.getRow(i).getCell(1).getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        confirmUser = String.valueOf( (int) sheet.getRow(i).getCell(1).getNumericCellValue());
+                        break;
+                    
+                    case "STRING":
+                        confirmUser = sheet.getRow(i).getCell(1).getStringCellValue();
+                        break;
+                }
+                
+                switch (sheet.getRow(i).getCell(2).getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        confirmPass = String.valueOf((int) sheet.getRow(i).getCell(2).getNumericCellValue());
+                        break;
+                    
+                    case "STRING":
+                        confirmPass = sheet.getRow(i).getCell(2).getStringCellValue();
+                        break;
+                }
+                
+                if(user.equals(confirmUser) && pass.equals(confirmPass)){
+                    String id = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());;
+                    return id;
+                }
             }
+            
         }
         return "No existente";
     }
@@ -136,13 +179,17 @@ public class Usuario {
         int nFilas = sheet.getLastRowNum();
         
         for (int i = 1; i <= nFilas; i++) {
-            String confirmId = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());
             
-            if (id.equals(confirmId)){
-               
-                int level = (int) sheet.getRow(i).getCell(4).getNumericCellValue();
-                return level;
-            }
+            if (sheet.getRow(i)!=null) {
+
+                String confirmId = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());
+
+                if (id.equals(confirmId)){
+
+                    int level = (int) sheet.getRow(i).getCell(4).getNumericCellValue();
+                    return level;
+                }
+            }    
         }
         return 5;
     }
@@ -155,11 +202,14 @@ public class Usuario {
         
         int nFila = sheet.getLastRowNum();
         for (int i = 1; i <= nFila; i++) {
-            String userExist = sheet.getRow(i).getCell(1).getStringCellValue();
-            
-            if(user.equals(userExist)){
-                return false;
-            }
+            if (sheet.getRow(i)!=null) {
+
+                String userExist = sheet.getRow(i).getCell(1).getStringCellValue();
+
+                if(user.equals(userExist)){
+                    return false;
+                }
+            }    
         }
         return true;
     }
@@ -174,29 +224,25 @@ public class Usuario {
             
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
-             
+            for(int j=0; j<almacen.length+1; j++){
                 
-                for(int j=0; j<almacen.length+1; j++){
+                if (sheet.getRow(i)!=null) {
                     
-                    
-                  if(j!=2){  
-                    Cell celda = sheet.getRow(i).getCell(j);
-                    
-                    switch (celda.getCellTypeEnum().toString()){
-                        case "NUMERIC":
-                            almacen[acum]=String.valueOf((int)celda.getNumericCellValue());
-                            break;
+                    if(j!=2){
+                        Cell celda = sheet.getRow(i).getCell(j);
+                        
+                        switch (celda.getCellTypeEnum().toString()){
+                            case "NUMERIC":
+                                almacen[acum]=String.valueOf((int)celda.getNumericCellValue());
+                                break;
                             
-                        case "STRING":
-                            almacen[acum]=celda.getStringCellValue();
-                            
-                            break;
-                            
+                            case "STRING":
+                                almacen[acum]=celda.getStringCellValue();
+                                break;
                         }
-                    
-                    acum++;
-                    
-                  }  
+                        acum++;
+                    }
+                }
             }
               
         } catch (FileNotFoundException ex) {
@@ -206,11 +252,7 @@ public class Usuario {
         } 
         return almacen;
     } 
-             
-        
-
-    
-        
+               
     public static String[] ObtenerDato(int id){
          String ruta = "Users.xlsx";
          String[] datos = new String[4];
@@ -222,16 +264,25 @@ public class Usuario {
             XSSFSheet sheet = wb.getSheetAt(0);
            
             for(int i=1; i<=sheet.getLastRowNum();i++){
+                if(sheet.getRow(i) != null){
               
-                if(id == (int)sheet.getRow(i).getCell(5).getNumericCellValue()){
-                  
-                    for(int j=0; j<datos.length; j++){
-                        datos[j]=sheet.getRow(i).getCell(j).getStringCellValue();
-                       
+                    if(id == (int)sheet.getRow(i).getCell(5).getNumericCellValue()){
+
+                        for(int j=0; j<datos.length; j++){
+                            
+                            switch (sheet.getRow(i).getCell(j).getCellTypeEnum().toString()){
+                                case "NUMERIC":
+                                    datos[j]=String.valueOf(sheet.getRow(i).getCell(j).getNumericCellValue());
+                                    break;
+
+                                case "STRING":
+                                    datos[j]=sheet.getRow(i).getCell(j).getStringCellValue();
+                                    break;
+                            }        
+                        }
+                        break;
                     }
-                    break;
-                }
-            
+                }    
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,14 +293,85 @@ public class Usuario {
         return datos;
     }
 
-        public static int nfilasUser() throws IOException {
-            String ruta = "Users.xlsx";
+    public static int nfilasUser() throws IOException {
+        String ruta = "Users.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFilas = sheet.getLastRowNum();
+        return nFilas;
+    }
+    
+    public static int filaSeleccionada(String nombre, String usuario, String correo) throws IOException{
+        int filaExcel = 0;
+        String ruta = "Users.xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFila = sheet.getLastRowNum();
+        
+        for (int i = 1; i <= nFila; i++) {
+            if (sheet.getRow(i) != null) {
+                if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && usuario.equals(sheet.getRow(i).getCell(1).getStringCellValue()) && correo.equals(sheet.getRow(i).getCell(3).getStringCellValue())){
+                    filaExcel = i;
+                }
+            }
+                
+        }
+        return filaExcel;
+    }
+    
+    public static String[] extraerTodosLosDatos(int i){
+        String almacen[] = new String[6];
+        String ruta = "Users.xlsx";
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            
+            for(int j=0; j<almacen.length; j++){
+                Cell celda = sheet.getRow(i).getCell(j);
+                
+                switch (celda.getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                        break;
+                        
+                    case "STRING":
+                        almacen[j]=celda.getStringCellValue();
+                        break;
+                }
+            }
+              
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
+    }
+    
+    public static void DeleteUser(int fila){
+        String ruta = "Users.xlsx";
+        
+        try {
             FileInputStream file = new FileInputStream(new File(ruta));
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
-
-            int nFilas = sheet.getLastRowNum();
-
-            return nFilas;
-        }    
+            
+            sheet.removeRow(sheet.getRow(fila));
+            
+            FileOutputStream fileout = new FileOutputStream("Users.xlsx");
+            wb.write(fileout);
+            fileout.close();    
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
 }

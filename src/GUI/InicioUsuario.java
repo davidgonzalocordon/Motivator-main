@@ -19,7 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InicioUsuario extends javax.swing.JFrame {
     private RegistrarLugar registrarLugar;
-    private DefaultTableModel tabla = new DefaultTableModel();
+    private DefaultTableModel tabla = new DefaultTableModel(){ 
+        @Override 
+        public boolean isCellEditable(int row, int column){
+            return false;
+        }
+    };
     private Lugares myLugares = new Lugares();
     private Usuario myUsuario = new Usuario();
     private Login myLogin = new Login();
@@ -52,15 +57,14 @@ public class InicioUsuario extends javax.swing.JFrame {
         tabla.addColumn("TIPO");
         tabla.addColumn("HORARIO");
         tabla.addColumn("CALIFICACION");
+        String [] confirm = new String[5];
         
-        for(int i=1; i<=filas; i++){
-            
-            
-            tabla.addRow(myLugares.ReadSite(i));
-            tableLugares.setModel(tabla);
+        for(int i=1; i<=filas; i++){            
+            confirm = myLugares.ReadSite(i);
+            if (confirm[0] != null) {
+                tabla.addRow(confirm);
+            }
         }        
-        
-        
         
     }
 
@@ -95,11 +99,12 @@ public class InicioUsuario extends javax.swing.JFrame {
         btVerLugares = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         cmdTipoLugar = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        btnDia = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        btnNoche = new javax.swing.JRadioButton();
+        btn24h = new javax.swing.JRadioButton();
         btnAgregarLugar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         PanelConfi = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -194,12 +199,25 @@ public class InicioUsuario extends javax.swing.JFrame {
             new String [] {
                 "NOMBRE", "DIRECCION", " TIPO", "HORARIO", "CALIFICACCION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tableLugares);
 
-        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "☆1", "☆2", "☆3", "☆4", "☆5" }));
+        cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
 
         btnBuscarLugar.setText("BUSCAR");
+        btnBuscarLugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarLugarActionPerformed(evt);
+            }
+        });
 
         btVerLugares.setText("VER");
         btVerLugares.addActionListener(new java.awt.event.ActionListener() {
@@ -211,27 +229,34 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("TIPO:");
 
-        cmdTipoLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
+        cmdTipoLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton1);
-        jRadioButton1.setText("Diurno");
+        btnDia.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btnDia);
+        btnDia.setText("Diurno");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton2);
-        jRadioButton2.setText("Nocturno");
+        btnNoche.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btnNoche);
+        btnNoche.setText("Nocturno");
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 228, 196));
-        horarioLugar.add(jRadioButton3);
-        jRadioButton3.setText("Ambos");
+        btn24h.setBackground(new java.awt.Color(255, 228, 196));
+        horarioLugar.add(btn24h);
+        btn24h.setText("Ambos");
 
         btnAgregarLugar.setText("AGREGAR");
         btnAgregarLugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarLugarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -266,11 +291,13 @@ public class InicioUsuario extends javax.swing.JFrame {
                                             .addGroup(PanelBuscarLayout.createSequentialGroup()
                                                 .addComponent(jLabel8)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn24h, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel21)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -279,7 +306,7 @@ public class InicioUsuario extends javax.swing.JFrame {
                                 .addComponent(btnBuscarLugar)
                                 .addGap(64, 64, 64)
                                 .addComponent(btnAgregarLugar)))
-                        .addGap(0, 137, Short.MAX_VALUE)))
+                        .addGap(0, 132, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelBuscarLayout.setVerticalGroup(
@@ -297,9 +324,9 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton2))
+                        .addComponent(btnDia)
+                        .addComponent(btn24h)
+                        .addComponent(btnNoche))
                     .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21)
                         .addComponent(cmdTipoLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -307,7 +334,8 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVerLugares)
                     .addComponent(btnAgregarLugar)
-                    .addComponent(btnBuscarLugar))
+                    .addComponent(btnBuscarLugar)
+                    .addComponent(btnLimpiar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -499,14 +527,13 @@ public class InicioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugaresActionPerformed
-        DefaultTableModel seleccion = tabla;
-        
+  
         int lugarSeleccionado = tableLugares.getSelectedRow();
-        System.out.println(lugarSeleccionado);
+        
         if(lugarSeleccionado != -1){
-            String nombreSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 0));
-            String direccionSeleccionada = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 1));
-            String tipoSeleccionado = String.valueOf(seleccion.getValueAt(lugarSeleccionado, 2));
+            String nombreSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 0));
+            String direccionSeleccionada = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 1));
+            String tipoSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 2));
 
             try {
                 filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
@@ -522,6 +549,80 @@ public class InicioUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
         }
     }//GEN-LAST:event_btVerLugaresActionPerformed
+
+    private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
+        String buscar="";
+        int j=0;
+        String hora=" ";
+        String []aux = new String[5];
+        
+        DefaultTableModel tablaaux = new DefaultTableModel();
+        tablaaux.addColumn("NOMBRE");
+        tablaaux.addColumn("DIRECCION");
+        tablaaux.addColumn("TIPO"); 
+        tablaaux.addColumn("HORARIO");
+        tablaaux.addColumn("CALIFICACION");
+        
+        
+        
+        String calificacion = (String)cmbCalificacionLugar.getSelectedItem();
+        String tipo = (String)cmdTipoLugar.getSelectedItem();
+        
+        if(btnDia.isSelected()){
+            hora="Diurno";
+        }else if(btnNoche.isSelected()){
+            hora="Nocturno";
+        }else if(btn24h.isSelected()){
+            hora="24 horas";
+        }
+        
+        if(txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" ")){
+            buscar = txtDireccionLugar.getText();
+            j=1;
+            
+        }else if(txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ")&& hora.equals(" ")){
+            buscar = txtNombreLugar.getText();
+            j=0;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ")&& hora.equals(" ")){
+            buscar=calificacion;
+            j=4;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& hora.equals(" ")){
+            buscar=tipo;
+            j=2;
+            
+        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& tipo.equals(" ")){
+            buscar=hora;
+            
+            j=3;
+        }
+        
+        
+        for (int i=0; i<tabla.getRowCount(); i++){
+              
+                if(tabla.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
+                    for(int h=0; h<=4 ;h++){
+                        aux[h]=(String)tabla.getValueAt(i, h);
+                    }
+                        tablaaux.addRow(aux);
+                        tableLugares.changeSelection(i, j, false, false);
+                }
+          
+        }
+        tableLugares.setModel(tablaaux);
+        
+        
+    }//GEN-LAST:event_btnBuscarLugarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtNombreLugar.setText("");
+        txtDireccionLugar.setText("");
+        cmbCalificacionLugar.setSelectedIndex(0);
+        cmdTipoLugar.setSelectedIndex(0);
+        horarioLugar.clearSelection();
+        tableLugares.setModel(tabla);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,8 +679,12 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btConfiguracion;
     private javax.swing.JButton btVerLugares;
+    private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarLugar;
     private javax.swing.JButton btnBuscarLugar;
+    private javax.swing.JRadioButton btnDia;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JRadioButton btnNoche;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;
     private javax.swing.JComboBox<String> cmdTipoLugar;
     private javax.swing.ButtonGroup horarioLugar;
@@ -598,9 +703,6 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableLugares;
     private javax.swing.JTextField txtDireccionLugar;

@@ -36,7 +36,10 @@ public class VerLugar extends javax.swing.JFrame {
     private static Lugares lugares = new Lugares();
     private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
-    private InicioAdmin inicioAdmin;
+    private InicioAdmin inicioAdmin = new InicioAdmin();
+    private CajaDeComentarios cajaDeComentarios;
+    private int contadorImg=1;
+    
     
     /**
      * Creates new form VerLugar
@@ -45,8 +48,13 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        System.out.println(myUsuario.filaExcel);
-        setDatos(myUsuario.filaExcel);
+        if (Login.level == 3){
+            setDatos(inicioAdmin.filaExcel);
+        }
+        else{
+            setDatos(myUsuario.filaExcel);
+        }
+        
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);
         txtDireccion.setText(direccionLugar);
@@ -72,8 +80,9 @@ public class VerLugar extends javax.swing.JFrame {
     
     public void setImg(String lugar){
         int num = lugares.countImg(lugar);
-        String ruta = "IMG\\"+lugar+"\\"+num+".jpg";
         if(num!=0){
+            num = 1;
+            String ruta = "IMG\\"+lugar+"\\"+num+".jpg";
             this.mostrarImagen(lblImagen,ruta);
         }else{
             this.mostrarImagen(lblImagen,"src\\IMG\\noimagen.jpg");
@@ -326,6 +335,11 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel1.add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 410, 410));
 
         btnPrevImg.setText("Anterior");
+        btnPrevImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevImgActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPrevImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, -1, -1));
 
         btnNextImg.setText("Siguiente");
@@ -406,7 +420,12 @@ public class VerLugar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComentariosActionPerformed
-        // TODO add your handling code here:
+        try {
+            cajaDeComentarios = new CajaDeComentarios();
+        } catch (IOException ex) {
+            Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cajaDeComentarios.setVisible(true);
     }//GEN-LAST:event_btnComentariosActionPerformed
 
     private void btnFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotosActionPerformed
@@ -416,8 +435,26 @@ public class VerLugar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFotosActionPerformed
 
     private void btnNextImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextImgActionPerformed
-        
+        File carpeta = new File("IMG\\"+nombreLugar);
+        File[] lista = carpeta.listFiles();
+        contadorImg++;
+        if(contadorImg>(lista.length-1)){
+            contadorImg=1;
+        }
+        String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
+        this.mostrarImagen(lblImagen, ruta);
     }//GEN-LAST:event_btnNextImgActionPerformed
+
+    private void btnPrevImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevImgActionPerformed
+        File carpeta = new File("IMG\\"+nombreLugar);
+        File[] lista = carpeta.listFiles();
+        contadorImg--;
+        if(contadorImg==0){
+            contadorImg=lista.length-1;
+        }
+        String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
+        this.mostrarImagen(lblImagen, ruta);
+    }//GEN-LAST:event_btnPrevImgActionPerformed
 
     /**
      * @param args the command line arguments
