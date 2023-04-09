@@ -506,7 +506,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         String contra= txtPassword.getText();
         
         try {
-            myUsuario.EditUser(nombre, email, contra, usuario, myLogin.ID, 1);
+            myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 1);
         } catch (IOException ex) {
             Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }

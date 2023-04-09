@@ -715,7 +715,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         String contra= txtPasswordAdmin.getText();
         
         try {
-            myUsuario.EditUser(nombre, email, contra, usuario, myLogin.ID, 3);
+            myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
         } catch (IOException ex) {
             Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
