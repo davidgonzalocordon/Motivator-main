@@ -68,17 +68,14 @@ public class NewLogin extends javax.swing.JFrame {
 
         TextoLogin.setBackground(new java.awt.Color(0, 0, 0));
         TextoLogin.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
-        TextoLogin.setForeground(new java.awt.Color(0, 0, 0));
         TextoLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TextoLogin.setText("Iniciar Sesión");
         Fondo.add(TextoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 160, 40));
 
         User.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        User.setForeground(new java.awt.Color(0, 0, 0));
         User.setText("Usuario");
         Fondo.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setForeground(new java.awt.Color(102, 102, 102));
         txtUser.setText("Ingresar usuario");
         txtUser.setToolTipText("");
@@ -88,6 +85,11 @@ public class NewLogin extends javax.swing.JFrame {
                 txtUserMousePressed(evt);
             }
         });
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
         Fondo.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 330, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
@@ -95,11 +97,9 @@ public class NewLogin extends javax.swing.JFrame {
         Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 310, 30));
 
         Pass.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        Pass.setForeground(new java.awt.Color(0, 0, 0));
         Pass.setText("Contraseña");
         Fondo.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 120, -1));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setForeground(new java.awt.Color(102, 102, 102));
         txtPass.setText("Contraseña");
         txtPass.setBorder(null);
@@ -305,6 +305,10 @@ public class NewLogin extends javax.swing.JFrame {
     private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
         System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN REGISTRARSE");
     }//GEN-LAST:event_RegistrarseMouseClicked
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments
