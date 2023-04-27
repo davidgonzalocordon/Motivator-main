@@ -12,16 +12,16 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author ASUS
  */
 public class InicioUsuario extends javax.swing.JFrame {
+
     private RegistrarLugar registrarLugar;
-    private DefaultTableModel tabla = new DefaultTableModel(){ 
-        @Override 
-        public boolean isCellEditable(int row, int column){
+    private DefaultTableModel tabla = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
             return false;
         }
     };
@@ -30,26 +30,26 @@ public class InicioUsuario extends javax.swing.JFrame {
     private Login myLogin = new Login();
     private VerLugar verLugar;
     public static int filaExcel;
-    
+
     public InicioUsuario() throws IOException {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         Leer();
-        String datos[]= new String[4];
-        datos=myUsuario.ObtenerDato(myLogin.ID);
+        String datos[] = new String[4];
+        datos = myUsuario.ObtenerDato(myLogin.ID);
         txtNombre.setText(datos[0]);
         txtUsuario.setText(datos[1]);
         txtPassword.setText(datos[2]);
         txtEmail.setText(datos[3]);
-        
-        PanelUsuario.setEnabledAt(0,true);
-        PanelUsuario.setEnabledAt(1,false);
-        
+
+        PanelUsuario.setEnabledAt(0, true);
+        PanelUsuario.setEnabledAt(1, false);
+
     }
-    
-    public void Leer() throws IOException{
-        
+
+    public void Leer() throws IOException {
+
         int filas = myLugares.nfilas();
         tableLugares.setModel(tabla);
         tabla.addColumn("NOMBRE");
@@ -57,15 +57,17 @@ public class InicioUsuario extends javax.swing.JFrame {
         tabla.addColumn("TIPO");
         tabla.addColumn("HORARIO");
         tabla.addColumn("CALIFICACION");
-        String [] confirm = new String[5];
-        
-        for(int i=1; i<=filas; i++){            
+        String[] confirm = new String[5];
+
+        for (int i = 1; i <= filas; i++)
+        {
             confirm = myLugares.ReadSite(i);
-            if (confirm[0] != null) {
+            if (confirm[0] != null)
+            {
                 tabla.addRow(confirm);
             }
-        }        
-        
+        }
+
     }
 
     /**
@@ -484,12 +486,14 @@ public class InicioUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLugarActionPerformed
-        
-        if(myLogin.level!=1){
+
+        if (myLogin.level != 1)
+        {
             registrarLugar = new RegistrarLugar();
             registrarLugar.setVisible(true);
             this.dispose();
-        }else{
+        } else
+        {
             JOptionPane.showMessageDialog(null, "NO TIENE PERMISOS SUFICIENTES");
         }
     }//GEN-LAST:event_btnAgregarLugarActionPerformed
@@ -500,119 +504,132 @@ public class InicioUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
-        String nombre = txtNombre.getText(); 
+        String nombre = txtNombre.getText();
         String usuario = txtUsuario.getText();
         String email = txtEmail.getText();
-        String contra= txtPassword.getText();
-        
-        try {
+        String contra = txtPassword.getText();
+
+        try
+        {
             myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 1);
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btBuscadorLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscadorLugaresActionPerformed
         PanelUsuario.setSelectedIndex(0);
-        PanelUsuario.setEnabledAt(0,true);
-        PanelUsuario.setEnabledAt(1,false);
+        PanelUsuario.setEnabledAt(0, true);
+        PanelUsuario.setEnabledAt(1, false);
     }//GEN-LAST:event_btBuscadorLugaresActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
-       PanelUsuario.setSelectedIndex(1);
-        PanelUsuario.setEnabledAt(0,false);
-        PanelUsuario.setEnabledAt(1,true);
+        PanelUsuario.setSelectedIndex(1);
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(1, true);
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugaresActionPerformed
-  
+
         int lugarSeleccionado = tableLugares.getSelectedRow();
-        
-        if(lugarSeleccionado != -1){
+
+        if (lugarSeleccionado != -1)
+        {
             String nombreSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 0));
             String direccionSeleccionada = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 1));
             String tipoSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 2));
 
-            try {
+            try
+            {
                 filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
                 verLugar.setVisible(true);
                 this.setVisible(false);
-                
-            } catch (IOException ex) {
+
+            } catch (IOException ex)
+            {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else{
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
         }
     }//GEN-LAST:event_btVerLugaresActionPerformed
 
     private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
-        String buscar="";
-        int j=0;
-        String hora=" ";
-        String []aux = new String[5];
-        
+        String buscar = "";
+        int j = 0;
+        String hora = " ";
+        String[] aux = new String[5];
+
         DefaultTableModel tablaaux = new DefaultTableModel();
         tablaaux.addColumn("NOMBRE");
         tablaaux.addColumn("DIRECCION");
-        tablaaux.addColumn("TIPO"); 
+        tablaaux.addColumn("TIPO");
         tablaaux.addColumn("HORARIO");
         tablaaux.addColumn("CALIFICACION");
-        
-        
-        
-        String calificacion = (String)cmbCalificacionLugar.getSelectedItem();
-        String tipo = (String)cmdTipoLugar.getSelectedItem();
-        
-        if(btnDia.isSelected()){
-            hora="Diurno";
-        }else if(btnNoche.isSelected()){
-            hora="Nocturno";
-        }else if(btn24h.isSelected()){
-            hora="24 horas";
+
+        String calificacion = (String) cmbCalificacionLugar.getSelectedItem();
+        String tipo = (String) cmdTipoLugar.getSelectedItem();
+
+        if (btnDia.isSelected())
+        {
+            hora = "Diurno";
+        } else if (btnNoche.isSelected())
+        {
+            hora = "Nocturno";
+        } else if (btn24h.isSelected())
+        {
+            hora = "24 horas";
         }
-        
-        if(txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" ")){
+
+        if (txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" "))
+        {
             buscar = txtDireccionLugar.getText();
-            j=1;
-            
-        }else if(txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ")&& hora.equals(" ")){
+            j = 1;
+
+        } else if (txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" "))
+        {
             buscar = txtNombreLugar.getText();
-            j=0;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ")&& hora.equals(" ")){
-            buscar=calificacion;
-            j=4;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& hora.equals(" ")){
-            buscar=tipo;
-            j=2;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& tipo.equals(" ")){
-            buscar=hora;
-            
-            j=3;
+            j = 0;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ") && hora.equals(" "))
+        {
+            buscar = calificacion;
+            j = 4;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && hora.equals(" "))
+        {
+            buscar = tipo;
+            j = 2;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" "))
+        {
+            buscar = hora;
+
+            j = 3;
         }
-        
-        
-        for (int i=0; i<tabla.getRowCount(); i++){
-              
-                if(tabla.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
-                    for(int h=0; h<=4 ;h++){
-                        aux[h]=(String)tabla.getValueAt(i, h);
-                    }
-                        tablaaux.addRow(aux);
-                        tableLugares.changeSelection(i, j, false, false);
+
+        for (int i = 0; i < tabla.getRowCount(); i++)
+        {
+
+            if (tabla.getValueAt(i, j).toString().toLowerCase().matches(".*" + buscar.toLowerCase() + ".*"))
+            {
+                for (int h = 0; h <= 4; h++)
+                {
+                    aux[h] = (String) tabla.getValueAt(i, h);
                 }
-          
+                tablaaux.addRow(aux);
+                tableLugares.changeSelection(i, j, false, false);
+            }
+
         }
         tableLugares.setModel(tablaaux);
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarLugarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -661,9 +678,11 @@ public class InicioUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                try
+                {
                     new InicioUsuario().setVisible(true);
-                } catch (IOException ex) {
+                } catch (IOException ex)
+                {
                     Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

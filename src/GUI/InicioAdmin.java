@@ -873,9 +873,12 @@ public class InicioAdmin extends javax.swing.JFrame {
             j = 2;
         }
 
+        buscar = buscar.toLowerCase(); // Convertir cadena de búsqueda a minúsculas
+
         for (int i = 0; i < tablaUser.getRowCount(); i++)
         {
-            if (tablaUser.getValueAt(i, j).toString().matches(".*" + buscar + ".*"))
+            String valorTabla = tablaUser.getValueAt(i, j).toString().toLowerCase(); // Convertir valor de la tabla a minúsculas
+            if (valorTabla.matches(".*" + buscar + ".*"))
             {
                 tableUsuarios.changeSelection(i, j, false, false);
             }
@@ -946,22 +949,18 @@ public class InicioAdmin extends javax.swing.JFrame {
         {
             buscar = txtDireccionLugar.getText();
             j = 1;
-
         } else if (txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" "))
         {
             buscar = txtNombreLugar.getText();
             j = 0;
-
         } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ") && hora.equals(" "))
         {
             buscar = calificacion;
             j = 4;
-
         } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && hora.equals(" "))
         {
             buscar = tipo;
             j = 2;
-
         } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" "))
         {
             buscar = hora;
@@ -970,21 +969,19 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         for (int i = 0; i < tabla.getRowCount(); i++)
         {
-
-            if (tabla.getValueAt(i, j).toString().matches(".*" + buscar + ".*"))
+            String valor = tabla.getValueAt(i, j).toString().toLowerCase();
+            if (valor.contains(buscar.toLowerCase()))
             {
                 for (int h = 0; h <= 4; h++)
                 {
-                    aux[h] = (String) tabla.getValueAt(i, h);
+                    aux[h] = tabla.getValueAt(i, h).toString();
                 }
                 tablaaux.addRow(aux);
                 tableLugares.changeSelection(i, j, false, false);
             }
-
         }
+
         tableLugares.setModel(tablaaux);
-
-
     }//GEN-LAST:event_btnBuscarLugarActionPerformed
 
     private void btnLimpliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliarActionPerformed
