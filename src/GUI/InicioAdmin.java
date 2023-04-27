@@ -21,16 +21,17 @@ import javax.swing.table.DefaultTableModel;
  * @author ASUS
  */
 public class InicioAdmin extends javax.swing.JFrame {
+
     private RegistrarLugar registrarLugar;
-    private DefaultTableModel tabla = new DefaultTableModel(){ 
-        @Override 
-        public boolean isCellEditable(int row, int column){
+    private DefaultTableModel tabla = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
             return false;
         }
-    };         
-    private DefaultTableModel tablaUser = new DefaultTableModel(){ 
-        @Override 
-        public boolean isCellEditable(int row, int column){
+    };
+    private DefaultTableModel tablaUser = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
             return false;
         }
     };
@@ -39,8 +40,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Login myLogin = new Login();
     private VerLugar verLugar;
     public static int filaExcel;
-    
-    
+
     /**
      * Creates new form InicioAdmin
      */
@@ -52,20 +52,20 @@ public class InicioAdmin extends javax.swing.JFrame {
         LeerUser();
         this.tableUsuarios.setModel(tablaUser);
         SetImg(Construccion, "src\\IMG\\Proyecto_en_constuccion.jpeg");
-        String datos[]= new String[4];
-        datos=myUsuario.ObtenerDato(myLogin.ID);
+        String datos[] = new String[4];
+        datos = myUsuario.ObtenerDato(myLogin.ID);
         txtNombreAdmin.setText(datos[0]);
         txtUsuarioAdmin.setText(datos[1]);
         txtPasswordAdmin.setText(datos[2]);
         txtEmailAdmin.setText(datos[3]);
-        PanelUsuario.setEnabledAt(0,true);
-        PanelUsuario.setEnabledAt(1,false);
-        PanelUsuario.setEnabledAt(2,false);
-        PanelUsuario.setEnabledAt(3,false);
+        PanelUsuario.setEnabledAt(0, true);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
+        PanelUsuario.setEnabledAt(3, false);
     }
-    
-    public void Leer() throws IOException{
-        
+
+    public void Leer() throws IOException {
+
         int filas = myLugares.nfilas();
         tableLugares.setModel(tabla);
         tabla.addColumn("NOMBRE");
@@ -73,36 +73,40 @@ public class InicioAdmin extends javax.swing.JFrame {
         tabla.addColumn("TIPO");
         tabla.addColumn("HORARIO");
         tabla.addColumn("CALIFICACION");
-        String [] confirm = new String[5];
-        
-        for(int i=1; i<=filas; i++){
+        String[] confirm = new String[5];
+
+        for (int i = 1; i <= filas; i++)
+        {
             confirm = myLugares.ReadSite(i);
-            if (confirm[0] != null) {
+            if (confirm[0] != null)
+            {
                 tabla.addRow(confirm);
-                
+
             }
-        } 
-        
+        }
+
         tableLugares.setModel(tabla);
     }
-    
-    public void LeerUser() throws IOException{
+
+    public void LeerUser() throws IOException {
         int filas = myUsuario.nfilasUser();
         tableUsuarios.setModel(tablaUser);
         tablaUser.addColumn("NOMBRE");
         tablaUser.addColumn("USUARIO");
         tablaUser.addColumn("EMAIL");
         tablaUser.addColumn("NIVEL");
-        String [] confirm = new String[4];
-        
-        for(int i=1; i<=filas; i++){
+        String[] confirm = new String[4];
+
+        for (int i = 1; i <= filas; i++)
+        {
             confirm = myUsuario.ReadUser(i);
-            if (confirm[0] != null) {
+            if (confirm[0] != null)
+            {
                 tablaUser.addRow(confirm);
             }
         }
         tableUsuarios.setModel(tablaUser);
-    
+
     }
 
     /**
@@ -134,6 +138,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         btEliminarUsuario = new javax.swing.JButton();
         btnAscenderUsuario = new javax.swing.JButton();
+        btnDesenderUsuario = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btVerLugar = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
@@ -287,6 +292,13 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnDesenderUsuario.setText("DESENDER");
+        btnDesenderUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesenderUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -304,17 +316,19 @@ public class InicioAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addGap(13, 13, 13)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addComponent(txtUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
+                        .addGap(205, 205, 205)
                         .addComponent(btnBuscarUsuario)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAscenderUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDesenderUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btEliminarUsuario)
                         .addGap(272, 272, 272))))
@@ -334,9 +348,10 @@ public class InicioAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarUsuario)
                     .addComponent(btEliminarUsuario)
-                    .addComponent(btnAscenderUsuario))
+                    .addComponent(btnAscenderUsuario)
+                    .addComponent(btnDesenderUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -709,79 +724,84 @@ public class InicioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
-        String nombre = txtNombreAdmin.getText(); 
+        String nombre = txtNombreAdmin.getText();
         String usuario = txtUsuarioAdmin.getText();
         String email = txtEmailAdmin.getText();
-        String contra= txtPasswordAdmin.getText();
-        
-        try {
+        String contra = txtPasswordAdmin.getText();
+
+        try
+        {
             myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-                // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsuarioActionPerformed
-       PanelUsuario.setSelectedIndex(0);
-        PanelUsuario.setEnabledAt(0,true);
-        PanelUsuario.setEnabledAt(1,false);
-        PanelUsuario.setEnabledAt(2,false);
-        PanelUsuario.setEnabledAt(3,false);
-       
+        PanelUsuario.setSelectedIndex(0);
+        PanelUsuario.setEnabledAt(0, true);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
+        PanelUsuario.setEnabledAt(3, false);
+
     }//GEN-LAST:event_btUsuarioActionPerformed
 
     private void btLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLugaresActionPerformed
         PanelUsuario.setSelectedIndex(1);
         PanelUsuario.setEnabledAt(1, true);
-        PanelUsuario.setEnabledAt(0,false);
-        PanelUsuario.setEnabledAt(2,false);
-        PanelUsuario.setEnabledAt(3,false);
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(2, false);
+        PanelUsuario.setEnabledAt(3, false);
     }//GEN-LAST:event_btLugaresActionPerformed
 
     private void btEmprezasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmprezasActionPerformed
         PanelUsuario.setSelectedIndex(2);
-        PanelUsuario.setEnabledAt(0,false);
-        PanelUsuario.setEnabledAt(1,false);
-        PanelUsuario.setEnabledAt(2,true);
-        PanelUsuario.setEnabledAt(3,false);
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, true);
+        PanelUsuario.setEnabledAt(3, false);
     }//GEN-LAST:event_btEmprezasActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
         PanelUsuario.setSelectedIndex(3);
-        PanelUsuario.setEnabledAt(0,false);
-        PanelUsuario.setEnabledAt(1,false);
-        PanelUsuario.setEnabledAt(2,false);
-        PanelUsuario.setEnabledAt(3,true);
-        
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
+        PanelUsuario.setEnabledAt(3, true);
+
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugarActionPerformed
 
         int lugarSeleccionado = tableLugares.getSelectedRow();
-        
-        if(lugarSeleccionado != -1){
+
+        if (lugarSeleccionado != -1)
+        {
             String nombreSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 0));
             String direccionSeleccionada = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 1));
             String tipoSeleccionado = String.valueOf(tableLugares.getModel().getValueAt(lugarSeleccionado, 2));
-            
-            try {
+
+            try
+            {
                 filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
                 verLugar.setVisible(true);
                 this.setVisible(false);
-                
-            } catch (IOException ex) {
+
+            } catch (IOException ex)
+            {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else{
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
         }
     }//GEN-LAST:event_btVerLugarActionPerformed
 
     private void btnAscenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscenderUsuarioActionPerformed
-        
+
         String[] confirm = new String[4];
         DefaultTableModel selecUser = tablaUser;
         DefaultTableModel finalUserTable = new DefaultTableModel();
@@ -789,155 +809,182 @@ public class InicioAdmin extends javax.swing.JFrame {
         finalUserTable.addColumn("USUARIO");
         finalUserTable.addColumn("EMAIL");
         finalUserTable.addColumn("NIVEL");
-        
+
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
 
-        if(usuarioSeleccionado != -1){
+        if (usuarioSeleccionado != -1)
+        {
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
-            try {
+            try
+            {
                 filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String [] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
-                int lvl = Integer.parseInt(datosUsu[4])+1;
-                int id = Integer.parseInt(datosUsu[5]);
-                int filas = myUsuario.nfilasUser();
-                
-                myUsuario.EditUser( datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
-                
-                for(int i=1; i<=filas; i++){
-                    confirm = myUsuario.ReadUser(i);
-                    if (confirm[0] != null) {
-                        finalUserTable.addRow(confirm);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                if (Integer.parseInt(datosUsu[4]) == 3)
+                {
+                    JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
+                } else
+                {
+                    int lvl = Integer.parseInt(datosUsu[4]) + 1;
+                    int id = Integer.parseInt(datosUsu[5]);
+                    int filas = myUsuario.nfilasUser();
+
+                    myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
+
+                    for (int i = 1; i <= filas; i++)
+                    {
+                        confirm = myUsuario.ReadUser(i);
+                        if (confirm[0] != null)
+                        {
+                            finalUserTable.addRow(confirm);
+                        }
                     }
+                    tableUsuarios.setModel(finalUserTable);
+                    JOptionPane.showMessageDialog(null, "Usuario ascendido de manera satisfactoria.");
                 }
-                tableUsuarios.setModel(finalUserTable);
-                JOptionPane.showMessageDialog(null, "Usuario ascendido de maneta satisfactoria.");
-                
-            } catch (IOException ex) {
+
+            } catch (IOException ex)
+            {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else{
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
         }
     }//GEN-LAST:event_btnAscenderUsuarioActionPerformed
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
-        
-        int j=0;
-        String buscar="";
-        
-        if(txtNombre.getText().isEmpty() && txtEmail.getText().isEmpty()){
+
+        int j = 0;
+        String buscar = "";
+
+        if (txtNombre.getText().isEmpty() && txtEmail.getText().isEmpty())
+        {
             buscar = txtUsuario.getText();
-            j=1;
-        }else if(txtUsuario.getText().isEmpty() && txtEmail.getText().isEmpty()){
+            j = 1;
+        } else if (txtUsuario.getText().isEmpty() && txtEmail.getText().isEmpty())
+        {
             buscar = txtNombre.getText();
-            j=0;
-        }else if(txtNombre.getText().isEmpty() && txtUsuario.getText().isEmpty()){
+            j = 0;
+        } else if (txtNombre.getText().isEmpty() && txtUsuario.getText().isEmpty())
+        {
             buscar = txtEmail.getText();
-            j=2;
+            j = 2;
         }
-        
-        
-        for (int i=0; i<tablaUser.getRowCount(); i++){
-            if(tablaUser.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
+
+        for (int i = 0; i < tablaUser.getRowCount(); i++)
+        {
+            if (tablaUser.getValueAt(i, j).toString().matches(".*" + buscar + ".*"))
+            {
                 tableUsuarios.changeSelection(i, j, false, false);
             }
-        }   
+        }
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
 
         DefaultTableModel selecUser = tablaUser;
-        
+
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
-        if(usuarioSeleccionado != -1){
+        if (usuarioSeleccionado != -1)
+        {
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
 
-            try {
+            try
+            {
                 int excelFill = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                myUsuario.DeleteUser(excelFill);    
+                myUsuario.DeleteUser(excelFill);
 
-             } catch (IOException ex) {
+            } catch (IOException ex)
+            {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            
-            if(usuarioSeleccionado>=0){
-            tablaUser.removeRow(usuarioSeleccionado);
-            tableUsuarios.setModel(tablaUser);
             }
-            else{
+
+            if (usuarioSeleccionado >= 0)
+            {
+                tablaUser.removeRow(usuarioSeleccionado);
+                tableUsuarios.setModel(tablaUser);
+            } else
+            {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
             }
         }
     }//GEN-LAST:event_btEliminarUsuarioActionPerformed
-   
-    
+
+
     private void btnBuscarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugarActionPerformed
-        String buscar="";
-        int j=0;
-        String hora=" ";
-        String []aux = new String[5];
-        
+        String buscar = "";
+        int j = 0;
+        String hora = " ";
+        String[] aux = new String[5];
+
         DefaultTableModel tablaaux = new DefaultTableModel();
         tablaaux.addColumn("NOMBRE");
         tablaaux.addColumn("DIRECCION");
-        tablaaux.addColumn("TIPO"); 
+        tablaaux.addColumn("TIPO");
         tablaaux.addColumn("HORARIO");
         tablaaux.addColumn("CALIFICACION");
-        
-        
-        
-        String calificacion = (String)cmbCalificacionLugar.getSelectedItem();
-        String tipo = (String)cmbTipo.getSelectedItem();
-        
-        if(btnDia.isSelected()){
-            hora="Diurno";
-        }else if(btnNoche.isSelected()){
-            hora="Nocturno";
-        }else if(btn24h.isSelected()){
-            hora="24 horas";
+
+        String calificacion = (String) cmbCalificacionLugar.getSelectedItem();
+        String tipo = (String) cmbTipo.getSelectedItem();
+
+        if (btnDia.isSelected())
+        {
+            hora = "Diurno";
+        } else if (btnNoche.isSelected())
+        {
+            hora = "Nocturno";
+        } else if (btn24h.isSelected())
+        {
+            hora = "24 horas";
         }
-        
-        if(txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" ")){
+
+        if (txtNombreLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" "))
+        {
             buscar = txtDireccionLugar.getText();
-            j=1;
-            
-        }else if(txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ")&& hora.equals(" ")){
+            j = 1;
+
+        } else if (txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" ") && hora.equals(" "))
+        {
             buscar = txtNombreLugar.getText();
-            j=0;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ")&& hora.equals(" ")){
-            buscar=calificacion;
-            j=4;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& hora.equals(" ")){
-            buscar=tipo;
-            j=2;
-            
-        }else if(txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ")&& tipo.equals(" ")){
-            buscar=hora;    
-            j=3;
+            j = 0;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && tipo.equals(" ") && hora.equals(" "))
+        {
+            buscar = calificacion;
+            j = 4;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && hora.equals(" "))
+        {
+            buscar = tipo;
+            j = 2;
+
+        } else if (txtNombreLugar.getText().isEmpty() && txtDireccionLugar.getText().isEmpty() && calificacion.equals(" ") && tipo.equals(" "))
+        {
+            buscar = hora;
+            j = 3;
         }
-        
-        
-        for (int i=0; i<tabla.getRowCount(); i++){
-              
-                if(tabla.getValueAt(i, j).toString().matches(".*"+buscar+".*")){
-                    for(int h=0; h<=4 ;h++){
-                        aux[h]=(String)tabla.getValueAt(i, h);
-                    }
-                        tablaaux.addRow(aux);
-                        tableLugares.changeSelection(i, j, false, false);
+
+        for (int i = 0; i < tabla.getRowCount(); i++)
+        {
+
+            if (tabla.getValueAt(i, j).toString().matches(".*" + buscar + ".*"))
+            {
+                for (int h = 0; h <= 4; h++)
+                {
+                    aux[h] = (String) tabla.getValueAt(i, h);
                 }
-          
+                tablaaux.addRow(aux);
+                tableLugares.changeSelection(i, j, false, false);
+            }
+
         }
         tableLugares.setModel(tablaaux);
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarLugarActionPerformed
 
     private void btnLimpliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliarActionPerformed
@@ -947,47 +994,101 @@ public class InicioAdmin extends javax.swing.JFrame {
         cmbTipo.setSelectedIndex(0);
         horarioLugar.clearSelection();
         tableLugares.setModel(tabla);
-        
+
     }//GEN-LAST:event_btnLimpliarActionPerformed
 
     private void btEliminarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarLugarActionPerformed
         DefaultTableModel selecUser = tabla;
-        
+
         int usuarioSeleccionado = tableLugares.getSelectedRow();
-        
-        if(usuarioSeleccionado != -1){
+
+        if (usuarioSeleccionado != -1)
+        {
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
 
-            try {
+            try
+            {
                 int excelFill = myLugares.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                myLugares.deleteSite(excelFill);    
+                myLugares.deleteSite(excelFill);
 
-             } catch (IOException ex) {
+            } catch (IOException ex)
+            {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            
-            if(usuarioSeleccionado>=0){
-            tabla.removeRow(usuarioSeleccionado);
             }
-            else{
+
+            if (usuarioSeleccionado >= 0)
+            {
+                tabla.removeRow(usuarioSeleccionado);
+            } else
+            {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
             }
         }
     }//GEN-LAST:event_btEliminarLugarActionPerformed
-    
-    
-        
-    
-    
-    private void SetImg(JLabel labelName, String ruta){
+
+    private void btnDesenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesenderUsuarioActionPerformed
+
+        String[] confirm = new String[4];
+        DefaultTableModel selecUser = tablaUser;
+        DefaultTableModel finalUserTable = new DefaultTableModel();
+        finalUserTable.addColumn("NOMBRE");
+        finalUserTable.addColumn("USUARIO");
+        finalUserTable.addColumn("EMAIL");
+        finalUserTable.addColumn("NIVEL");
+
+        int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+
+        if (usuarioSeleccionado != -1)
+        {
+            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+            try
+            {
+                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                if (Integer.parseInt(datosUsu[4]) == 1)
+                {
+                    JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
+                } else
+                {
+                    int lvl = Integer.parseInt(datosUsu[4]) - 1;
+                    int id = Integer.parseInt(datosUsu[5]);
+                    int filas = myUsuario.nfilasUser();
+
+                    myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
+
+                    for (int i = 1; i <= filas; i++)
+                    {
+                        confirm = myUsuario.ReadUser(i);
+                        if (confirm[0] != null)
+                        {
+                            finalUserTable.addRow(confirm);
+                        }
+                    }
+                    tableUsuarios.setModel(finalUserTable);
+                    JOptionPane.showMessageDialog(null, "Usuario desensido de mareta satisfactoria.");
+                }
+
+            } catch (IOException ex)
+            {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
+        }
+    }//GEN-LAST:event_btnDesenderUsuarioActionPerformed
+
+    private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
         labelName.setIcon(icon);
         this.repaint();
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -1025,9 +1126,11 @@ public class InicioAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                try
+                {
                     new InicioAdmin().setVisible(true);
-                } catch (IOException ex) {
+                } catch (IOException ex)
+                {
                     Logger.getLogger(InicioAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -1051,6 +1154,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAscenderUsuario;
     private javax.swing.JButton btnBuscarLugar;
     private javax.swing.JButton btnBuscarUsuario;
+    private javax.swing.JButton btnDesenderUsuario;
     private javax.swing.JRadioButton btnDia;
     private javax.swing.JButton btnLimpliar;
     private javax.swing.JRadioButton btnNoche;
