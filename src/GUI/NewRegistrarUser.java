@@ -355,7 +355,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextoTerminos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RBsi)
                     .addComponent(RBno))
                 .addGap(18, 18, 18)
@@ -470,7 +470,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             txtconfiemail.setText("Ingrese Email");
             txtconfiemail.setForeground(Color.GRAY);
         }
-       
+        
     }//GEN-LAST:event_txtnameMousePressed
 
     private void txtuserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtuserMouseEntered

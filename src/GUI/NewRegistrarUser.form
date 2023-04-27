@@ -168,7 +168,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="TextoTerminos" min="-2" pref="27" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="RBsi" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="RBno" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
