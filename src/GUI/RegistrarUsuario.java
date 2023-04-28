@@ -6,8 +6,16 @@ package GUI;
 
 import Classes.Usuario;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,8 +23,10 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class RegistrarUsuario extends javax.swing.JFrame {
+
     private Usuario usuario;
     private Login login;
+
     /**
      * Creates new form RegistrarUsuario
      */
@@ -269,35 +279,43 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
+
         String name = txtNombre.getText();
         String user = txtUsuario.getText();
         String pass = txtPassword.getText();
         String confirmPass = txtValidacionPassword.getText();
         String mail = txtEmail.getText();
-        
-        if(pass.equals(confirmPass)){
-            if(siAcepta.isSelected()){
-                try {
-                    if(usuario.userExist(user)){
-                        try {
+
+        if (pass.equals(confirmPass))
+        {
+            if (siAcepta.isSelected())
+            {
+                try
+                {
+                    if (usuario.userExist(user))
+                    {
+                        try
+                        {
                             usuario.addUser(name, user, pass, mail);
+                            Properties propiedad = new Properties();
                             this.login = new Login();
                             login.setVisible(true);
                             this.dispose();
-                        } catch (IOException ex) {
+                        } catch (IOException ex)
+                        {
                             Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                } catch (IOException ex) {
+                } catch (IOException ex)
+                {
                     Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            else{
+            } else
+            {
                 JOptionPane.showMessageDialog(null, "Para porder registrarse acepte los terminos y condiciones.");
             }
-        }
-        else{
+        } else
+        {
             JOptionPane.showMessageDialog(null, "La contraseña a confirmar es diferente a la contraseña ingresada.");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
