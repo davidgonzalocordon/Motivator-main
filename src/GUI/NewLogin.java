@@ -84,8 +84,11 @@ public class NewLogin extends javax.swing.JFrame {
         txtUser.setToolTipText("");
         txtUser.setBorder(null);
         txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtUserMousePressed(evt);
+                txtUserMouseClicked(evt);
             }
         });
         Fondo.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 330, -1));
@@ -104,8 +107,11 @@ public class NewLogin extends javax.swing.JFrame {
         txtPass.setText("Contraseña");
         txtPass.setBorder(null);
         txtPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPassMouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtPassMousePressed(evt);
+                txtPassMouseClicked(evt);
             }
         });
         Fondo.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, -1));
@@ -272,21 +278,27 @@ public class NewLogin extends javax.swing.JFrame {
         btnClose.setBackground(Color.white);
     }//GEN-LAST:event_txtCerrarMouseExited
 
-    private void txtUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMousePressed
+    private void IniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesionMouseClicked
+        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN INICIAR SESION");
+    }//GEN-LAST:event_IniciarSesionMouseClicked
+
+    private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
+        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN REGISTRARSE");
+    }//GEN-LAST:event_RegistrarseMouseClicked
+
+    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+        if (String.valueOf(txtPass.getPassword()).isEmpty()) {
+            txtPass.setText("Contraseña");
+            txtPass.setForeground(new Color(102,102,102));
+        }
         
         if (txtUser.getText().equals("Ingresar usuario")) {
             txtUser.setText("");
             txtUser.setForeground(Color.black);
         }
-        
-        if (String.valueOf(txtPass.getPassword()).isEmpty()) {
-            txtPass.setText("Contraseña");
-            txtPass.setForeground(new Color(102,102,102));
-        }
-    }//GEN-LAST:event_txtUserMousePressed
+    }//GEN-LAST:event_txtUserMouseClicked
 
-    private void txtPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMousePressed
-        
+    private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked
         if (txtUser.getText().isEmpty()) {
             txtUser.setText("Ingresar usuario");
             txtUser.setForeground(new Color(102,102,102));
@@ -296,15 +308,7 @@ public class NewLogin extends javax.swing.JFrame {
             txtPass.setText("");
             txtPass.setForeground(Color.black);
         }
-    }//GEN-LAST:event_txtPassMousePressed
-
-    private void IniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesionMouseClicked
-        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN INICIAR SESION");
-    }//GEN-LAST:event_IniciarSesionMouseClicked
-
-    private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
-        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN REGISTRARSE");
-    }//GEN-LAST:event_RegistrarseMouseClicked
+    }//GEN-LAST:event_txtPassMouseClicked
 
     /**
      * @param args the command line arguments
