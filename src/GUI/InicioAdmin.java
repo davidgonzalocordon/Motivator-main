@@ -117,6 +117,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         horarioLugar = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        Header = new javax.swing.JPanel();
         btnClose = new javax.swing.JPanel();
         txtCerrar = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -180,7 +181,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         txtPasswordAdmin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Header = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -188,6 +188,33 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 245, 248));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Header.setBackground(new java.awt.Color(255, 255, 255));
+        Header.setForeground(new java.awt.Color(255, 121, 121));
+        Header.setOpaque(false);
+        Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                HeaderMouseDragged(evt);
+            }
+        });
+        Header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeaderMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 990, Short.MAX_VALUE)
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 50));
 
         btnClose.setBackground(new java.awt.Color(217, 152, 141));
         btnClose.setToolTipText("");
@@ -408,6 +435,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btnBuscarUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgsearch.png"))); // NOI18N
         btnBuscarUsuario.setText("Buscar");
+        btnBuscarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarUsuarioActionPerformed(evt);
@@ -420,6 +448,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btEliminarUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgeliminar.png"))); // NOI18N
         btEliminarUsuario.setText("Eliminar");
+        btEliminarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEliminarUsuarioActionPerformed(evt);
@@ -429,6 +458,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btnAscenderUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnAscenderUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgascender.png"))); // NOI18N
         btnAscenderUsuario.setText("Ascender");
+        btnAscenderUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAscenderUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAscenderUsuarioActionPerformed(evt);
@@ -438,6 +468,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btnDesenderUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnDesenderUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgdescender.png"))); // NOI18N
         btnDesenderUsuario.setText("Descender");
+        btnDesenderUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDesenderUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesenderUsuarioActionPerformed(evt);
@@ -712,6 +743,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btActualizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgactualizar.png"))); // NOI18N
         btActualizar.setText("Actualizar");
+        btActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btActualizarActionPerformed(evt);
@@ -721,6 +753,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btCerrarSesion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgCerrar.png"))); // NOI18N
         btCerrarSesion.setText("Cerrar Sesion");
+        btCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCerrarSesionActionPerformed(evt);
@@ -815,33 +848,6 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/939716.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 900, 590));
-
-        Header.setBackground(new java.awt.Color(255, 255, 255));
-        Header.setForeground(new java.awt.Color(255, 121, 121));
-        Header.setOpaque(false);
-        Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                HeaderMouseDragged(evt);
-            }
-        });
-        Header.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                HeaderMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

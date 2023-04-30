@@ -155,6 +155,7 @@ public class VerLugar extends javax.swing.JFrame {
         PestañaAnterios.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVolver.png"))); // NOI18N
         jLabel13.setText("Volver");
@@ -250,6 +251,7 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(180, 180, 180));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
         jLabel2.setText("Ver Comentarios");
@@ -275,6 +277,7 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgLugares.png"))); // NOI18N
         jLabel11.setText("Abrir Ubicacion");
@@ -300,6 +303,7 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgFotos.png"))); // NOI18N
         jLabel12.setText("Agragar Fotos");
@@ -435,6 +439,7 @@ public class VerLugar extends javax.swing.JFrame {
         Previous.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAnterior.png"))); // NOI18N
         jLabel14.setText("Anterior Foto");
@@ -462,6 +467,7 @@ public class VerLugar extends javax.swing.JFrame {
         Next.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgSiguiente.png"))); // NOI18N
         jLabel15.setText("Siguiente Foto");

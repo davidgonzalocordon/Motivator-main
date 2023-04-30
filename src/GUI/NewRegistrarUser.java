@@ -104,15 +104,18 @@ public class NewRegistrarUser extends javax.swing.JFrame {
 
         TextoTerminos.setBackground(new java.awt.Color(0, 0, 0));
         TextoTerminos.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        TextoTerminos.setForeground(new java.awt.Color(51, 51, 51));
         TextoTerminos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TextoTerminos.setText("Acepta los terminos y condiciones de MOTIVIATOR:");
 
         labelNombre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelNombre.setForeground(new java.awt.Color(0, 0, 0));
         labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNombre.setText("Nombre");
 
+        txtname.setBackground(new java.awt.Color(255, 255, 255));
         txtname.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtname.setForeground(new java.awt.Color(204, 204, 204));
+        txtname.setForeground(new java.awt.Color(102, 102, 102));
         txtname.setText("Ingrese Nombre");
         txtname.setBorder(null);
         txtname.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,11 +130,13 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         jSeparatorName.setForeground(new java.awt.Color(0, 0, 0));
 
         labelUsuario.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(0, 0, 0));
         labelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelUsuario.setText("Usuario");
 
+        txtuser.setBackground(new java.awt.Color(255, 255, 255));
         txtuser.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtuser.setForeground(new java.awt.Color(204, 204, 204));
+        txtuser.setForeground(new java.awt.Color(102, 102, 102));
         txtuser.setText("Ingrese Usuario");
         txtuser.setBorder(null);
         txtuser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,8 +150,9 @@ public class NewRegistrarUser extends javax.swing.JFrame {
 
         jSeparatorUser.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtedad.setBackground(new java.awt.Color(255, 255, 255));
         txtedad.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtedad.setForeground(new java.awt.Color(204, 204, 204));
+        txtedad.setForeground(new java.awt.Color(102, 102, 102));
         txtedad.setText("Ingrese Edad");
         txtedad.setBorder(null);
         txtedad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,29 +165,35 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         });
 
         labelEdad.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelEdad.setForeground(new java.awt.Color(0, 0, 0));
         labelEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelEdad.setText("Edad");
 
         jSeparatorEdad.setForeground(new java.awt.Color(0, 0, 0));
 
         labelClave.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelClave.setForeground(new java.awt.Color(0, 0, 0));
         labelClave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelClave.setText("Clave");
 
         jSeparatorClave.setForeground(new java.awt.Color(0, 0, 0));
 
+        labelConfirClave.setBackground(new java.awt.Color(0, 0, 0));
         labelConfirClave.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelConfirClave.setForeground(new java.awt.Color(0, 0, 0));
         labelConfirClave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelConfirClave.setText("Confirmar Clave");
 
         jSeparatorConfiClave.setForeground(new java.awt.Color(0, 0, 0));
 
         labelEmail.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelEmail.setForeground(new java.awt.Color(0, 0, 0));
         labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelEmail.setText("Email");
 
+        txtemail.setBackground(new java.awt.Color(255, 255, 255));
         txtemail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtemail.setForeground(new java.awt.Color(204, 204, 204));
+        txtemail.setForeground(new java.awt.Color(102, 102, 102));
         txtemail.setText("Ingrese Email");
         txtemail.setBorder(null);
         txtemail.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,20 +208,26 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         jSeparatorEmail.setForeground(new java.awt.Color(0, 0, 0));
 
         TextoRegistro.setBackground(new java.awt.Color(0, 0, 0));
-        TextoRegistro.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        TextoRegistro.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
+        TextoRegistro.setForeground(new java.awt.Color(0, 0, 0));
         TextoRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TextoRegistro.setText("Registro");
 
         Condiciones.add(RBsi);
+        RBsi.setForeground(new java.awt.Color(51, 51, 51));
         RBsi.setText("SI");
 
         Condiciones.add(RBno);
+        RBno.setForeground(new java.awt.Color(51, 51, 51));
         RBno.setText("NO");
-
-        jPanelRegistrar.setBackground(new java.awt.Color(204, 204, 204));
+        RBno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBnoActionPerformed(evt);
+            }
+        });
 
         jLabelRegistrar.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelRegistrar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabelRegistrar.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
         jLabelRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelRegistrar.setText("Registrar");
         jLabelRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -231,12 +249,14 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         );
 
         labelConfiEmail.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        labelConfiEmail.setForeground(new java.awt.Color(0, 0, 0));
         labelConfiEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelConfiEmail.setText("Confirmar Email");
 
+        txtconfiemail.setBackground(new java.awt.Color(255, 255, 255));
         txtconfiemail.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtconfiemail.setForeground(new java.awt.Color(204, 204, 204));
-        txtconfiemail.setText("Ingrese Email");
+        txtconfiemail.setForeground(new java.awt.Color(102, 102, 102));
+        txtconfiemail.setText("Reingrese Email");
         txtconfiemail.setBorder(null);
         txtconfiemail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,7 +269,8 @@ public class NewRegistrarUser extends javax.swing.JFrame {
 
         jSeparatorConfiEmail.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtclave.setForeground(new java.awt.Color(204, 204, 204));
+        txtclave.setBackground(new java.awt.Color(255, 255, 255));
+        txtclave.setForeground(new java.awt.Color(102, 102, 102));
         txtclave.setText("******");
         txtclave.setBorder(null);
         txtclave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,7 +282,8 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             }
         });
 
-        txtconficlave.setForeground(new java.awt.Color(204, 204, 204));
+        txtconficlave.setBackground(new java.awt.Color(255, 255, 255));
+        txtconficlave.setForeground(new java.awt.Color(102, 102, 102));
         txtconficlave.setText("******");
         txtconficlave.setBorder(null);
         txtconficlave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -281,16 +303,6 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(PanelRegistroLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jPanelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelRegistroLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(RBsi, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(RBno, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelRegistroLayout.createSequentialGroup()
                 .addGap(0, 25, Short.MAX_VALUE)
                 .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelEmail)
@@ -309,13 +321,22 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                     .addComponent(TextoTerminos, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                     .addComponent(labelConfiEmail)
                     .addComponent(jSeparatorEmail)
-                    .addComponent(jSeparatorName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNombre)
                     .addComponent(txtname)
                     .addComponent(jSeparatorClave)
                     .addComponent(txtclave)
-                    .addComponent(txtconficlave))
+                    .addComponent(txtconficlave)
+                    .addComponent(jSeparatorName, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(PanelRegistroLayout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(PanelRegistroLayout.createSequentialGroup()
+                        .addComponent(RBsi, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RBno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelRegistroLayout.createSequentialGroup()
                     .addGap(136, 136, 136)
@@ -371,7 +392,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextoTerminos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RBsi)
                     .addComponent(RBno))
                 .addGap(18, 18, 18)
@@ -387,7 +408,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         BackGround.add(PanelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 440, 660));
 
         img1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/100%cucutaF.jpg"))); // NOI18N
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FondoNewRegistrar.jpg"))); // NOI18N
         BackGround.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 660));
 
         Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -522,71 +543,71 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             txtname.setText("");
             txtname.setForeground(Color.BLACK);
         }
-        if(String.valueOf(txtuser.getText()).isEmpty()){
+        if(txtuser.getText().isEmpty()){
             txtuser.setText("Ingrese Usuario");
-            txtuser.setForeground(Color.GRAY);
+            txtuser.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtedad.getText()).isEmpty()){
+        if(txtedad.getText().isEmpty()){
             txtedad.setText("Ingrese Edad");
-            txtedad.setForeground(Color.GRAY);
+            txtedad.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtclave.getPassword()).isEmpty()){
             txtclave.setText("******");
-            txtclave.setForeground(Color.GRAY);
+            txtclave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtconficlave.getPassword()).isEmpty()){
             txtconficlave.setText("******");
-            txtconficlave.setForeground(Color.GRAY);
+            txtconficlave.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtemail.getText()).isEmpty()){
+        if(txtemail.getText().isEmpty()){
             txtemail.setText("Ingrese Email");
-            txtemail.setForeground(Color.GRAY);
+            txtemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtconfiemail.getText()).isEmpty()){
+        if(txtconfiemail.getText().isEmpty()){
             txtconfiemail.setText("Ingrese Email");
-            txtconfiemail.setForeground(Color.GRAY);
+            txtconfiemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
     }//GEN-LAST:event_txtnameMouseClicked
 
     private void txtuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtuserMouseClicked
-        if(String.valueOf(txtname.getText()).isEmpty()){
+        if(txtname.getText().isEmpty()){
             txtname.setText("Ingrese Nombre");
-            txtname.setForeground(Color.GRAY);
+            txtname.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(txtuser.getText().equals("Ingrese Usuario")){
             txtuser.setText("");
             txtuser.setForeground(Color.BLACK);
         }
-        if(String.valueOf(txtedad.getText()).isEmpty()){
+        if(txtedad.getText().isEmpty()){
             txtedad.setText("Ingrese Edad");
-            txtedad.setForeground(Color.GRAY);
+            txtedad.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtclave.getPassword()).isEmpty()){
             txtclave.setText("******");
-            txtclave.setForeground(Color.GRAY);
+            txtclave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtconficlave.getPassword()).isEmpty()){
             txtconficlave.setText("******");
-            txtconficlave.setForeground(Color.GRAY);
+            txtconficlave.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtemail.getText()).isEmpty()){
+        if(txtemail.getText().isEmpty()){
             txtemail.setText("Ingrese Email");
-            txtemail.setForeground(Color.GRAY);
+            txtemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtconfiemail.getText()).isEmpty()){
+        if(txtconfiemail.getText().isEmpty()){
             txtconfiemail.setText("Ingrese Email");
-            txtconfiemail.setForeground(Color.GRAY);
+            txtconfiemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
     }//GEN-LAST:event_txtuserMouseClicked
 
     private void txtedadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtedadMouseClicked
-        if(String.valueOf(txtname.getText()).isEmpty()){    
+        if(txtname.getText().isEmpty()){    
             txtname.setText("Ingrese Nombre");
-            txtname.setForeground(Color.GRAY);
+            txtname.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtuser.getText()).isEmpty()){
+        if(txtuser.getText().isEmpty()){
             txtuser.setText("Ingrese Usuario");
-            txtuser.setForeground(Color.GRAY);
+            txtuser.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(txtedad.getText().equals("Ingrese Edad")){
             txtedad.setText("");
@@ -594,83 +615,87 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         }
         if(String.valueOf(txtclave.getPassword()).isEmpty()){
             txtclave.setText("******");
-            txtclave.setForeground(Color.GRAY);
+            txtclave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtconficlave.getPassword()).isEmpty()){
             txtconficlave.setText("******");
-            txtconficlave.setForeground(Color.GRAY);
+            txtconficlave.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtemail.getText()).isEmpty()){
+        if(txtemail.getText().isEmpty()){
             txtemail.setText("Ingrese Email");
-            txtemail.setForeground(Color.GRAY);
+            txtemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtconfiemail.getText()).isEmpty()){
+        if(txtconfiemail.getText().isEmpty()){
             txtconfiemail.setText("Ingrese Email");
-            txtconfiemail.setForeground(Color.GRAY);
+            txtconfiemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
     }//GEN-LAST:event_txtedadMouseClicked
 
     private void txtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtemailMouseClicked
-        if(String.valueOf(txtname.getText()).isEmpty()){
+        if(txtname.getText().isEmpty()){
             txtname.setText("Ingrese Nombre");
-            txtname.setForeground(Color.GRAY);
+            txtname.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtuser.getText()).isEmpty()){
+        if(txtuser.getText().isEmpty()){
             txtuser.setText("Ingrese Usuario");
-            txtuser.setForeground(Color.GRAY);
+            txtuser.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtedad.getText()).isEmpty()){
+        if(txtedad.getText().isEmpty()){
             txtedad.setText("Ingrese Edad");
-            txtedad.setForeground(Color.GRAY);
+            txtedad.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtclave.getPassword()).isEmpty()){
             txtclave.setText("******");
-            txtclave.setForeground(Color.GRAY);
+            txtclave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtconficlave.getPassword()).isEmpty()){
             txtconficlave.setText("******");
-            txtconficlave.setForeground(Color.GRAY);
+            txtconficlave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(txtemail.getText().equals("Ingrese Email")){
             txtemail.setText("");
             txtemail.setForeground(Color.BLACK);
         }
-        if(String.valueOf(txtconfiemail.getText()).isEmpty()){
+        if(txtconfiemail.getText().isEmpty()){
             txtconfiemail.setText("Ingrese Email");
-            txtconfiemail.setForeground(Color.GRAY);
+            txtconfiemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
     }//GEN-LAST:event_txtemailMouseClicked
 
     private void txtconfiemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtconfiemailMouseClicked
-        if(String.valueOf(txtname.getText()).isEmpty()){    
+        if(txtname.getText().isEmpty()){    
             txtname.setText("Ingrese Nombre");
-            txtname.setForeground(Color.GRAY);
+            txtname.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtuser.getText()).isEmpty()){
+        if(txtuser.getText().isEmpty()){
             txtuser.setText("Ingrese Usuario");
-            txtuser.setForeground(Color.GRAY);
+            txtuser.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtedad.getText()).isEmpty()){
+        if(txtedad.getText().isEmpty()){
             txtedad.setText("Ingrese Edad");
-            txtedad.setForeground(Color.GRAY);
+            txtedad.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtclave.getPassword()).isEmpty()){
             txtclave.setText("******");
-            txtclave.setForeground(Color.GRAY);
+            txtclave.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(String.valueOf(txtconficlave.getPassword()).isEmpty()){
             txtconficlave.setText("******");
-            txtconficlave.setForeground(Color.GRAY);
+            txtconficlave.setForeground(Color.getHSBColor(102, 102, 102));
         }
-        if(String.valueOf(txtemail.getText()).isEmpty()){
+        if(txtemail.getText().isEmpty()){
             txtemail.setText("Ingrese Email");
-            txtemail.setForeground(Color.GRAY);
+            txtemail.setForeground(Color.getHSBColor(102, 102, 102));
         }
         if(txtconfiemail.getText().equals("Ingrese Email")){
             txtconfiemail.setText("");
             txtconfiemail.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_txtconfiemailMouseClicked
+
+    private void RBnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RBnoActionPerformed
 
     /**
      * @param args the command line arguments

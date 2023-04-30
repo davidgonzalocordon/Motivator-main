@@ -5,6 +5,7 @@
 package GUI;
 
 import Classes.Lugares;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
  * @author ASUS
  */
 public class RegistrarLugar extends javax.swing.JFrame {
+    int mouseX, mouseY;
     private Lugares lugares;
     private InicioUsuario inicioUsuario;
     private InicioAdmin inicioAdmin;
@@ -39,13 +41,13 @@ public class RegistrarLugar extends javax.swing.JFrame {
 
         horario = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        NavBar = new javax.swing.JPanel();
+        btnClose = new javax.swing.JPanel();
+        txtClose = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
         txtNombreLugar = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -63,225 +65,330 @@ public class RegistrarLugar extends javax.swing.JFrame {
         cmbCalificacion = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         txtLinkGoogleMaps = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(221, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 430));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(201, 52, 52));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        NavBar.setOpaque(false);
+        NavBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                NavBarMouseDragged(evt);
+            }
+        });
+        NavBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                NavBarMousePressed(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/yo amo cucuta Registro.png"))); // NOI18N
+        btnClose.setOpaque(false);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+        txtClose.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txtClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtClose.setText("X");
+        txtClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCloseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCloseMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnCloseLayout = new javax.swing.GroupLayout(btnClose);
+        btnClose.setLayout(btnCloseLayout);
+        btnCloseLayout.setHorizontalGroup(
+            btnCloseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE)
-                .addContainerGap())
+        btnCloseLayout.setVerticalGroup(
+            btnCloseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtClose, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 70));
+        javax.swing.GroupLayout NavBarLayout = new javax.swing.GroupLayout(NavBar);
+        NavBar.setLayout(NavBarLayout);
+        NavBarLayout.setHorizontalGroup(
+            NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavBarLayout.createSequentialGroup()
+                .addGap(0, 887, Short.MAX_VALUE)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        NavBarLayout.setVerticalGroup(
+            NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        jPanel4.setBackground(new java.awt.Color(255, 228, 196));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 50));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Quicksand", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Por favor llenar los espacios para hacer el registro: ");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nombre: ");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setText("Direccion: ");
+        jLabel6.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Dirección: ");
 
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+        txtNombreLugar.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreLugar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNombreLugar.setForeground(new java.awt.Color(102, 102, 102));
+        txtNombreLugar.setText("Ingrese nombre del sitio");
+        txtNombreLugar.setBorder(null);
+        txtNombreLugar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreLugarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtNombreLugarMousePressed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setForeground(new java.awt.Color(102, 102, 102));
+        txtDireccion.setText("Ingrese dirección del sitio");
+        txtDireccion.setBorder(null);
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtDireccionMousePressed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Descripcion: ");
 
+        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDescripcion.setForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(txtDescripcion);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono: ");
 
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setForeground(new java.awt.Color(102, 102, 102));
+        txtTelefono.setText("Ingrese telefono del sitio");
+        txtTelefono.setBorder(null);
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtTelefonoMousePressed(evt);
             }
         });
 
+        cmdTipo.setBackground(new java.awt.Color(255, 255, 255));
+        cmdTipo.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        cmdTipo.setForeground(new java.awt.Color(51, 51, 51));
         cmdTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo: ");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Horario: ");
 
-        btDiurno.setBackground(new java.awt.Color(255, 228, 196));
+        btDiurno.setBackground(new java.awt.Color(255, 255, 255));
+        btDiurno.setForeground(new java.awt.Color(51, 51, 51));
         btDiurno.setText("Diurno");
 
-        btNocturno.setBackground(new java.awt.Color(255, 228, 196));
+        btNocturno.setBackground(new java.awt.Color(255, 255, 255));
+        btNocturno.setForeground(new java.awt.Color(51, 51, 51));
         btNocturno.setText("Nocturno");
 
-        btSiempre.setBackground(new java.awt.Color(255, 228, 196));
+        btSiempre.setBackground(new java.awt.Color(255, 255, 255));
         horario.add(btSiempre);
+        btSiempre.setForeground(new java.awt.Color(51, 51, 51));
         btSiempre.setText("Ambos");
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estrellas:");
 
+        cmbCalificacion.setBackground(new java.awt.Color(255, 255, 255));
+        cmbCalificacion.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
+        cmbCalificacion.setForeground(new java.awt.Color(51, 51, 51));
         cmbCalificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Link Google Maps: ");
+
+        txtLinkGoogleMaps.setBackground(new java.awt.Color(255, 255, 255));
+        txtLinkGoogleMaps.setForeground(new java.awt.Color(102, 102, 102));
+        txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+        txtLinkGoogleMaps.setBorder(null);
+        txtLinkGoogleMaps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtLinkGoogleMapsMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtLinkGoogleMapsMousePressed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgRegistrar.png"))); // NOI18N
+        jLabel12.setText("Registrar Sitio");
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(157, 157, 157)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(43, 43, 43)
-                        .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(32, 32, 32)
+                                .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btDiurno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                                .addComponent(btNocturno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76)
+                                .addComponent(btSiempre, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNombreLugar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtLinkGoogleMaps, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(10, 10, 10)))
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTelefono)
-                                    .addComponent(txtDireccion)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btDiurno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btNocturno, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btSiempre, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreLugar, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLinkGoogleMaps, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(47, 47, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(btDiurno)
-                    .addComponent(btSiempre)
-                    .addComponent(btNocturno))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtLinkGoogleMaps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addGap(7, 7, 7)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegistrar)
-                .addContainerGap())
+                .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btDiurno)
+                    .addComponent(btNocturno)
+                    .addComponent(btSiempre))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtLinkGoogleMaps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 450, 470));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 490, 790));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FondoAddSite.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 740));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 940, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9')
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtTelefonoKeyTyped
-
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         String name = txtNombreLugar.getText();
         String adress = txtDireccion.getText();
         String cellphone = txtTelefono.getText();
@@ -320,7 +427,208 @@ public class RegistrarLugar extends javax.swing.JFrame {
                 Logger.getLogger(RegistrarLugar.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void NavBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NavBarMousePressed
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+    }//GEN-LAST:event_NavBarMousePressed
+
+    private void NavBarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NavBarMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - mouseX, y - mouseY);
+    }//GEN-LAST:event_NavBarMouseDragged
+
+    private void txtCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCloseMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_txtCloseMouseClicked
+
+    private void txtCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCloseMouseEntered
+        btnClose.setOpaque(true);
+        btnClose.setBackground(Color.red);
+    }//GEN-LAST:event_txtCloseMouseEntered
+
+    private void txtCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCloseMouseExited
+        btnClose.setBackground(Color.pink);
+        btnClose.setOpaque(false);
+    }//GEN-LAST:event_txtCloseMouseExited
+
+    private void txtNombreLugarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreLugarMousePressed
+        if (txtNombreLugar.getText().equals("Ingrese nombre del sitio")) {
+            txtNombreLugar.setText("");
+            txtNombreLugar.setForeground(Color.BLACK);
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtNombreLugarMousePressed
+
+    private void txtNombreLugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreLugarMouseClicked
+        if (txtNombreLugar.getText().equals("Ingrese nombre del sitio")) {
+            txtNombreLugar.setText("");
+            txtNombreLugar.setForeground(Color.BLACK);
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtNombreLugarMouseClicked
+
+    private void txtDireccionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMousePressed
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().equals("Ingrese dirección del sitio")) {
+            txtDireccion.setText("");
+            txtDireccion.setForeground(Color.BLACK);
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtDireccionMousePressed
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().equals("Ingrese dirección del sitio")) {
+            txtDireccion.setText("");
+            txtDireccion.setForeground(Color.BLACK);
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtDireccionMouseClicked
+
+    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().equals("Ingrese telefono del sitio")) {
+            txtTelefono.setText("");
+            txtTelefono.setForeground(Color.BLACK);
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtTelefonoMouseClicked
+
+    private void txtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMousePressed
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().equals("Ingrese telefono del sitio")) {
+            txtTelefono.setText("");
+            txtTelefono.setForeground(Color.BLACK);
+        }
+        
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+    }//GEN-LAST:event_txtTelefonoMousePressed
+
+    private void txtLinkGoogleMapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLinkGoogleMapsMouseClicked
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().equals("Ingrese enlace de google maps del sitio")) {
+            txtLinkGoogleMaps.setText("");
+            txtLinkGoogleMaps.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtLinkGoogleMapsMouseClicked
+
+    private void txtLinkGoogleMapsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLinkGoogleMapsMousePressed
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+        }
+        
+        if (txtLinkGoogleMaps.getText().equals("Ingrese enlace de google maps del sitio")) {
+            txtLinkGoogleMaps.setText("");
+            txtLinkGoogleMaps.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtLinkGoogleMapsMousePressed
 
     /**
      * @param args the command line arguments
@@ -355,6 +663,9 @@ public class RegistrarLugar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistrarLugar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -365,15 +676,17 @@ public class RegistrarLugar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel NavBar;
     private javax.swing.JRadioButton btDiurno;
     private javax.swing.JRadioButton btNocturno;
     private javax.swing.JRadioButton btSiempre;
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JPanel btnClose;
     private javax.swing.JComboBox<String> cmbCalificacion;
     private javax.swing.JComboBox<String> cmdTipo;
     private javax.swing.ButtonGroup horario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -383,9 +696,14 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel txtClose;
     private javax.swing.JTextPane txtDescripcion;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtLinkGoogleMaps;

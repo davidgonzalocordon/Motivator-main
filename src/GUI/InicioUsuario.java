@@ -448,6 +448,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         btActualizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgactualizar.png"))); // NOI18N
         btActualizar.setText("Actualizar");
+        btActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btActualizarActionPerformed(evt);
@@ -457,6 +458,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         btCerrarSesion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgCerrar.png"))); // NOI18N
         btCerrarSesion.setText("Cerrar Sesion");
+        btCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCerrarSesionActionPerformed(evt);
