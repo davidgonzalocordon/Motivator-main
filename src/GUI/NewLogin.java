@@ -4,7 +4,14 @@
  */
 package GUI;
 
+import Classes.Usuario;
+import static GUI.Login.ID;
+import static GUI.Login.level;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,9 +20,18 @@ import java.awt.Color;
 public class NewLogin extends javax.swing.JFrame {
 
     int mouseX, mouseY;
+    private Usuario usuario;
+    private InicioAdmin inicioAdmin;
+    private InicioUsuario inicioUsuario;
+    private NewRegistrarUser registrarUsuario;
+    public static int level;
+    public static int ID;
     
     public NewLogin() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.usuario = new Usuario();
     }
 
     @SuppressWarnings("unchecked")
@@ -68,17 +84,14 @@ public class NewLogin extends javax.swing.JFrame {
 
         TextoLogin.setBackground(new java.awt.Color(0, 0, 0));
         TextoLogin.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
-        TextoLogin.setForeground(new java.awt.Color(0, 0, 0));
         TextoLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TextoLogin.setText("Iniciar Sesión");
         Fondo.add(TextoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 160, 40));
 
         User.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        User.setForeground(new java.awt.Color(0, 0, 0));
         User.setText("Usuario");
         Fondo.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
-        txtUser.setBackground(new java.awt.Color(255, 255, 255));
         txtUser.setForeground(new java.awt.Color(102, 102, 102));
         txtUser.setText("Ingresar usuario");
         txtUser.setToolTipText("");
@@ -98,11 +111,9 @@ public class NewLogin extends javax.swing.JFrame {
         Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 310, 30));
 
         Pass.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        Pass.setForeground(new java.awt.Color(0, 0, 0));
         Pass.setText("Contraseña");
         Fondo.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 120, -1));
 
-        txtPass.setBackground(new java.awt.Color(255, 255, 255));
         txtPass.setForeground(new java.awt.Color(102, 102, 102));
         txtPass.setText("Contraseña");
         txtPass.setBorder(null);
@@ -279,11 +290,44 @@ public class NewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCerrarMouseExited
 
     private void IniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesionMouseClicked
-        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN INICIAR SESION");
+        String user = txtUser.getText();
+        String pass = txtPass.getText();
+        
+        try {
+            
+            String id = usuario.getId(user, pass);
+            
+            if(id.equals("No existente")){
+                JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");
+            }
+            else{
+               int lvl = usuario.getLevel(id);
+               
+               if (lvl == 3){
+                   level = lvl;
+                   ID=(int)(Double.parseDouble(id));
+                   this.inicioAdmin = new InicioAdmin();
+                   inicioAdmin.setVisible(true);
+                   this.setVisible(false);
+               }
+               else{
+                   level = lvl;
+                   ID=(int)(Double.parseDouble(id));
+                   this.inicioUsuario = new InicioUsuario();
+                   inicioUsuario.setVisible(true);
+                   this.setVisible(false);
+               }
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_IniciarSesionMouseClicked
 
     private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
-        System.out.println("AQUI VA EL CODIGO DE CUANDO LE DA EN REGISTRARSE");
+        this.registrarUsuario = new NewRegistrarUser();
+        registrarUsuario.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_RegistrarseMouseClicked
 
     private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked

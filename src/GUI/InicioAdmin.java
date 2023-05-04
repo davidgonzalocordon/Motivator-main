@@ -39,7 +39,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     };
     private Lugares myLugares = new Lugares();
     private Usuario myUsuario = new Usuario();
-    private Login myLogin = new Login();
+    private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
     public static int filaExcel;
 

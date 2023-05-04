@@ -280,14 +280,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             if(siAcepta.isSelected()){
                 try {
                     if(usuario.userExist(user)){
-                        try {
-                            usuario.addUser(name, user, pass, mail);
-                            this.login = new Login();
-                            login.setVisible(true);
-                            this.dispose();
-                        } catch (IOException ex) {
-                            Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        usuario.addUser(name, user, pass, mail);
+                        this.login = new Login();
+                        login.setVisible(true);
+                        this.dispose();
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
