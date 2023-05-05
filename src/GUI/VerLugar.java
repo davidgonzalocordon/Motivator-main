@@ -39,7 +39,7 @@ public class VerLugar extends javax.swing.JFrame {
     private static Lugares lugares = new Lugares();
     private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
-    private InicioAdmin inicioAdmin = new InicioAdmin();
+    private InicioAdmin myAdmin = new InicioAdmin();
     private CajaDeComentarios cajaDeComentarios;
     private int contadorImg=1;
     
@@ -51,13 +51,13 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        if (Login.level == 3){
-            setDatos(inicioAdmin.filaExcel);
+        System.out.println(NewLogin.level);
+        if (NewLogin.level == 3){
+            setDatos(myAdmin.indexExcel);
         }
         else{
             setDatos(myUsuario.filaExcel);
         }
-        
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);
         txtDireccion.setText(direccionLugar);
@@ -104,7 +104,7 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         PestañaAnterios = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JLabel();
         Datos = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -119,7 +119,6 @@ public class VerLugar extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtPuntuacion = new javax.swing.JTextField();
-        btnCerrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -154,15 +153,14 @@ public class VerLugar extends javax.swing.JFrame {
         PestañaAnterios.setBackground(new java.awt.Color(204, 204, 204));
         PestañaAnterios.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVolver.png"))); // NOI18N
-        jLabel13.setText("Volver");
-        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVolver.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVolver.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
+                btnVolverMouseClicked(evt);
             }
         });
 
@@ -170,11 +168,11 @@ public class VerLugar extends javax.swing.JFrame {
         PestañaAnterios.setLayout(PestañaAnteriosLayout);
         PestañaAnteriosLayout.setHorizontalGroup(
             PestañaAnteriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         PestañaAnteriosLayout.setVerticalGroup(
             PestañaAnteriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+            .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
         jPanel1.add(PestañaAnterios, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 150, 70));
@@ -241,17 +239,9 @@ public class VerLugar extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setText("Volver");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBackground(new java.awt.Color(180, 180, 180));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
         jLabel2.setText("Ver Comentarios");
@@ -277,7 +267,6 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgLugares.png"))); // NOI18N
         jLabel11.setText("Abrir Ubicacion");
@@ -303,7 +292,6 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgFotos.png"))); // NOI18N
         jLabel12.setText("Agragar Fotos");
@@ -386,9 +374,7 @@ public class VerLugar extends javax.swing.JFrame {
                                             .addComponent(txtHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                                             .addComponent(txtTipo))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(223, 223, 223)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(301, 301, 301))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,16 +403,11 @@ public class VerLugar extends javax.swing.JFrame {
                     .addComponent(txtPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnCerrar))
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -439,7 +420,6 @@ public class VerLugar extends javax.swing.JFrame {
         Previous.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAnterior.png"))); // NOI18N
         jLabel14.setText("Anterior Foto");
@@ -467,7 +447,6 @@ public class VerLugar extends javax.swing.JFrame {
         Next.setPreferredSize(new java.awt.Dimension(138, 67));
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgSiguiente.png"))); // NOI18N
         jLabel15.setText("Siguiente Foto");
@@ -598,24 +577,6 @@ public class VerLugar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPuntuacionActionPerformed
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        if (level == 3){
-            
-            try {
-                this.inicioAdmin = new InicioAdmin();
-            } catch (IOException ex) {
-                Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-                   inicioAdmin.setVisible(true);
-                   this.dispose();
-               }
-               else{
-                   myUsuario.setVisible(true);
-                   this.dispose();
-               }
-    }//GEN-LAST:event_btnCerrarActionPerformed
-
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         try {
             lugares.link(linkLugar);
@@ -632,24 +593,24 @@ public class VerLugar extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel12MouseClicked
 
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        if (level == 3){
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
+        if (NewLogin.level == 3){
             
             try {
-                this.inicioAdmin = new InicioAdmin();
+                this.myAdmin = new InicioAdmin();
             }
             catch (IOException ex) {
                 Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            inicioAdmin.setVisible(true);
+            myAdmin.setVisible(true);
             this.dispose();
         }
         else{
             myUsuario.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_jLabel13MouseClicked
+    }//GEN-LAST:event_btnVolverMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         try {
@@ -773,11 +734,10 @@ public class VerLugar extends javax.swing.JFrame {
     private javax.swing.JPanel Next;
     private javax.swing.JPanel PestañaAnterios;
     private javax.swing.JPanel Previous;
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JLabel btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;

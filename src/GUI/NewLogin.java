@@ -5,8 +5,6 @@
 package GUI;
 
 import Classes.Usuario;
-import static GUI.Login.ID;
-import static GUI.Login.level;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;

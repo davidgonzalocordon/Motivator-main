@@ -41,7 +41,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Usuario myUsuario = new Usuario();
     private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
-    public static int filaExcel;
+    public static int indexExcel;
 
     /**
      * Creates new form InicioAdmin
@@ -911,7 +911,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
             try
             {
-                filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
+                indexExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
                 verLugar.setVisible(true);
                 this.setVisible(false);
@@ -945,8 +945,8 @@ public class InicioAdmin extends javax.swing.JFrame {
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
             try
             {
-                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                indexExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(indexExcel);
                 if (Integer.parseInt(datosUsu[4]) == 3)
                 {
                     JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
@@ -1170,8 +1170,8 @@ public class InicioAdmin extends javax.swing.JFrame {
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
             try
             {
-                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                indexExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(indexExcel);
                 if (Integer.parseInt(datosUsu[4]) == 1)
                 {
                     JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
