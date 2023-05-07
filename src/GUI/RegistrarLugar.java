@@ -19,7 +19,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private Lugares lugares;
     private InicioUsuario inicioUsuario;
     private InicioAdmin inicioAdmin;
-    Login login = new Login();
+    NewLogin login = new NewLogin();
     /**
      * Creates new form RegistrarLugar
      */

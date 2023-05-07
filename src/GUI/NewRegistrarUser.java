@@ -494,8 +494,11 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                                                 login.setVisible(true);
                                                 this.dispose();
                                             }
+                                            else{
+                                                JOptionPane.showMessageDialog(null, "El usuario ingresado ya existe.");
+                                            }
                                         } catch (IOException ex) {
-                                            Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                                            Logger.getLogger(NewRegistrarUser.class.getName()).log(Level.SEVERE, null, ex);
                                         }
                                     }else{
                                         JOptionPane.showMessageDialog(null, "El correo a confirmar es diferente al correo ingresado.");
@@ -734,7 +737,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             txtEmail.setText("Ingrese Email");
             txtEmail.setForeground(Color.GRAY);
         }
-        if(txtConfirmEmail.getText().equals("Ingrese Email")){
+        if(txtConfirmEmail.getText().equals("Reingrese Email")){
             txtConfirmEmail.setText("");
             txtConfirmEmail.setForeground(Color.BLACK);
         }

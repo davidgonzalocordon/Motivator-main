@@ -21,10 +21,9 @@ public class CrearComentario extends javax.swing.JFrame {
     private Comentarios myComentario = new Comentarios();
     private CajaDeComentarios cajaDeComentarios;
     private VerLugar verLugar;
-    private VerRestaurante verRestaurante;
     private Comentarios comentario;
     private Usuario myUsuario = new Usuario();
-    private Login myLogin;
+    private NewLogin myLogin;
 
     /**
      * Creates new form CrearComentario

@@ -22,6 +22,7 @@ public class NewLogin extends javax.swing.JFrame {
     private InicioAdmin inicioAdmin;
     private InicioUsuario inicioUsuario;
     private NewRegistrarUser registrarUsuario;
+    private EntrarEmpresa entrarEmpresa;
     public static int level;
     public static int ID;
     
@@ -47,6 +48,8 @@ public class NewLogin extends javax.swing.JFrame {
         Pass = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
+        btnRegistrar1 = new javax.swing.JPanel();
+        Empresa = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JPanel();
         Registrarse = new javax.swing.JLabel();
         btnLogin = new javax.swing.JPanel();
@@ -55,7 +58,9 @@ public class NewLogin extends javax.swing.JFrame {
         NavBar = new javax.swing.JPanel();
         btnClose = new javax.swing.JPanel();
         txtCerrar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -78,7 +83,7 @@ public class NewLogin extends javax.swing.JFrame {
         Fondo.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 330, 180));
 
         ImgFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FondoNewLogin.jpg"))); // NOI18N
-        Fondo.add(ImgFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 500));
+        Fondo.add(ImgFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 560));
 
         TextoLogin.setBackground(new java.awt.Color(0, 0, 0));
         TextoLogin.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
@@ -88,7 +93,7 @@ public class NewLogin extends javax.swing.JFrame {
 
         User.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
         User.setText("Usuario");
-        Fondo.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+        Fondo.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
         txtUser.setForeground(new java.awt.Color(102, 102, 102));
         txtUser.setText("Ingresar usuario");
@@ -102,15 +107,15 @@ public class NewLogin extends javax.swing.JFrame {
                 txtUserMouseClicked(evt);
             }
         });
-        Fondo.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 330, -1));
+        Fondo.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 330, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 310, 30));
+        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 330, 10));
 
         Pass.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
         Pass.setText("Contraseña");
-        Fondo.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 120, -1));
+        Fondo.add(Pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 120, -1));
 
         txtPass.setForeground(new java.awt.Color(102, 102, 102));
         txtPass.setText("Contraseña");
@@ -123,11 +128,35 @@ public class NewLogin extends javax.swing.JFrame {
                 txtPassMouseClicked(evt);
             }
         });
-        Fondo.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, -1));
+        Fondo.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 330, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 430, 30));
+        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 410, 30));
+
+        btnRegistrar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        Empresa.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
+        Empresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Empresa.setText("Ingresar");
+        Empresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmpresaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnRegistrar1Layout = new javax.swing.GroupLayout(btnRegistrar1);
+        btnRegistrar1.setLayout(btnRegistrar1Layout);
+        btnRegistrar1Layout.setHorizontalGroup(
+            btnRegistrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Empresa, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        );
+        btnRegistrar1Layout.setVerticalGroup(
+            btnRegistrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Empresa, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        Fondo.add(btnRegistrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, 130, 50));
 
         btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -148,12 +177,10 @@ public class NewLogin extends javax.swing.JFrame {
         );
         btnRegistrarLayout.setVerticalGroup(
             btnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnRegistrarLayout.createSequentialGroup()
-                .addComponent(Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(Registrarse, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        Fondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 130, 50));
+        Fondo.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 130, 50));
 
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -176,14 +203,14 @@ public class NewLogin extends javax.swing.JFrame {
             btnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnLoginLayout.createSequentialGroup()
                 .addComponent(IniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        Fondo.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 130, 50));
+        Fondo.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 130, 50));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 310, 30));
+        Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 330, 30));
 
         NavBar.setBackground(new java.awt.Color(255, 255, 255));
         NavBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -245,10 +272,21 @@ public class NewLogin extends javax.swing.JFrame {
 
         Fondo.add(NavBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
-        jLabel1.setFont(new java.awt.Font("Quicksand", 2, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("¿Aún no tienes cuenta?\n     \nRegistrate Aqui");
-        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 360, 30));
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        Fondo.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 410, 30));
+
+        jLabel2.setFont(new java.awt.Font("Quicksand", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("¿Aún no tienes cuenta?\n     \nRegistrate Aqui");
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 360, 30));
+
+        jLabel3.setFont(new java.awt.Font("Quicksand", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("¿Eres una empresa de turismo? ");
+        jLabel3.setToolTipText("");
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 380, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,7 +296,7 @@ public class NewLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -318,7 +356,7 @@ public class NewLogin extends javax.swing.JFrame {
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NewLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_IniciarSesionMouseClicked
 
@@ -351,6 +389,12 @@ public class NewLogin extends javax.swing.JFrame {
             txtPass.setForeground(Color.black);
         }
     }//GEN-LAST:event_txtPassMouseClicked
+
+    private void EmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmpresaMouseClicked
+        this.entrarEmpresa = new EntrarEmpresa();
+        entrarEmpresa.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_EmpresaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -388,6 +432,7 @@ public class NewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Empresa;
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel ImgFondo;
     private javax.swing.JLabel IniciarSesion;
@@ -401,10 +446,13 @@ public class NewLogin extends javax.swing.JFrame {
     private javax.swing.JPanel btnClose;
     private javax.swing.JPanel btnLogin;
     private javax.swing.JPanel btnRegistrar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel btnRegistrar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel txtCerrar;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;

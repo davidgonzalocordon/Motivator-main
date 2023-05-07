@@ -5,8 +5,6 @@
 package GUI;
 
 import Classes.Lugares;
-import static GUI.Login.ID;
-import static GUI.Login.level;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
