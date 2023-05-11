@@ -4,6 +4,17 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="horarioLugar">
     </Component>
+    <Component class="javax.swing.JButton" name="btVerLugar2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/IMG/ImgVer.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ver"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -528,28 +539,7 @@
                           <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object[][]{&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;NOMBRE&quot;, &quot;USUARIO&quot;, &quot;EMAIL &quot;, &quot;NIVEL&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
+                          <TableColumnModel selectionModel="0"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1022,11 +1012,6 @@
                                       <Component id="btnBuscarEmpresa" min="-2" pref="139" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                                          <Component id="btEliminarEmpresa" min="-2" pref="139" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtUsuarioEmpresa" min="-2" pref="123" max="-2" attributes="0"/>
@@ -1039,6 +1024,13 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtEmailEmpresa" min="-2" pref="149" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                          <Component id="btEliminarEmpresa" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                          <Component id="btVerLugar4" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1060,14 +1052,15 @@
                               <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtUsuarioEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnBuscarEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btEliminarEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btVerLugar4" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane7" min="-2" pref="324" max="-2" attributes="0"/>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                          <Component id="jScrollPane7" min="-2" pref="327" max="-2" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1106,28 +1099,7 @@
                           <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object[][]{&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;NOMBRE&quot;, &quot;USUARIO&quot;, &quot;EMAIL &quot;, &quot;NIVEL&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
+                          <TableColumnModel selectionModel="0"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1189,6 +1161,17 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUsuarioEmpresa">
+                </Component>
+                <Component class="javax.swing.JButton" name="btVerLugar4">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/IMG/ImgVer.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Ver"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

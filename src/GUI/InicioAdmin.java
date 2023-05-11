@@ -150,6 +150,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         horarioLugar = new javax.swing.ButtonGroup();
+        btVerLugar2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         btnClose = new javax.swing.JPanel();
@@ -213,6 +214,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btEliminarEmpresa = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         txtUsuarioEmpresa = new javax.swing.JTextField();
+        btVerLugar4 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -226,6 +228,10 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         txtPasswordAdmin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+
+        btVerLugar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btVerLugar2.setText("Ver");
+        btVerLugar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -810,6 +816,10 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel37.setText("USUARIO: ");
 
+        btVerLugar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btVerLugar4.setText("Ver");
+        btVerLugar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -830,10 +840,6 @@ public class InicioAdmin extends javax.swing.JFrame {
                             .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(126, 126, 126)
-                                .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtUsuarioEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
@@ -844,7 +850,13 @@ public class InicioAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel36)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtEmailEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))))))
+                                .addGap(33, 33, 33))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(btVerLugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -859,13 +871,14 @@ public class InicioAdmin extends javax.swing.JFrame {
                     .addComponent(txtNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37)
                     .addComponent(txtUsuarioEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarEmpresa)
-                    .addComponent(btEliminarEmpresa))
+                    .addComponent(btEliminarEmpresa)
+                    .addComponent(btVerLugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         PanelUsuario.addTab("Empresas", jPanel7);
@@ -1465,6 +1478,8 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btEliminarLugar;
     private javax.swing.JButton btEliminarUsuario;
     private javax.swing.JButton btVerLugar;
+    private javax.swing.JButton btVerLugar2;
+    private javax.swing.JButton btVerLugar4;
     private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
     private javax.swing.JButton btnAscenderUsuario;

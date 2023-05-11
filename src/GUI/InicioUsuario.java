@@ -118,6 +118,16 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
         btnLimpliar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        txtNombreEmpresa1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableEmpresa = new javax.swing.JTable();
+        txtNombreEmpresa2 = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        btnBuscarLugar1 = new javax.swing.JButton();
+        btVerLugar2 = new javax.swing.JButton();
+        btnLimpliar1 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -442,6 +452,123 @@ public class InicioUsuario extends javax.swing.JFrame {
         );
 
         PanelUsuario.addTab("Lugares", jPanel6);
+
+        jPanel2.setBackground(new java.awt.Color(217, 152, 141));
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel35.setText("NOMBRE: ");
+
+        txtNombreEmpresa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEmpresa1ActionPerformed(evt);
+            }
+        });
+
+        TableEmpresa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nombre", "NIT"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TableEmpresa);
+
+        txtNombreEmpresa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEmpresa2ActionPerformed(evt);
+            }
+        });
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel36.setText("NIT:");
+
+        btnBuscarLugar1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnBuscarLugar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgsearch.png"))); // NOI18N
+        btnBuscarLugar1.setText("Buscar");
+        btnBuscarLugar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarLugar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarLugar1ActionPerformed(evt);
+            }
+        });
+
+        btVerLugar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btVerLugar2.setText("Ver");
+        btVerLugar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnLimpliar1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnLimpliar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imglimpiar.png"))); // NOI18N
+        btnLimpliar1.setText("Limpiar");
+        btnLimpliar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpliar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpliar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtNombreEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(150, 150, 150)
+                                .addComponent(jLabel36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnBuscarLugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btVerLugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreEmpresa2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(btnLimpliar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 848, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(txtNombreEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35)
+                    .addComponent(txtNombreEmpresa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarLugar1)
+                    .addComponent(btVerLugar2)
+                    .addComponent(btnLimpliar1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        PanelUsuario.addTab("Empresas", jPanel2);
 
         jPanel9.setBackground(new java.awt.Color(217, 152, 141));
 
@@ -769,6 +896,22 @@ public class InicioUsuario extends javax.swing.JFrame {
         btnClose.setOpaque(false);
     }//GEN-LAST:event_txtCerrarMouseExited
 
+    private void txtNombreEmpresa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEmpresa1ActionPerformed
+
+    private void txtNombreEmpresa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEmpresa2ActionPerformed
+
+    private void btnBuscarLugar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarLugar1ActionPerformed
+
+    private void btnLimpliar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpliar1ActionPerformed
+
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -832,16 +975,20 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Lugares;
     private javax.swing.JTabbedPane PanelUsuario;
+    private javax.swing.JTable TableEmpresa;
     private javax.swing.JButton btActualizar;
     private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btConfiguracion;
     private javax.swing.JButton btVerLugar;
+    private javax.swing.JButton btVerLugar2;
     private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
     private javax.swing.JButton btnBuscarLugar;
+    private javax.swing.JButton btnBuscarLugar1;
     private javax.swing.JPanel btnClose;
     private javax.swing.JRadioButton btnDia;
     private javax.swing.JButton btnLimpliar;
+    private javax.swing.JButton btnLimpliar1;
     private javax.swing.JRadioButton btnNoche;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;
     private javax.swing.JComboBox<String> cmbTipo;
@@ -856,13 +1003,17 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -871,6 +1022,8 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmailAdmin;
     private javax.swing.JTextField txtNombreAdmin;
+    private javax.swing.JTextField txtNombreEmpresa1;
+    private javax.swing.JTextField txtNombreEmpresa2;
     private javax.swing.JTextField txtNombreLugar;
     private javax.swing.JTextField txtPasswordAdmin;
     private javax.swing.JTextField txtUsuarioAdmin;
