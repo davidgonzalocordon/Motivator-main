@@ -4,12 +4,14 @@
  */
 package GUI;
 
+import java.awt.Color;
+
 /**
  *
  * @author josem
  */
 public class PlanTuristico extends javax.swing.JFrame {
-
+    int mousex, mousey;
     /**
      * Creates new form PlanTuristico
      */
@@ -42,11 +44,15 @@ public class PlanTuristico extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         PestañaAnterios = new javax.swing.JPanel();
         btnVolver = new javax.swing.JLabel();
-        PestañaAnterios1 = new javax.swing.JPanel();
-        btnVolver1 = new javax.swing.JLabel();
+        btnVerDescripcion = new javax.swing.JPanel();
+        btnVerDescrip = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnClose = new javax.swing.JPanel();
+        txtCerrar = new javax.swing.JLabel();
+        Header = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         BackGround.setBackground(new java.awt.Color(255, 255, 255));
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,7 +66,7 @@ public class PlanTuristico extends javax.swing.JFrame {
         BackGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
         Email.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        Email.setText("Descripcion: ");
+        Email.setText("\"Email\"");
         BackGround.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, -1, -1));
 
         txtDescipcion.setEditable(false);
@@ -122,42 +128,100 @@ public class PlanTuristico extends javax.swing.JFrame {
 
         BackGround.add(PestañaAnterios, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 150, 70));
 
-        PestañaAnterios1.setBackground(new java.awt.Color(204, 204, 204));
-        PestañaAnterios1.setPreferredSize(new java.awt.Dimension(138, 67));
+        btnVerDescripcion.setBackground(new java.awt.Color(204, 204, 204));
+        btnVerDescripcion.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        btnVolver1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnVolver1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
-        btnVolver1.setText("Ver Descripcion");
-        btnVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVerDescrip.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnVerDescrip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnVerDescrip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btnVerDescrip.setText("Ver Descripcion");
+        btnVerDescrip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerDescrip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVolver1MouseClicked(evt);
+                btnVerDescripMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout PestañaAnterios1Layout = new javax.swing.GroupLayout(PestañaAnterios1);
-        PestañaAnterios1.setLayout(PestañaAnterios1Layout);
-        PestañaAnterios1Layout.setHorizontalGroup(
-            PestañaAnterios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVolver1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+        javax.swing.GroupLayout btnVerDescripcionLayout = new javax.swing.GroupLayout(btnVerDescripcion);
+        btnVerDescripcion.setLayout(btnVerDescripcionLayout);
+        btnVerDescripcionLayout.setHorizontalGroup(
+            btnVerDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnVerDescrip, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
-        PestañaAnterios1Layout.setVerticalGroup(
-            PestañaAnterios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVolver1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        btnVerDescripcionLayout.setVerticalGroup(
+            btnVerDescripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnVerDescrip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        BackGround.add(PestañaAnterios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 150, 70));
+        BackGround.add(btnVerDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 150, 70));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel4.setText("Descripcion: ");
         BackGround.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
 
+        btnClose.setBackground(new java.awt.Color(255, 255, 255));
+        btnClose.setToolTipText("");
+
+        txtCerrar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txtCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtCerrar.setText("X");
+        txtCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCerrarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCerrarMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnCloseLayout = new javax.swing.GroupLayout(btnClose);
+        btnClose.setLayout(btnCloseLayout);
+        btnCloseLayout.setHorizontalGroup(
+            btnCloseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCloseLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        btnCloseLayout.setVerticalGroup(
+            btnCloseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtCerrar)
+        );
+
+        BackGround.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, -1));
+
+        Header.setBackground(new java.awt.Color(255, 255, 255));
+        Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                HeaderMouseDragged(evt);
+            }
+        });
+        Header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeaderMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        BackGround.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
+            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,9 +254,32 @@ public class PlanTuristico extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVolverMouseClicked
 
-    private void btnVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolver1MouseClicked
+    private void btnVerDescripMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerDescripMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnVolver1MouseClicked
+    }//GEN-LAST:event_btnVerDescripMouseClicked
+
+    private void txtCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_txtCerrarMouseClicked
+
+    private void txtCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseEntered
+        btnClose.setBackground(Color.red);
+    }//GEN-LAST:event_txtCerrarMouseEntered
+
+    private void txtCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseExited
+        btnClose.setBackground(Color.white);
+    }//GEN-LAST:event_txtCerrarMouseExited
+
+    private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - mousex, y - mousey);
+    }//GEN-LAST:event_HeaderMouseDragged
+
+    private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
+        mousex = evt.getX();
+        mousey=evt.getY();
+    }//GEN-LAST:event_HeaderMousePressed
 
     /**
      * @param args the command line arguments
@@ -232,17 +319,20 @@ public class PlanTuristico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
     private javax.swing.JLabel Email;
+    private javax.swing.JPanel Header;
     private javax.swing.JLabel Nombre;
     private javax.swing.JPanel PestañaAnterios;
-    private javax.swing.JPanel PestañaAnterios1;
+    private javax.swing.JPanel btnClose;
+    private javax.swing.JLabel btnVerDescrip;
+    private javax.swing.JPanel btnVerDescripcion;
     private javax.swing.JLabel btnVolver;
-    private javax.swing.JLabel btnVolver1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel txtCerrar;
     private javax.swing.JTextPane txtDescipcion;
     // End of variables declaration//GEN-END:variables
 }
