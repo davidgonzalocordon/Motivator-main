@@ -76,11 +76,11 @@ public class EntrarEmpresa extends javax.swing.JFrame {
         Fondo.add(TextoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 290, 40));
 
         User.setFont(new java.awt.Font("Quicksand Medium", 0, 18)); // NOI18N
-        User.setText("Nombre");
+        User.setText("Usuario");
         Fondo.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
         txtUser.setForeground(new java.awt.Color(102, 102, 102));
-        txtUser.setText("Ingresar nombre de la empresa");
+        txtUser.setText("Ingresar usuario de la empresa");
         txtUser.setToolTipText("");
         txtUser.setBorder(null);
         txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -356,7 +356,7 @@ public class EntrarEmpresa extends javax.swing.JFrame {
             txtPass.setForeground(new Color(102,102,102));
         }
         
-        if (txtUser.getText().equals("Ingresar usuario")) {
+        if (txtUser.getText().equals("Ingresar usuario de la empresa")) {
             txtUser.setText("");
             txtUser.setForeground(Color.black);
         }
@@ -364,7 +364,7 @@ public class EntrarEmpresa extends javax.swing.JFrame {
 
     private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked
         if (txtUser.getText().isEmpty()) {
-            txtUser.setText("Ingresar usuario");
+            txtUser.setText("Ingresar usuario de la empresa");
             txtUser.setForeground(new Color(102,102,102));
         }
         

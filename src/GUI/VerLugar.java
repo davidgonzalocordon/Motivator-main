@@ -38,6 +38,7 @@ public class VerLugar extends javax.swing.JFrame {
     private AgregarFotos agregarFotos;
     private InicioUsuario myUsuario = new InicioUsuario();
     private InicioAdmin myAdmin = new InicioAdmin();
+    private InicioEmpresa myEmpresa = new InicioEmpresa();
     private CajaDeComentarios cajaDeComentarios;
     private int contadorImg=1;
     
@@ -49,12 +50,14 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        System.out.println(NewLogin.level);
         if (NewLogin.level == 3){
             setDatos(myAdmin.indexExcel);
         }
-        else{
+        else if(NewLogin.level == 2 || NewLogin.level ==1){
             setDatos(myUsuario.filaExcel);
+        }
+        else{
+            setDatos(myEmpresa.filaExcel);
         }
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);
@@ -604,8 +607,12 @@ public class VerLugar extends javax.swing.JFrame {
             myAdmin.setVisible(true);
             this.dispose();
         }
-        else{
+        else if(NewLogin.level == 2 || NewLogin.level == 1){
             myUsuario.setVisible(true);
+            this.dispose();
+        }
+        else{
+            myEmpresa.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnVolverMouseClicked

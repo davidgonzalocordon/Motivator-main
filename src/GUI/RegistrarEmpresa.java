@@ -160,7 +160,7 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
 
         txtNit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNit.setForeground(new java.awt.Color(102, 102, 102));
-        txtNit.setText("Ingrese Nit de la Empresa");
+        txtNit.setText("Ingrese Nit de la empresa");
         txtNit.setBorder(null);
         txtNit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -477,7 +477,7 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
 
     private void txtClaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtClaveMouseClicked
        if(String.valueOf(txtName.getText()).isEmpty()){    
-            txtName.setText("Ingrese Nombre");
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).equals("******")){
@@ -493,22 +493,22 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.GRAY);
         }
         if(txtConfirmEmail.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Email");
+            txtConfirmEmail.setText("Reingrese Email");
             txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtClaveMouseClicked
 
     private void txtConfirmClaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmClaveMouseClicked
         if(String.valueOf(txtName.getText()).isEmpty()){    
-            txtName.setText("Ingrese Nombre");
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).isEmpty()){
@@ -524,21 +524,21 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtConfirmEmail.getText()).isEmpty()){
-            txtConfirmEmail.setText("Ingrese Email");
+            txtConfirmEmail.setText("Reingrese Email");
             txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtConfirmClaveMouseClicked
 
     private void txtNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNameMouseClicked
-        if(txtName.getText().equals("Ingrese Nombre")){    
+        if(txtName.getText().equals("Ingrese Nombre de la empresa")){    
             txtName.setText("");
             txtName.setForeground(Color.BLACK);
         }
@@ -555,22 +555,22 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.GRAY);
         }
         if(txtConfirmEmail.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Email");
+            txtConfirmEmail.setText("Reingrese Email");
             txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtNameMouseClicked
 
     private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
         if(txtName.getText().isEmpty()){
-            txtName.setText("Ingrese Nombre");
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).isEmpty()){
@@ -586,22 +586,22 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.BLACK);
         }
         if(txtConfirmEmail.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Email");
+            txtConfirmEmail.setText("Reingrese Email");
             txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtEmailMouseClicked
 
     private void txtConfirmEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConfirmEmailMouseClicked
         if(txtName.getText().isEmpty()){    
-            txtName.setText("Ingrese Nombre");
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).isEmpty()){
@@ -621,18 +621,18 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtConfirmEmail.setForeground(Color.BLACK);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtConfirmEmailMouseClicked
 
     private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
         if(txtName.getText().isEmpty()){    
-            txtName.setText("Ingrese Nombre");
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).isEmpty()){
@@ -648,22 +648,22 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.GRAY);
         }
         if(txtConfirmEmail.getText().isEmpty()){
-            txtConfirmEmail.setText("");
-            txtConfirmEmail.setForeground(Color.BLACK);
+            txtConfirmEmail.setText("Reingrese Email");
+            txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().equals("Ingrese Usuario")){
-            txtConfirmEmail.setText("");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("");
+            txtUsuario.setForeground(Color.BLACK);
         }
         if(txtNit.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Nit de la empresa");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("Ingrese Nit de la empresa");
+            txtNit.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtUsuarioMouseClicked
 
     private void txtNitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNitMouseClicked
-                if(txtName.getText().isEmpty()){    
-            txtName.setText("Ingrese Nombre");
+        if(txtName.getText().isEmpty()){    
+            txtName.setText("Ingrese Nombre de la empresa");
             txtName.setForeground(Color.GRAY);
         }
         if(String.valueOf(txtClave.getPassword()).isEmpty()){
@@ -679,16 +679,16 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             txtEmail.setForeground(Color.GRAY);
         }
         if(txtConfirmEmail.getText().isEmpty()){
-            txtConfirmEmail.setText("");
-            txtConfirmEmail.setForeground(Color.BLACK);
+            txtConfirmEmail.setText("Reingrese Email");
+            txtConfirmEmail.setForeground(Color.GRAY);
         }
         if(txtUsuario.getText().isEmpty()){
-            txtConfirmEmail.setText("Ingrese Usuario");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtUsuario.setText("Ingrese Usuario");
+            txtUsuario.setForeground(Color.GRAY);
         }
         if(txtNit.getText().equals("Ingrese Nit de la empresa")){
-            txtConfirmEmail.setText("");
-            txtConfirmEmail.setForeground(Color.GRAY);
+            txtNit.setText("");
+            txtNit.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_txtNitMouseClicked
 
