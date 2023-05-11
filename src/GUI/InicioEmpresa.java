@@ -34,6 +34,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private Lugares myLugares = new Lugares();
     private EntrarEmpresa myLogin = new EntrarEmpresa();
     private VerLugar verLugar;
+    private AgregarPlan addPlan;
     public static int filaExcel;
     public static String nombreEmpresa;
 
@@ -634,7 +635,9 @@ public class InicioEmpresa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarlugarActionPerformed
-        //JOSE PONGA ACA UNA INTERFAZ PARa AGREGAR EL SITIO SELECCIONADO DE LA TABLA A UNA DE LOS PLANES DE LA EMPRESA
+        addPlan = new AgregarPlan();
+        addPlan.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAgregarlugarActionPerformed
 
     private void btCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSesionActionPerformed
