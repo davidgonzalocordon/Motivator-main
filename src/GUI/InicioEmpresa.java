@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Classes.Empresas;
 import Classes.Lugares;
 import java.awt.Color;
 import java.awt.Image;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InicioEmpresa extends javax.swing.JFrame {
     int mousex, mousey;
-    
+    private Empresas empresa;
     private RegistrarLugar registrarLugar;
     private DefaultTableModel tabla = new DefaultTableModel() {
         @Override
@@ -31,7 +32,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         }
     };
     private Lugares myLugares = new Lugares();
-    private NewLogin myLogin = new NewLogin();
+    private EntrarEmpresa myLogin = new EntrarEmpresa();
     private VerLugar verLugar;
     public static int filaExcel;
 
@@ -44,10 +45,12 @@ public class InicioEmpresa extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         Leer();
         String datos[] = new String[3];
-        datos = myUsuario.ObtenerDato(myLogin.ID);
+        datos = empresa.ObtenerDato(myLogin.ID);
         txtNombreAdmin.setText(datos[0]);
-        txtPasswordAdmin.setText(datos[1]);
-        txtEmailAdmin.setText(datos[2]);
+        txtUser.setText(datos[1]);
+        txtNit.setText(datos[2]);
+        txtPasswordAdmin.setText(datos[3]);
+        txtEmailAdmin.setText(datos[4]);
         PanelUsuario.setEnabledAt(0, true);
         PanelUsuario.setEnabledAt(1, false);
     }
@@ -125,6 +128,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
         txtEmailAdmin = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         txtPasswordAdmin = new javax.swing.JTextField();
+        txtNit = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
 
@@ -393,7 +400,6 @@ public class InicioEmpresa extends javax.swing.JFrame {
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregarlugar)
                         .addGap(50, 50, 50)
                         .addComponent(btVerLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,57 +483,87 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel27.setText("CLAVE: ");
 
+        jLabel31.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel31.setText("NIT");
+
+        jLabel29.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel29.setText("USUARIO");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(0, 211, Short.MAX_VALUE)
+                .addGap(0, 345, Short.MAX_VALUE)
+                .addComponent(jLabel32)
+                .addGap(313, 313, 313))
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
-                        .addGap(313, 313, 313))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174)
-                        .addComponent(btCerrarSesion)
-                        .addGap(193, 193, 193))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(248, 248, 248))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel31))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(jLabel30)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btCerrarSesion)
+                                .addGroup(jPanel9Layout.createSequentialGroup()
+                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(33, 33, 33)
+                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel9Layout.createSequentialGroup()
+                                            .addComponent(jLabel29)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel9Layout.createSequentialGroup()
+                                            .addComponent(jLabel27)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel32)
-                .addGap(46, 46, 46)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCerrarSesion)
-                    .addComponent(btActualizar))
-                .addGap(138, 138, 138))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28)
+                            .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27)
+                            .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29)
+                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 196, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btActualizar)
+                            .addComponent(btCerrarSesion))
+                        .addGap(88, 88, 88))))
         );
 
         PanelUsuario.addTab("Configuracion", jPanel9);
@@ -590,10 +626,12 @@ public class InicioEmpresa extends javax.swing.JFrame {
         String nombre = txtNombreAdmin.getText();
         String email = txtEmailAdmin.getText();
         String contra = txtPasswordAdmin.getText();
+        String user = txtUser.getText();
+        String nit = txtNit.getText();
 
         try
         {
-            myUsuario.EditUser(nombre, contra, email, myLogin.ID, 3);
+            empresa.EditEnterprise(nombre, user, nit, contra, email, myLogin.ID);
         } catch (IOException ex)
         {
             Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
@@ -830,8 +868,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
@@ -848,8 +888,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel txtCerrar;
     private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmailAdmin;
+    private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombreAdmin;
     private javax.swing.JTextField txtNombreLugar;
     private javax.swing.JTextField txtPasswordAdmin;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
