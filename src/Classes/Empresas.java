@@ -183,7 +183,7 @@ public class Empresas {
     }
     
     public static String[] ReadEnterprise(int i){
-        String almacen[] = new String[4];
+        String almacen[] = new String[2];
         String ruta = "Enterprises.xlsx";
         int acum=0;
         try {
@@ -195,7 +195,7 @@ public class Empresas {
                 
                 if (sheet.getRow(i)!=null) {
                     
-                    if(j!=3){
+                    if(j==0||j==2){
                         Cell celda = sheet.getRow(i).getCell(j);
                         
                         switch (celda.getCellTypeEnum().toString()){
@@ -260,7 +260,7 @@ public class Empresas {
         return datos;
     }
     
-    public static int nfilasUser() throws IOException {
+    public static int nFilas() throws IOException {
         String ruta = "Enterprises.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -270,7 +270,7 @@ public class Empresas {
         return nFilas;
     }
     
-    public static int filaSeleccionada(String nombre, String usuario, String correo) throws IOException{
+    public static int filaSeleccionada(String nombre, String nit) throws IOException{
         int filaExcel = 0;
         String ruta = "Enterprises.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
@@ -281,7 +281,7 @@ public class Empresas {
         
         for (int i = 1; i <= nFila; i++) {
             if (sheet.getRow(i) != null) {
-                if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && usuario.equals(sheet.getRow(i).getCell(1).getStringCellValue()) && correo.equals(sheet.getRow(i).getCell(4).getStringCellValue())){
+                if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && nit.equals(sheet.getRow(i).getCell(2).getStringCellValue())){
                     filaExcel = i;
                 }
             }

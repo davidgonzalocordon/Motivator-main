@@ -1029,7 +1029,7 @@
                                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                                           <Component id="btEliminarEmpresa" min="-2" pref="139" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                          <Component id="btVerLugar4" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <Component id="btVerEmpresa" min="-2" pref="139" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1056,7 +1056,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnBuscarEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btEliminarEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btVerLugar4" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="btVerEmpresa" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane7" min="-2" pref="327" max="-2" attributes="0"/>
@@ -1162,7 +1162,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtUsuarioEmpresa">
                 </Component>
-                <Component class="javax.swing.JButton" name="btVerLugar4">
+                <Component class="javax.swing.JButton" name="btVerEmpresa">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/IMG/ImgVer.png"/>
@@ -1172,6 +1172,9 @@
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVerEmpresaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

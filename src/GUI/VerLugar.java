@@ -51,7 +51,7 @@ public class VerLugar extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         if (NewLogin.level == 3){
-            setDatos(myAdmin.indexExcel);
+            setDatos(myAdmin.filaExcel);
         }
         else if(NewLogin.level == 2 || NewLogin.level ==1){
             setDatos(myUsuario.filaExcel);

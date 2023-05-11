@@ -50,7 +50,8 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Empresas myEmpresas = new Empresas();
     private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
-    public static int indexExcel;
+    private PlanTuristico verEmpresa;
+    public static int filaExcel;
 
     /**
      * Creates new form InicioAdmin
@@ -115,18 +116,12 @@ public class InicioAdmin extends javax.swing.JFrame {
         tableUsuarios.setModel(tablaUser);
     }
     
-    
-    // Se debe de los metodos del myLugares, con un objeto tipo empresa y Usar los mismo metodos, se pueden copiar y pegar esos metodos a la clase empresa
-    //Los metodos son los de nfilas y ReadSite
-    
     public void LeerEmpresas() throws IOException {
 
-        int filas = myLugares.nfilas();
+        int filas = myEmpresas.nFilas();
         tablaEmpresas.addColumn("RAZON SOCIAL");
-        tablaEmpresas.addColumn("USUARIO");
         tablaEmpresas.addColumn("NIT");
-        tablaEmpresas.addColumn("EMAIL");
-        String[] confirm = new String[4];
+        String[] confirm = new String[2];
 
         for (int i = 1; i <= filas; i++)
         {
@@ -214,7 +209,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         btEliminarEmpresa = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         txtUsuarioEmpresa = new javax.swing.JTextField();
-        btVerLugar4 = new javax.swing.JButton();
+        btVerEmpresa = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -816,9 +811,14 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel37.setText("USUARIO: ");
 
-        btVerLugar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
-        btVerLugar4.setText("Ver");
-        btVerLugar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btVerEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btVerEmpresa.setText("Ver");
+        btVerEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btVerEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -855,7 +855,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                                 .addGap(82, 82, 82)
                                 .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(60, 60, 60)
-                                .addComponent(btVerLugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel7Layout.setVerticalGroup(
@@ -875,7 +875,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarEmpresa)
                     .addComponent(btEliminarEmpresa)
-                    .addComponent(btVerLugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -1056,7 +1056,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
             try
             {
-                indexExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
+                filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
                 verLugar.setVisible(true);
                 this.setVisible(false);
@@ -1090,8 +1090,8 @@ public class InicioAdmin extends javax.swing.JFrame {
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
             try
             {
-                indexExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(indexExcel);
+                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
                 if (Integer.parseInt(datosUsu[4]) == 3)
                 {
                     JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
@@ -1315,8 +1315,8 @@ public class InicioAdmin extends javax.swing.JFrame {
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
             try
             {
-                indexExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(indexExcel);
+                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
                 if (Integer.parseInt(datosUsu[4]) == 1)
                 {
                     JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
@@ -1407,6 +1407,31 @@ public class InicioAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btEliminarEmpresaActionPerformed
 
+    private void btVerEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerEmpresaActionPerformed
+        int seleccion = tableEmpresas.getSelectedRow();
+        
+        if (seleccion != -1)
+        {
+            String nombre = String.valueOf(tableEmpresas.getModel().getValueAt(seleccion, 0));
+            String nit = String.valueOf(tableEmpresas.getModel().getValueAt(seleccion, 1));
+
+            try
+            {
+                filaExcel = myEmpresas.filaSeleccionada(nombre, nit);
+                verEmpresa = new PlanTuristico();
+                verEmpresa.setVisible(true);
+                this.setVisible(false);
+
+            } catch (IOException ex)
+            {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
+        }
+    }//GEN-LAST:event_btVerEmpresaActionPerformed
+
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -1477,9 +1502,9 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btEliminarEmpresa;
     private javax.swing.JButton btEliminarLugar;
     private javax.swing.JButton btEliminarUsuario;
+    private javax.swing.JButton btVerEmpresa;
     private javax.swing.JButton btVerLugar;
     private javax.swing.JButton btVerLugar2;
-    private javax.swing.JButton btVerLugar4;
     private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
     private javax.swing.JButton btnAscenderUsuario;

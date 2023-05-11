@@ -637,7 +637,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtNombreEmpresa1" min="-2" pref="224" max="-2" attributes="0"/>
+                                          <Component id="txtNombreEmpresa" min="-2" pref="224" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                                           <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -645,12 +645,12 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="btnBuscarLugar1" min="-2" pref="123" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="btVerLugar2" min="-2" pref="123" max="-2" attributes="0"/>
+                                          <Component id="btVerEmpresa" min="-2" pref="123" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNombreEmpresa2" min="-2" pref="224" max="-2" attributes="0"/>
+                                      <Component id="txtNit" min="-2" pref="224" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                           <Component id="btnLimpliar1" min="-2" pref="123" max="-2" attributes="0"/>
@@ -672,14 +672,14 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNombreEmpresa1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNombreEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNombreEmpresa2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnBuscarLugar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btVerLugar2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btVerEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnLimpliar1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -698,9 +698,9 @@
                     <Property name="text" type="java.lang.String" value="NOMBRE: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtNombreEmpresa1">
+                <Component class="javax.swing.JTextField" name="txtNombreEmpresa">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEmpresa1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEmpresaActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -710,7 +710,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="TableEmpresa">
+                    <Component class="javax.swing.JTable" name="tableEmpresas">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="2" rowCount="4">
@@ -739,9 +739,9 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="txtNombreEmpresa2">
+                <Component class="javax.swing.JTextField" name="txtNit">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreEmpresa2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNitActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
@@ -769,7 +769,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarLugar1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btVerLugar2">
+                <Component class="javax.swing.JButton" name="btVerEmpresa">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/IMG/ImgVer.png"/>
@@ -779,6 +779,9 @@
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVerEmpresaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnLimpliar1">
                   <Properties>

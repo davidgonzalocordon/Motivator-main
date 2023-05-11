@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Classes.Empresas;
 import Classes.Lugares;
 import Classes.Usuario;
 import java.awt.Color;
@@ -31,11 +32,20 @@ public class InicioUsuario extends javax.swing.JFrame {
             return false;
         }
     };
+    private DefaultTableModel tablaEmpresas = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     private Lugares myLugares = new Lugares();
+    private Empresas myEmpresas = new Empresas();
     private Usuario myUsuario = new Usuario();
     private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
+    private PlanTuristico verEmpresa;
     public static int filaExcel;
+    
 
     /**
      * Creates new form InicioAdmin
@@ -75,6 +85,25 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         }
         tableLugares.setModel(tabla);
+    }
+    
+        public void LeerEmpresas() throws IOException {
+
+        int filas = myEmpresas.nFilas();
+        tablaEmpresas.addColumn("RAZON SOCIAL");
+        tablaEmpresas.addColumn("NIT");
+        String[] confirm = new String[2];
+
+        for (int i = 1; i <= filas; i++)
+        {
+            confirm = myEmpresas.ReadEnterprise(i);
+            if (confirm[0] != null)
+            {
+                tablaEmpresas.addRow(confirm);
+
+            }
+        }
+        tableEmpresas.setModel(tablaEmpresas);
     }
 
     /**
@@ -120,13 +149,13 @@ public class InicioUsuario extends javax.swing.JFrame {
         btnLimpliar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
-        txtNombreEmpresa1 = new javax.swing.JTextField();
+        txtNombreEmpresa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableEmpresa = new javax.swing.JTable();
-        txtNombreEmpresa2 = new javax.swing.JTextField();
+        tableEmpresas = new javax.swing.JTable();
+        txtNit = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         btnBuscarLugar1 = new javax.swing.JButton();
-        btVerLugar2 = new javax.swing.JButton();
+        btVerEmpresa = new javax.swing.JButton();
         btnLimpliar1 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
@@ -458,13 +487,13 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel35.setText("NOMBRE: ");
 
-        txtNombreEmpresa1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreEmpresa1ActionPerformed(evt);
+                txtNombreEmpresaActionPerformed(evt);
             }
         });
 
-        TableEmpresa.setModel(new javax.swing.table.DefaultTableModel(
+        tableEmpresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -483,11 +512,11 @@ public class InicioUsuario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TableEmpresa);
+        jScrollPane1.setViewportView(tableEmpresas);
 
-        txtNombreEmpresa2.addActionListener(new java.awt.event.ActionListener() {
+        txtNit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreEmpresa2ActionPerformed(evt);
+                txtNitActionPerformed(evt);
             }
         });
 
@@ -504,9 +533,14 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        btVerLugar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
-        btVerLugar2.setText("Ver");
-        btVerLugar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btVerEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btVerEmpresa.setText("Ver");
+        btVerEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btVerEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerEmpresaActionPerformed(evt);
+            }
+        });
 
         btnLimpliar1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         btnLimpliar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imglimpiar.png"))); // NOI18N
@@ -530,17 +564,17 @@ public class InicioUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtNombreEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(150, 150, 150)
                                 .addComponent(jLabel36)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnBuscarLugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btVerLugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreEmpresa2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
                                 .addComponent(btnLimpliar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -555,13 +589,13 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(txtNombreEmpresa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35)
-                    .addComponent(txtNombreEmpresa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarLugar1)
-                    .addComponent(btVerLugar2)
+                    .addComponent(btVerEmpresa)
                     .addComponent(btnLimpliar1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -896,21 +930,48 @@ public class InicioUsuario extends javax.swing.JFrame {
         btnClose.setOpaque(false);
     }//GEN-LAST:event_txtCerrarMouseExited
 
-    private void txtNombreEmpresa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresa1ActionPerformed
+    private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreEmpresa1ActionPerformed
+    }//GEN-LAST:event_txtNombreEmpresaActionPerformed
 
-    private void txtNombreEmpresa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresa2ActionPerformed
+    private void txtNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreEmpresa2ActionPerformed
+    }//GEN-LAST:event_txtNitActionPerformed
 
     private void btnBuscarLugar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarLugar1ActionPerformed
 
     private void btnLimpliar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliar1ActionPerformed
-        // TODO add your handling code here:
+        txtNombreEmpresa.setText("");
+        txtNit.setText("");
     }//GEN-LAST:event_btnLimpliar1ActionPerformed
+
+    private void btVerEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerEmpresaActionPerformed
+        
+        int seleccion = tableEmpresas.getSelectedRow();
+        
+        if (seleccion != -1)
+        {
+            String nombre = String.valueOf(tableEmpresas.getModel().getValueAt(seleccion, 0));
+            String nit = String.valueOf(tableEmpresas.getModel().getValueAt(seleccion, 1));
+
+            try
+            {
+                filaExcel = myEmpresas.filaSeleccionada(nombre, nit);
+                verEmpresa = new PlanTuristico();
+                verEmpresa.setVisible(true);
+                this.setVisible(false);
+
+            } catch (IOException ex)
+            {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
+        }
+    }//GEN-LAST:event_btVerEmpresaActionPerformed
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
@@ -975,12 +1036,11 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Lugares;
     private javax.swing.JTabbedPane PanelUsuario;
-    private javax.swing.JTable TableEmpresa;
     private javax.swing.JButton btActualizar;
     private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btConfiguracion;
+    private javax.swing.JButton btVerEmpresa;
     private javax.swing.JButton btVerLugar;
-    private javax.swing.JButton btVerLugar2;
     private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
     private javax.swing.JButton btnBuscarLugar;
@@ -1017,13 +1077,14 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable tableEmpresas;
     private javax.swing.JTable tableLugares;
     private javax.swing.JLabel txtCerrar;
     private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmailAdmin;
+    private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombreAdmin;
-    private javax.swing.JTextField txtNombreEmpresa1;
-    private javax.swing.JTextField txtNombreEmpresa2;
+    private javax.swing.JTextField txtNombreEmpresa;
     private javax.swing.JTextField txtNombreLugar;
     private javax.swing.JTextField txtPasswordAdmin;
     private javax.swing.JTextField txtUsuarioAdmin;

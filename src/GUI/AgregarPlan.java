@@ -4,7 +4,12 @@
  */
 package GUI;
 
+import Classes.PlanesTuristicos;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +18,8 @@ import java.awt.Color;
 public class AgregarPlan extends javax.swing.JFrame {
     
     int mousex, mousey;
+    private PlanesTuristicos myPlan;
+    private InicioEmpresa inicioEmpresa;
     /**
      * Creates new form AgregarPlan
      */
@@ -31,6 +38,8 @@ public class AgregarPlan extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanelVolver = new javax.swing.JPanel();
+        jLabelVolver = new javax.swing.JLabel();
         jPanelRegistrar = new javax.swing.JPanel();
         jLabelRegistrar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -56,6 +65,36 @@ public class AgregarPlan extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
         jLabel4.setText("Agregar Plan Turistico");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
+
+        jLabelVolver.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelVolver.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
+        jLabelVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelVolver.setText("Volver");
+        jLabelVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelVolverMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelVolverLayout = new javax.swing.GroupLayout(jPanelVolver);
+        jPanelVolver.setLayout(jPanelVolverLayout);
+        jPanelVolverLayout.setHorizontalGroup(
+            jPanelVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVolverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelVolverLayout.setVerticalGroup(
+            jPanelVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVolverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+        );
+
+        jPanel1.add(jPanelVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 110, 40));
 
         jLabelRegistrar.setBackground(new java.awt.Color(0, 0, 0));
         jLabelRegistrar.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
@@ -85,7 +124,7 @@ public class AgregarPlan extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        jPanel1.add(jPanelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 403, 110, 40));
+        jPanel1.add(jPanelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImagenAgregarPlan.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 340, 530));
@@ -302,7 +341,19 @@ public class AgregarPlan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtaDescripMousePressed
 
     private void jLabelRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistrarMouseClicked
-        System.out.println("Aqui deberia ir el codigo de agregar OwO");
+        String name = txtName.getText();
+        String price = txtPrecio.getText();
+        String desc = txtaDescrip.getText();
+        
+        try{
+            myPlan.addPlan(name,InicioEmpresa.nombreEmpresa,desc,price);
+            JOptionPane.showMessageDialog(null,"Plan turistico enviado exitosamente");
+            inicioEmpresa = new InicioEmpresa();
+            inicioEmpresa.setVisible(true);
+            this.dispose();
+        }catch(Exception ex){
+            
+        }
     }//GEN-LAST:event_jLabelRegistrarMouseClicked
 
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
@@ -315,6 +366,16 @@ public class AgregarPlan extends javax.swing.JFrame {
         mousex = evt.getX();
         mousey=evt.getY();
     }//GEN-LAST:event_HeaderMousePressed
+
+    private void jLabelVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVolverMouseClicked
+        try {
+            inicioEmpresa = new InicioEmpresa();
+            inicioEmpresa.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(AgregarPlan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jLabelVolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -356,8 +417,10 @@ public class AgregarPlan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelRegistrar;
+    private javax.swing.JLabel jLabelVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelRegistrar;
+    private javax.swing.JPanel jPanelVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

@@ -4,7 +4,9 @@
  */
 package GUI;
 
+import Classes.Empresas;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,17 +14,38 @@ import java.awt.Color;
  */
 public class PlanTuristico extends javax.swing.JFrame {
     int mousex, mousey;
-    /**
-     * Creates new form PlanTuristico
-     */
+    
+    private static Empresas theEmpresa;
+    private InicioAdmin myAdmin;
+    private InicioUsuario myUsuario;
+    private InicioEmpresa myEmpresa;
+    private String nameEmpresa;
+    private String mailEmpresa;
+    private String descripcion;
+    
     public PlanTuristico() {
         initComponents();
-        Nombre.setText("");
-        Email.setText("");
-        
+        if (NewLogin.level == 3){
+            setDatos(myAdmin.filaExcel);
+        }
+        else if(NewLogin.level == 2 || NewLogin.level ==1){
+            setDatos(myUsuario.filaExcel);
+        }
+        else{
+            setDatos(myEmpresa.filaExcel);
+        }
+        Nombre.setText(nameEmpresa);
+        Email.setText(mailEmpresa);
+        txtDescripcion.setText(descripcion);
     }
     
-    
+    public void setDatos(int filaExcel){
+        String info[] = new String[3];
+        info = theEmpresa.ObtenerDato(filaExcel);
+        nameEmpresa= info[0];
+        mailEmpresa = info[1];
+        descripcion = info[2];
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,11 +57,10 @@ public class PlanTuristico extends javax.swing.JFrame {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        Nombre = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Email = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescipcion = new javax.swing.JTextPane();
+        txtDescripcion = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -50,6 +72,7 @@ public class PlanTuristico extends javax.swing.JFrame {
         btnClose = new javax.swing.JPanel();
         txtCerrar = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
+        Nombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -57,21 +80,17 @@ public class PlanTuristico extends javax.swing.JFrame {
         BackGround.setBackground(new java.awt.Color(255, 255, 255));
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Nombre.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
-        Nombre.setText("\"nombre\"");
-        BackGround.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel2.setText("Planes Turisticos:");
         BackGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
-        Email.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        Email.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         Email.setText("\"Email\"");
-        BackGround.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, -1, -1));
+        BackGround.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, -1, -1));
 
-        txtDescipcion.setEditable(false);
-        txtDescipcion.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(txtDescipcion);
+        txtDescripcion.setEditable(false);
+        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(txtDescripcion);
 
         BackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 580, 70));
 
@@ -204,15 +223,23 @@ public class PlanTuristico extends javax.swing.JFrame {
             }
         });
 
+        Nombre.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
+        Nombre.setText("\"nombre\"");
+
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(303, 303, 303)
+                .addComponent(Nombre)
+                .addContainerGap(458, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(Nombre))
         );
 
         BackGround.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
@@ -233,16 +260,14 @@ public class PlanTuristico extends javax.swing.JFrame {
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         if (NewLogin.level == 3){
-
             try {
                 this.myAdmin = new InicioAdmin();
+                myAdmin.setVisible(true);
+                this.dispose();
             }
-            catch (IOException ex) {
-                Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
+            catch (Exception ex) {
+                
             }
-
-            myAdmin.setVisible(true);
-            this.dispose();
         }
         else if(NewLogin.level == 2 || NewLogin.level == 1){
             myUsuario.setVisible(true);
@@ -255,7 +280,7 @@ public class PlanTuristico extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVerDescripMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerDescripMouseClicked
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,descripcion);
     }//GEN-LAST:event_btnVerDescripMouseClicked
 
     private void txtCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseClicked
@@ -333,6 +358,6 @@ public class PlanTuristico extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtCerrar;
-    private javax.swing.JTextPane txtDescipcion;
+    private javax.swing.JTextPane txtDescripcion;
     // End of variables declaration//GEN-END:variables
 }

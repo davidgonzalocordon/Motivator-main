@@ -35,6 +35,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private EntrarEmpresa myLogin = new EntrarEmpresa();
     private VerLugar verLugar;
     public static int filaExcel;
+    public static String nombreEmpresa;
 
     /**
      * Creates new form InicioAdmin
@@ -46,6 +47,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         Leer();
         String datos[] = new String[3];
         datos = empresa.ObtenerDato(myLogin.ID);
+        nombreEmpresa= datos[0];
         txtNombreAdmin.setText(datos[0]);
         txtUser.setText(datos[1]);
         txtNit.setText(datos[2]);
