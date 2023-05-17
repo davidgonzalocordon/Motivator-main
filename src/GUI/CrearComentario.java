@@ -62,6 +62,7 @@ public class CrearComentario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,18 +73,14 @@ public class CrearComentario extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Comentario: ");
 
-        txtComentario.setBackground(new java.awt.Color(255, 255, 255));
         txtComentario.setForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(txtComentario);
 
         jLabel9.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estrellas:");
 
-        cmbCalificacionLugar.setBackground(new java.awt.Color(255, 255, 255));
         cmbCalificacionLugar.setFont(new java.awt.Font("Quicksand", 0, 14)); // NOI18N
         cmbCalificacionLugar.setForeground(new java.awt.Color(51, 51, 51));
         cmbCalificacionLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
@@ -94,7 +91,6 @@ public class CrearComentario extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Quicksand", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Crear Comentario");
 
         jPanel6.setPreferredSize(new java.awt.Dimension(150, 77));

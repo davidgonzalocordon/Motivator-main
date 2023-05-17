@@ -333,14 +333,14 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(BtnEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btConfiguracion)
                 .addGap(34, 34, 34))
         );
 
-        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 593));
+        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
         PanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -733,7 +733,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         jPanel1.add(PanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 880, 500));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/939716.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 900, 590));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 900, 600));
 
         Header.setBackground(new java.awt.Color(255, 255, 255));
         Header.setForeground(new java.awt.Color(255, 121, 121));

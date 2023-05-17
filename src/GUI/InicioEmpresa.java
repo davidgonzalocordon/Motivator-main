@@ -157,6 +157,15 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
         btnLimpliar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btEliminarPlan = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablePlanes = new javax.swing.JTable();
+        btEditarPlan = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtaDescripcion = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -174,15 +183,6 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaDescrip = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
-        btEliminarPlan = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablePlanes = new javax.swing.JTable();
-        btEditarPlan = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtaDescripcion = new javax.swing.JTextArea();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
 
@@ -342,14 +342,14 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(BtnPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btConfiguracion)
                 .addGap(34, 34, 34))
         );
 
-        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 593));
+        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
         PanelUsuario.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -524,6 +524,112 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Lugares", jPanel6);
 
+        jPanel2.setBackground(new java.awt.Color(217, 152, 141));
+
+        btEliminarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btEliminarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgeliminar.png"))); // NOI18N
+        btEliminarPlan.setText("Eliminar");
+        btEliminarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEliminarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarPlanActionPerformed(evt);
+            }
+        });
+
+        tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Descripcion", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablePlanes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablePlanesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablePlanes);
+
+        btEditarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btEditarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/config.png"))); // NOI18N
+        btEditarPlan.setText("Editar");
+        btEditarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEditarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarPlanActionPerformed(evt);
+            }
+        });
+
+        txtaDescripcion.setEditable(false);
+        txtaDescripcion.setColumns(20);
+        txtaDescripcion.setLineWrap(true);
+        txtaDescripcion.setRows(5);
+        jScrollPane4.setViewportView(txtaDescripcion);
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setText("Planes turisticos:");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setText("Seleccione un plan para ver su descripcion aqui:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btEliminarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEditarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btEditarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btEliminarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+
+        PanelUsuario.addTab("Planes Turisticos", jPanel2);
+
         jPanel9.setBackground(new java.awt.Color(217, 152, 141));
 
         btActualizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -663,116 +769,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Configuracion", jPanel9);
 
-        jPanel2.setBackground(new java.awt.Color(217, 152, 141));
-
-        btEliminarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btEliminarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgeliminar.png"))); // NOI18N
-        btEliminarPlan.setText("Eliminar");
-        btEliminarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btEliminarPlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEliminarPlanActionPerformed(evt);
-            }
-        });
-
-        tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre", "Descripcion", "Precio"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tablePlanes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablePlanesMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tablePlanes);
-
-        btEditarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btEditarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/config.png"))); // NOI18N
-        btEditarPlan.setText("Editar");
-        btEditarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btEditarPlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarPlanActionPerformed(evt);
-            }
-        });
-
-        txtaDescripcion.setEditable(false);
-        txtaDescripcion.setColumns(20);
-        txtaDescripcion.setLineWrap(true);
-        txtaDescripcion.setRows(5);
-        jScrollPane4.setViewportView(txtaDescripcion);
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel9.setText("Planes turisticos:");
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setText("Seleccione un plan para ver su descripcion aqui:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btEliminarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEditarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btEditarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btEliminarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-        );
-
-        PanelUsuario.addTab("Planes Turisticos", jPanel2);
-
         jPanel1.add(PanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 880, 500));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/939716.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 900, 590));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 900, 600));
 
         Header.setBackground(new java.awt.Color(255, 255, 255));
         Header.setForeground(new java.awt.Color(255, 121, 121));
@@ -851,8 +851,8 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
         PanelUsuario.setSelectedIndex(1);
         PanelUsuario.setEnabledAt(0, false);
-        PanelUsuario.setEnabledAt(1, true);
-        PanelUsuario.setEnabledAt(2, false);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, true);
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugarActionPerformed
@@ -1044,8 +1044,8 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private void BtnPlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnPlanesMouseClicked
         PanelUsuario.setSelectedIndex(2);
         PanelUsuario.setEnabledAt(0, false);
-        PanelUsuario.setEnabledAt(1, false);
-        PanelUsuario.setEnabledAt(2, true);
+        PanelUsuario.setEnabledAt(1, true);
+        PanelUsuario.setEnabledAt(2, false);
     }//GEN-LAST:event_BtnPlanesMouseClicked
 
     private void tablePlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePlanesMouseClicked

@@ -74,6 +74,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,19 +140,15 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Quicksand", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Por favor llenar los espacios para hacer el registro: ");
 
         jLabel5.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nombre: ");
 
         jLabel6.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Dirección: ");
 
-        txtNombreLugar.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreLugar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombreLugar.setForeground(new java.awt.Color(102, 102, 102));
         txtNombreLugar.setText("Ingrese nombre del sitio");
@@ -165,7 +162,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
             }
         });
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setForeground(new java.awt.Color(102, 102, 102));
         txtDireccion.setText("Ingrese dirección del sitio");
         txtDireccion.setBorder(null);
@@ -179,18 +175,14 @@ public class RegistrarLugar extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Descripcion: ");
 
-        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(txtDescripcion);
 
         jLabel7.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono: ");
 
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefono.setForeground(new java.awt.Color(102, 102, 102));
         txtTelefono.setText("Ingrese telefono del sitio");
         txtTelefono.setBorder(null);
@@ -203,17 +195,14 @@ public class RegistrarLugar extends javax.swing.JFrame {
             }
         });
 
-        cmdTipo.setBackground(new java.awt.Color(255, 255, 255));
         cmdTipo.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
         cmdTipo.setForeground(new java.awt.Color(51, 51, 51));
         cmdTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Centro Comercial", "Parque", "Monumento", "Museo", "Restaurante", "otros" }));
 
         jLabel3.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo: ");
 
         jLabel8.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Horario: ");
 
         btDiurno.setBackground(new java.awt.Color(255, 255, 255));
@@ -230,19 +219,15 @@ public class RegistrarLugar extends javax.swing.JFrame {
         btSiempre.setText("Ambos");
 
         jLabel9.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estrellas:");
 
-        cmbCalificacion.setBackground(new java.awt.Color(255, 255, 255));
         cmbCalificacion.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
         cmbCalificacion.setForeground(new java.awt.Color(51, 51, 51));
         cmbCalificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabel10.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Link Google Maps: ");
 
-        txtLinkGoogleMaps.setBackground(new java.awt.Color(255, 255, 255));
         txtLinkGoogleMaps.setForeground(new java.awt.Color(102, 102, 102));
         txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
         txtLinkGoogleMaps.setBorder(null);
@@ -462,17 +447,17 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtNombreLugarMousePressed
 
@@ -484,24 +469,24 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtNombreLugarMouseClicked
 
     private void txtDireccionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMousePressed
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().equals("Ingrese dirección del sitio")) {
@@ -511,19 +496,19 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtDireccionMousePressed
 
     private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().equals("Ingrese dirección del sitio")) {
@@ -533,24 +518,24 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtDireccionMouseClicked
 
     private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().equals("Ingrese telefono del sitio")) {
@@ -560,19 +545,19 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtTelefonoMouseClicked
 
     private void txtTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMousePressed
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().equals("Ingrese telefono del sitio")) {
@@ -582,24 +567,24 @@ public class RegistrarLugar extends javax.swing.JFrame {
         
         if (txtLinkGoogleMaps.getText().isEmpty()) {
             txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
-            txtLinkGoogleMaps.setForeground(Color.getHSBColor(102, 102, 102));
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtTelefonoMousePressed
 
     private void txtLinkGoogleMapsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLinkGoogleMapsMouseClicked
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().equals("Ingrese enlace de google maps del sitio")) {
@@ -611,17 +596,17 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private void txtLinkGoogleMapsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLinkGoogleMapsMousePressed
         if (txtNombreLugar.getText().isEmpty()) {
             txtNombreLugar.setText("Ingrese nombre del sitio");
-            txtNombreLugar.setForeground(Color.getHSBColor(102, 102, 102));
+            txtNombreLugar.setForeground(Color.GRAY);
         }
         
         if (txtDireccion.getText().isEmpty()) {
             txtDireccion.setText("Ingrese dirección del sitio");
-            txtDireccion.setForeground(Color.getHSBColor(102, 102, 102));
+            txtDireccion.setForeground(Color.GRAY);
         }
         
         if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Ingrese telefono del sitio");
-            txtTelefono.setForeground(Color.getHSBColor(102, 102, 102));
+            txtTelefono.setForeground(Color.GRAY);
         }
         
         if (txtLinkGoogleMaps.getText().equals("Ingrese enlace de google maps del sitio")) {

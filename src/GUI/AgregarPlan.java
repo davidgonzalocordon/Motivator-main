@@ -142,7 +142,7 @@ public class AgregarPlan extends javax.swing.JFrame {
         jPanel1.add(jPanelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 110, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImagenAgregarPlan.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 340, 530));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 340, 520));
 
         labelNombre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         labelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,6 +181,11 @@ public class AgregarPlan extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtPrecioMouseClicked1(evt);
+            }
+        });
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
             }
         });
         jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 450, -1));
@@ -269,7 +274,7 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtPrecio.setForeground(Color.GRAY);
         }
         if(txtaDescrip.getText().isEmpty()){
-            txtaDescrip.setText("Ingrese Edad");
+            txtaDescrip.setText("Ingrese la descripccion");
             txtaDescrip.setForeground(Color.GRAY);
         }
         
@@ -285,7 +290,7 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtPrecio.setForeground(Color.GRAY);
         }
         if(txtaDescrip.getText().isEmpty()){
-            txtaDescrip.setText("Ingrese Edad");
+            txtaDescrip.setText("Ingrese la descripccion");
             txtaDescrip.setForeground(Color.GRAY);
         }
         
@@ -301,7 +306,7 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtPrecio.setForeground(Color.BLACK);
         }
         if(txtaDescrip.getText().isEmpty()){
-            txtaDescrip.setText("Ingrese Edad");
+            txtaDescrip.setText("Ingrese la descripccion");
             txtaDescrip.setForeground(Color.GRAY);
         }
         
@@ -317,7 +322,7 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtPrecio.setForeground(Color.BLACK);
         }
         if(txtaDescrip.getText().isEmpty()){
-            txtaDescrip.setText("Ingrese Edad");
+            txtaDescrip.setText("Ingrese la descripccion");
             txtaDescrip.setForeground(Color.GRAY);
         }
         
@@ -329,7 +334,7 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtName.setForeground(Color.GRAY);
         }
         if(txtPrecio.getText().isEmpty()){
-            txtPrecio.setText("");
+            txtPrecio.setText("Ingrese Usuario");
             txtPrecio.setForeground(Color.GRAY);
         }
         if(txtaDescrip.getText().equals("Ingrese la descripccion")){
@@ -347,12 +352,12 @@ public class AgregarPlan extends javax.swing.JFrame {
             txtName.setForeground(Color.GRAY);
         }
         if(txtPrecio.getText().isEmpty()){
-            txtPrecio.setText("");
-            txtPrecio.setForeground(Color.BLACK);
+            txtPrecio.setText("Ingrese Usuario");
+            txtPrecio.setForeground(Color.GRAY);
         }
         if(txtaDescrip.getText().equals("Ingrese la descripccion")){
-            txtaDescrip.setText("Ingrese la descripccion");
-            txtaDescrip.setForeground(Color.GRAY);
+            txtaDescrip.setText("");
+            txtaDescrip.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_txtaDescripMousePressed
 
@@ -404,6 +409,10 @@ public class AgregarPlan extends javax.swing.JFrame {
             Logger.getLogger(AgregarPlan.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabelVolverMouseClicked
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     /**
      * @param args the command line arguments

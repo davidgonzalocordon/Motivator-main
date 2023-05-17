@@ -66,6 +66,7 @@ public class AgregarFotos extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FondoAddImg.jpg"))); // NOI18N
@@ -136,7 +137,6 @@ public class AgregarFotos extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Quicksand", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Agregue las imagenes aqui");
 
         lblImagen.setBackground(new java.awt.Color(255, 255, 255));
@@ -150,10 +150,8 @@ public class AgregarFotos extends javax.swing.JFrame {
         txtRutaImagen.setBorder(null);
 
         lblSucceded.setFont(new java.awt.Font("Quicksand Light", 3, 14)); // NOI18N
-        lblSucceded.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Quicksand", 2, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ruta imagen:");
 
         jPanel7.setPreferredSize(new java.awt.Dimension(112, 67));

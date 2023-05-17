@@ -164,7 +164,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="-1" height="593"/>
+              <AbsoluteConstraints x="0" y="0" width="-1" height="600"/>
             </Constraint>
           </Constraints>
 
@@ -212,7 +212,7 @@
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="BtnUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Component id="BtnLugares" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="BtnEmpresa" min="-2" max="-2" attributes="0"/>
@@ -294,7 +294,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/IMG/ImgUsuarios.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#xa;&#xa;Usuarios"/>
+                    <Property name="text" type="java.lang.String" value="  Usuarios"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -500,7 +500,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="324" max="-2" attributes="0"/>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1344,7 +1344,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="170" y="0" width="900" height="590"/>
+              <AbsoluteConstraints x="170" y="0" width="900" height="600"/>
             </Constraint>
           </Constraints>
         </Component>
