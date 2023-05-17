@@ -50,7 +50,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Empresas myEmpresas = new Empresas();
     private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
-    private PlanTuristico verEmpresa;
+    private VerEmpresa verEmpresa;
     public static int filaExcel;
 
     /**
@@ -198,8 +198,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         btnLimpliar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
-        txtEmailEmpresa = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
         txtRazonSocial = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         tableEmpresas = new javax.swing.JTable();
@@ -207,8 +205,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNIT = new javax.swing.JTextField();
         btEliminarEmpresa = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        txtUsuarioEmpresa = new javax.swing.JTextField();
         btVerEmpresa = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
@@ -764,9 +760,6 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel35.setText("RAZON SOCIAL: ");
 
-        jLabel36.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel36.setText("EMAIL: ");
-
         tableEmpresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object[][]{
 
@@ -808,9 +801,6 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel37.setText("USUARIO: ");
-
         btVerEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
         btVerEmpresa.setText("Ver");
         btVerEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -829,34 +819,23 @@ public class InicioAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel37))
-                            .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(116, 116, 116)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtUsuarioEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                                .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(167, 167, 167)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel36)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEmailEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
+                                .addComponent(txtNIT, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
+                                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
                                 .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(96, 96, 96)
+                                .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(141, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -865,20 +844,19 @@ public class InicioAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36)
-                    .addComponent(txtEmailEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37)
-                    .addComponent(txtUsuarioEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNIT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscarEmpresa)
-                    .addComponent(btEliminarEmpresa)
-                    .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEliminarEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         PanelUsuario.addTab("Empresas", jPanel7);
@@ -929,46 +907,46 @@ public class InicioAdmin extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174)
+                .addComponent(btCerrarSesion)
+                .addGap(193, 193, 193))
+            .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
-                        .addGap(313, 313, 313))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174)
-                        .addComponent(btCerrarSesion)
-                        .addGap(193, 193, 193))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEmailAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(326, 326, 326)
+                        .addComponent(jLabel32)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel32)
-                .addGap(46, 46, 46)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1025,14 +1003,18 @@ public class InicioAdmin extends javax.swing.JFrame {
         String email = txtEmailAdmin.getText();
         String contra = txtPasswordAdmin.getText();
 
-        try
-        {
-            myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if(nombre.isEmpty()||usuario.isEmpty()||email.isEmpty()||contra.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco");
+        }else{
+            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION){
+                try{
+                    myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
+                } catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
@@ -1073,6 +1055,7 @@ public class InicioAdmin extends javax.swing.JFrame {
 
     private void btnAscenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscenderUsuarioActionPerformed
 
+        String myUser = txtUsuarioAdmin.getText();
         String[] confirm = new String[4];
         DefaultTableModel selecUser = tablaUser;
         DefaultTableModel finalUserTable = new DefaultTableModel();
@@ -1080,48 +1063,43 @@ public class InicioAdmin extends javax.swing.JFrame {
         finalUserTable.addColumn("USUARIO");
         finalUserTable.addColumn("EMAIL");
         finalUserTable.addColumn("NIVEL");
-
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+        String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+        String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+        String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
 
-        if (usuarioSeleccionado != -1)
-        {
-            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
-            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
-            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
-            try
-            {
-                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
-                if (Integer.parseInt(datosUsu[4]) == 3)
-                {
-                    JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
-                } else
-                {
-                    int lvl = Integer.parseInt(datosUsu[4]) + 1;
-                    int id = Integer.parseInt(datosUsu[5]);
-                    int filas = myUsuario.nfilasUser();
+        if(usuSelec.equals(myUser)){
+            JOptionPane.showMessageDialog(null, "No se puede ascender o descender a si mismo.");
+        }else{
+            if (usuarioSeleccionado != -1){
+                try{
+                    filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                    String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                    if (Integer.parseInt(datosUsu[4]) == 3){
+                        JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
+                    }else{
+                        int lvl = Integer.parseInt(datosUsu[4]) + 1;
+                        int id = Integer.parseInt(datosUsu[5]);
+                        int filas = myUsuario.nfilasUser();
 
-                    myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
+                        myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
 
-                    for (int i = 1; i <= filas; i++)
-                    {
-                        confirm = myUsuario.ReadUser(i);
-                        if (confirm[0] != null)
-                        {
-                            finalUserTable.addRow(confirm);
+                        for (int i = 1; i <= filas; i++){
+                            confirm = myUsuario.ReadUser(i);
+                            if (confirm[0] != null){
+                                finalUserTable.addRow(confirm);
+                            }
                         }
+                        tableUsuarios.setModel(finalUserTable);
+                        JOptionPane.showMessageDialog(null, "Usuario ascendido de manera satisfactoria.");
                     }
-                    tableUsuarios.setModel(finalUserTable);
-                    JOptionPane.showMessageDialog(null, "Usuario ascendido de manera satisfactoria.");
-                }
 
-            } catch (IOException ex)
-            {
-                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
             }
-        } else
-        {
-            JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
         }
     }//GEN-LAST:event_btnAscenderUsuarioActionPerformed
 
@@ -1159,30 +1137,28 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void btEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarUsuarioActionPerformed
 
         DefaultTableModel selecUser = tablaUser;
-
+        String myUser = txtUsuarioAdmin.getText();
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
-        if (usuarioSeleccionado != -1)
-        {
-            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
-            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
-            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+        String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+        String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+        String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
 
-            try
-            {
-                int excelFill = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                myUsuario.DeleteUser(excelFill);
+        if(myUser.equals(usuSelec)){
+            JOptionPane.showMessageDialog(null, "No puedes eliminar tu propio usuario");
+        }else{
+            if (usuarioSeleccionado != -1){
+                int reply = JOptionPane.showConfirmDialog(null, "Seguro desea borrar el usuario "+nombreSeleccionado+"?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+                if(reply == JOptionPane.YES_OPTION){
+                    try{
+                        int excelFill = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                        myUsuario.DeleteUser(excelFill);
 
-            } catch (IOException ex)
-            {
-                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            if (usuarioSeleccionado >= 0)
-            {
-                tablaUser.removeRow(usuarioSeleccionado);
-                tableUsuarios.setModel(tablaUser);
-            } else
-            {
+                    } catch (IOException ex){
+                        Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    tablaUser.removeRow(usuarioSeleccionado);
+                }
+            }else{
                 JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
             }
         }
@@ -1248,11 +1224,11 @@ public class InicioAdmin extends javax.swing.JFrame {
                     aux[h] = tabla.getValueAt(i, h).toString();
                 }
                 tablaaux.addRow(aux);
+                tableLugares.setModel(tablaaux);
                 tableLugares.changeSelection(i, j, false, false);
             }
         }
 
-        tableLugares.setModel(tablaaux);
     }//GEN-LAST:event_btnBuscarLugarActionPerformed
 
     private void btnLimpliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliarActionPerformed
@@ -1275,78 +1251,69 @@ public class InicioAdmin extends javax.swing.JFrame {
             String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
             String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
             String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
-
-            try
-            {
+            
+            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea borrar el sitio "+nombreSeleccionado+"?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION){
+                try{
                 int excelFill = myLugares.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
                 myLugares.deleteSite(excelFill);
 
-            } catch (IOException ex)
-            {
-                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            if (usuarioSeleccionado >= 0)
-            {
+                } catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 tabla.removeRow(usuarioSeleccionado);
-            } else
-            {
-                JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
         }
     }//GEN-LAST:event_btEliminarLugarActionPerformed
 
     private void btnDesenderUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesenderUsuarioActionPerformed
 
         String[] confirm = new String[4];
+        String myUser = txtUsuarioAdmin.getText();
         DefaultTableModel selecUser = tablaUser;
         DefaultTableModel finalUserTable = new DefaultTableModel();
         finalUserTable.addColumn("NOMBRE");
         finalUserTable.addColumn("USUARIO");
         finalUserTable.addColumn("EMAIL");
         finalUserTable.addColumn("NIVEL");
-
         int usuarioSeleccionado = tableUsuarios.getSelectedRow();
+        String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
+        String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
+        String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
+        
+        if(usuSelec.equals(myUser)){
+            JOptionPane.showMessageDialog(null, "No se puede ascender o descender a si mismo.");
+        }else{
+            if (usuarioSeleccionado != -1){
+                try{
+                    filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
+                    String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
+                    if (Integer.parseInt(datosUsu[4]) == 1){
+                        JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
+                    }else{
+                        int lvl = Integer.parseInt(datosUsu[4]) - 1;
+                        int id = Integer.parseInt(datosUsu[5]);
+                        int filas = myUsuario.nfilasUser();
 
-        if (usuarioSeleccionado != -1)
-        {
-            String nombreSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 0));
-            String usuSelec = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 1));
-            String mailSeleccionado = String.valueOf(selecUser.getValueAt(usuarioSeleccionado, 2));
-            try
-            {
-                filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
-                String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
-                if (Integer.parseInt(datosUsu[4]) == 1)
-                {
-                    JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
-                } else
-                {
-                    int lvl = Integer.parseInt(datosUsu[4]) - 1;
-                    int id = Integer.parseInt(datosUsu[5]);
-                    int filas = myUsuario.nfilasUser();
+                        myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
 
-                    myUsuario.EditUser(datosUsu[0], datosUsu[1], datosUsu[2], datosUsu[3], id, lvl);
-
-                    for (int i = 1; i <= filas; i++)
-                    {
-                        confirm = myUsuario.ReadUser(i);
-                        if (confirm[0] != null)
-                        {
-                            finalUserTable.addRow(confirm);
+                        for (int i = 1; i <= filas; i++){
+                            confirm = myUsuario.ReadUser(i);
+                            if (confirm[0] != null){
+                                finalUserTable.addRow(confirm);
+                            }
                         }
+                        tableUsuarios.setModel(finalUserTable);
+                        JOptionPane.showMessageDialog(null, "Usuario desensido de mareta satisfactoria.");
                     }
-                    tableUsuarios.setModel(finalUserTable);
-                    JOptionPane.showMessageDialog(null, "Usuario desensido de mareta satisfactoria.");
+                } catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-            } catch (IOException ex)
-            {
-                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else
-        {
-            JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
+            } else{
+                JOptionPane.showMessageDialog(null, "Seleccione de la lista el usuario que desea ascender.");
+            } 
         }
     }//GEN-LAST:event_btnDesenderUsuarioActionPerformed
 
@@ -1400,11 +1367,50 @@ public class InicioAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCerrarMouseExited
 
     private void btnBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpresaActionPerformed
-        // TODO add your handling code here:
+        int j = 0;
+        String buscar = "";
+
+        if (txtNIT.getText().isEmpty()){
+            buscar = txtRazonSocial.getText();
+            j = 0;
+        }else{
+            buscar = txtNIT.getText();
+            j = 1;
+        }
+        buscar = buscar.toLowerCase(); // Convertir cadena de búsqueda a minúsculas
+
+        for (int i = 0; i < tablaEmpresas.getRowCount(); i++){
+            String valorTabla = tablaEmpresas.getValueAt(i, j).toString().toLowerCase(); // Convertir valor de la tabla a minúsculas
+            if (valorTabla.equals(buscar)){
+                tableEmpresas.changeSelection(i, j, false, false);
+            }
+        }
     }//GEN-LAST:event_btnBuscarEmpresaActionPerformed
 
     private void btEliminarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarEmpresaActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel selecEmpresa = tablaEmpresas;
+
+        int usuarioSeleccionado = tableEmpresas.getSelectedRow();
+
+        if (usuarioSeleccionado != -1)
+        {
+            String nombreSelected = String.valueOf(selecEmpresa.getValueAt(usuarioSeleccionado, 0));
+            String nitSelected = String.valueOf(selecEmpresa.getValueAt(usuarioSeleccionado, 1));
+            
+            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea borrar la empresa "+nombreSelected+"?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION){
+                try{
+                int excelFill = myEmpresas.filaSeleccionada(nombreSelected, nitSelected);
+                myEmpresas.deleteEmpresa(excelFill);
+
+                } catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                tablaEmpresas.removeRow(usuarioSeleccionado);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
+        }
     }//GEN-LAST:event_btEliminarEmpresaActionPerformed
 
     private void btVerEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerEmpresaActionPerformed
@@ -1418,7 +1424,7 @@ public class InicioAdmin extends javax.swing.JFrame {
             try
             {
                 filaExcel = myEmpresas.filaSeleccionada(nombre, nit);
-                verEmpresa = new PlanTuristico();
+                verEmpresa = new VerEmpresa();
                 verEmpresa.setVisible(true);
                 this.setVisible(false);
 
@@ -1533,8 +1539,6 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1557,7 +1561,6 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailAdmin;
-    private javax.swing.JTextField txtEmailEmpresa;
     private javax.swing.JTextField txtNIT;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreAdmin;
@@ -1566,6 +1569,5 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtRazonSocial;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtUsuarioAdmin;
-    private javax.swing.JTextField txtUsuarioEmpresa;
     // End of variables declaration//GEN-END:variables
 }

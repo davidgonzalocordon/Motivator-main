@@ -64,6 +64,8 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         TextoRegistro = new javax.swing.JLabel();
         RBsi = new javax.swing.JRadioButton();
         RBno = new javax.swing.JRadioButton();
+        jPanelRegistrar1 = new javax.swing.JPanel();
+        jLabelVolver = new javax.swing.JLabel();
         jPanelRegistrar = new javax.swing.JPanel();
         jLabelRegistrar = new javax.swing.JLabel();
         labelConfiEmail = new javax.swing.JLabel();
@@ -228,6 +230,28 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             }
         });
 
+        jLabelVolver.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelVolver.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
+        jLabelVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelVolver.setText("Volver");
+        jLabelVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelVolverMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelRegistrar1Layout = new javax.swing.GroupLayout(jPanelRegistrar1);
+        jPanelRegistrar1.setLayout(jPanelRegistrar1Layout);
+        jPanelRegistrar1Layout.setHorizontalGroup(
+            jPanelRegistrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+        );
+        jPanelRegistrar1Layout.setVerticalGroup(
+            jPanelRegistrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         jLabelRegistrar.setBackground(new java.awt.Color(0, 0, 0));
         jLabelRegistrar.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
         jLabelRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -243,7 +267,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         jPanelRegistrar.setLayout(jPanelRegistrarLayout);
         jPanelRegistrarLayout.setHorizontalGroup(
             jPanelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+            .addComponent(jLabelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanelRegistrarLayout.setVerticalGroup(
             jPanelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,13 +351,14 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                     .addComponent(jSeparatorName, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(PanelRegistroLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PanelRegistroLayout.createSequentialGroup()
-                        .addComponent(RBsi, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RBno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(RBsi, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RBno, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelRegistroLayout.createSequentialGroup()
@@ -381,7 +406,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparatorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelConfiEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtConfirmEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -393,14 +418,16 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RBsi)
                     .addComponent(RBno))
-                .addGap(18, 18, 18)
-                .addComponent(jPanelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelRegistrar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(PanelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelRegistroLayout.createSequentialGroup()
                     .addGap(18, 18, 18)
                     .addComponent(TextoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(608, Short.MAX_VALUE)))
+                    .addContainerGap(602, Short.MAX_VALUE)))
         );
 
         BackGround.add(PanelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 440, 660));
@@ -747,6 +774,12 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RBnoActionPerformed
 
+    private void jLabelVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelVolverMouseClicked
+        this.login = new NewLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabelVolverMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -803,7 +836,9 @@ public class NewRegistrarUser extends javax.swing.JFrame {
     private javax.swing.JPanel btnClose;
     private javax.swing.JLabel img1;
     private javax.swing.JLabel jLabelRegistrar;
+    private javax.swing.JLabel jLabelVolver;
     private javax.swing.JPanel jPanelRegistrar;
+    private javax.swing.JPanel jPanelRegistrar1;
     private javax.swing.JSeparator jSeparatorClave;
     private javax.swing.JSeparator jSeparatorConfiClave;
     private javax.swing.JSeparator jSeparatorConfiEmail;

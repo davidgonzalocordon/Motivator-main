@@ -20,11 +20,26 @@ public class AgregarPlan extends javax.swing.JFrame {
     int mousex, mousey;
     private PlanesTuristicos myPlan;
     private InicioEmpresa inicioEmpresa;
+    private String nombrePlan;
     /**
      * Creates new form AgregarPlan
      */
     public AgregarPlan() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        if(inicioEmpresa.filaExcel != -1){
+            this.setDatos(inicioEmpresa.filaExcel);
+        }
+    }
+    
+    public void setDatos(int filaExcel){
+        String info[] = new String[3];
+        info = myPlan.obtenerDatos(filaExcel,inicioEmpresa.nombreEmpresa);
+        txtName.setText(info[0]);
+        txtaDescrip.setText(info[1]);
+        txtPrecio.setText(info[2]);
+        nombrePlan = info[0];
     }
 
     /**
@@ -172,7 +187,7 @@ public class AgregarPlan extends javax.swing.JFrame {
 
         labelEdad.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         labelEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelEdad.setText("Descripccion");
+        labelEdad.setText("Descripcion");
         jPanel1.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
@@ -186,6 +201,7 @@ public class AgregarPlan extends javax.swing.JFrame {
         txtaDescrip.setColumns(20);
         txtaDescrip.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtaDescrip.setForeground(new java.awt.Color(102, 102, 102));
+        txtaDescrip.setLineWrap(true);
         txtaDescrip.setRows(5);
         txtaDescrip.setText("Ingrese la descripccion");
         txtaDescrip.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,14 +361,26 @@ public class AgregarPlan extends javax.swing.JFrame {
         String price = txtPrecio.getText();
         String desc = txtaDescrip.getText();
         
-        try{
-            myPlan.addPlan(name,InicioEmpresa.nombreEmpresa,desc,price);
-            JOptionPane.showMessageDialog(null,"Plan turistico enviado exitosamente");
-            inicioEmpresa = new InicioEmpresa();
-            inicioEmpresa.setVisible(true);
-            this.dispose();
-        }catch(Exception ex){
-            
+        if(name.isEmpty()||price.isEmpty()||desc.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Asegurese de llenar todos los campos");
+        }else{
+            try {
+                if(inicioEmpresa.filaExcel != -1){
+                    myPlan.EditPlan(nombrePlan,name,InicioEmpresa.nombreEmpresa,desc,price);
+                    JOptionPane.showMessageDialog(null,"Plan turistico editado exitosamente");
+                    inicioEmpresa = new InicioEmpresa();
+                    inicioEmpresa.setVisible(true);
+                    this.dispose();
+                }else{
+                    myPlan.addPlan(name,InicioEmpresa.nombreEmpresa,desc,price);
+                    JOptionPane.showMessageDialog(null,"Plan turistico creado exitosamente");
+                    inicioEmpresa = new InicioEmpresa();
+                    inicioEmpresa.setVisible(true);
+                    this.dispose();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(AgregarPlan.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jLabelRegistrarMouseClicked
 

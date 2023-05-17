@@ -289,7 +289,6 @@ public class Usuario {
         } catch (IOException ex) {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return datos;
     }
 

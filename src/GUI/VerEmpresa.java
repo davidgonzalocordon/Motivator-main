@@ -5,16 +5,27 @@
 package GUI;
 
 import Classes.Empresas;
+import Classes.PlanesTuristicos;
 import java.awt.Color;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author josem
  */
-public class PlanTuristico extends javax.swing.JFrame {
+public class VerEmpresa extends javax.swing.JFrame {
     int mousex, mousey;
     
+    private DefaultTableModel tablaPlanes = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     private static Empresas theEmpresa;
     private InicioAdmin myAdmin;
     private InicioUsuario myUsuario;
@@ -22,30 +33,54 @@ public class PlanTuristico extends javax.swing.JFrame {
     private String nameEmpresa;
     private String mailEmpresa;
     private String descripcion;
+    private PlanesTuristicos myPlans;
     
-    public PlanTuristico() {
+    public VerEmpresa() throws IOException {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
         if (NewLogin.level == 3){
             setDatos(myAdmin.filaExcel);
         }
         else if(NewLogin.level == 2 || NewLogin.level ==1){
             setDatos(myUsuario.filaExcel);
         }
-        else{
-            setDatos(myEmpresa.filaExcel);
-        }
         Nombre.setText(nameEmpresa);
         Email.setText(mailEmpresa);
-        txtDescripcion.setText(descripcion);
+        txtaDescrip.setText(descripcion);
+        Leer();
     }
     
     public void setDatos(int filaExcel){
         String info[] = new String[3];
         info = theEmpresa.ObtenerDato(filaExcel);
         nameEmpresa= info[0];
-        mailEmpresa = info[1];
-        descripcion = info[2];
+        mailEmpresa = info[4];
+        descripcion = info[5];
     }
+    
+    public void Leer() throws IOException {
+
+        int filas = myPlans.nfilas(nameEmpresa);
+        if(filas!=0){
+            tablaPlanes.addColumn("NOMBRE");
+            tablaPlanes.addColumn("DESCRIPCION");
+            tablaPlanes.addColumn("PRECIO");
+            String[] confirm = new String[3];
+
+            for (int i = 1; i <= filas; i++){
+                confirm = myPlans.ReadPlan(i,nameEmpresa);
+                if (confirm[0] != null){
+                    tablaPlanes.addRow(confirm);
+                }
+            }
+            tablePlanes.setModel(tablaPlanes);
+        }else{
+            JOptionPane.showMessageDialog(null, nameEmpresa+" aun no tiene planes creados para usted");
+        }
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,11 +94,9 @@ public class PlanTuristico extends javax.swing.JFrame {
         BackGround = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Email = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescripcion = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablePlanes = new javax.swing.JTable();
         PestañaAnterios = new javax.swing.JPanel();
         btnVolver = new javax.swing.JLabel();
         btnVerDescripcion = new javax.swing.JPanel();
@@ -73,6 +106,8 @@ public class PlanTuristico extends javax.swing.JFrame {
         txtCerrar = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         Nombre = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtaDescrip = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -85,19 +120,14 @@ public class PlanTuristico extends javax.swing.JFrame {
         BackGround.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
         Email.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        Email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         Email.setText("\"Email\"");
-        BackGround.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, -1, -1));
-
-        txtDescripcion.setEditable(false);
-        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(txtDescripcion);
-
-        BackGround.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 580, 70));
+        BackGround.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 190, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/FondoPlanTuristico1.png"))); // NOI18N
         BackGround.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 540));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -116,7 +146,7 @@ public class PlanTuristico extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tablePlanes);
 
         BackGround.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 560, 230));
 
@@ -244,6 +274,14 @@ public class PlanTuristico extends javax.swing.JFrame {
 
         BackGround.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
 
+        txtaDescrip.setEditable(false);
+        txtaDescrip.setColumns(20);
+        txtaDescrip.setLineWrap(true);
+        txtaDescrip.setRows(5);
+        jScrollPane3.setViewportView(txtaDescrip);
+
+        BackGround.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 560, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,17 +308,25 @@ public class PlanTuristico extends javax.swing.JFrame {
             }
         }
         else if(NewLogin.level == 2 || NewLogin.level == 1){
+            try {
+                this.myUsuario = new InicioUsuario();
+            } catch (IOException ex) {
+                Logger.getLogger(VerEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+            }
             myUsuario.setVisible(true);
-            this.dispose();
-        }
-        else{
-            myEmpresa.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void btnVerDescripMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerDescripMouseClicked
-        JOptionPane.showMessageDialog(null,descripcion);
+        int seleccion = tablePlanes.getSelectedRow();
+        
+        if(seleccion != -1){
+            String mensaje = String.valueOf(tablePlanes.getModel().getValueAt(seleccion, 1));
+            JOptionPane.showMessageDialog(null,mensaje);
+        }else{
+            JOptionPane.showMessageDialog(null,"Primero seleccione un plan");
+        }
     }//GEN-LAST:event_btnVerDescripMouseClicked
 
     private void txtCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCerrarMouseClicked
@@ -323,20 +369,25 @@ public class PlanTuristico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlanTuristico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlanTuristico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlanTuristico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlanTuristico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PlanTuristico().setVisible(true);
+                try {
+                    new VerEmpresa().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VerEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -354,10 +405,10 @@ public class PlanTuristico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablePlanes;
     private javax.swing.JLabel txtCerrar;
-    private javax.swing.JTextPane txtDescripcion;
+    private javax.swing.JTextArea txtaDescrip;
     // End of variables declaration//GEN-END:variables
 }

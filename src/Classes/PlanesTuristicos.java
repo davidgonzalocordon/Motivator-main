@@ -24,7 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class PlanesTuristicos {
     
-        public static void createPlan(String nombre){
+    public static void createPlan(String nombre){
         Workbook book = new XSSFWorkbook();
         Sheet sheet = (Sheet) book.createSheet("Planes");
         
@@ -47,8 +47,8 @@ public class PlanesTuristicos {
         }
     }
     
-        public static void addPlan(String nombre, String name, String descripcion, String precio) throws IOException{
-        String ruta = "Plans\\Planes-"+nombre+".xlsx";
+    public static void addPlan(String nombre, String nombreEmpresa, String descripcion, String precio) throws IOException{
+        String ruta = "Plans\\Planes-"+nombreEmpresa+".xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
         XSSFSheet sheet = wb.getSheetAt(0);
@@ -58,7 +58,7 @@ public class PlanesTuristicos {
         for (int i = 1; i <= nFilas; i++) {
             if (sheet.getRow(i) == null) {
                 sheet.createRow(i);
-                sheet.getRow(i).createCell(0).setCellValue(name);
+                sheet.getRow(i).createCell(0).setCellValue(nombre);
                 sheet.getRow(i).createCell(1).setCellValue(descripcion);
                 sheet.getRow(i).createCell(2).setCellValue(precio);
                 sheet.getRow(i).createCell(3).setCellValue(i);
@@ -67,7 +67,7 @@ public class PlanesTuristicos {
             
             if (i == nFilas) {
                 sheet.createRow(i);
-                sheet.getRow(nFilas).createCell(0).setCellValue(name);
+                sheet.getRow(nFilas).createCell(0).setCellValue(nombre);
                 sheet.getRow(nFilas).createCell(1).setCellValue(descripcion);
                 sheet.getRow(nFilas).createCell(2).setCellValue(precio);
                 sheet.getRow(nFilas).createCell(3).setCellValue(i);
@@ -121,14 +121,150 @@ public class PlanesTuristicos {
     
     
     public static int nfilas(String name) throws IOException{
+        int nFilas = 0;
+        try{
+            String ruta = "Plans\\Planes-"+name+".xlsx";
+            FileInputStream file = new FileInputStream(new File(ruta));
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+        
+            nFilas = sheet.getLastRowNum();
+        }catch(Exception e){
+            
+        }
+
+       
+        return nFilas;
+    }
+    
+    public static String[] ReadPlan(int i, String name){
+        String almacen[] = new String[3];
         String ruta = "Plans\\Planes-"+name+".xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            
+            for(int j=0; j<almacen.length; j++){
+
+                if (sheet.getRow(i) != null) {
+                    Cell celda = sheet.getRow(i).getCell(j);
+
+                    switch (celda.getCellTypeEnum().toString()){
+                        case "NUMERIC":
+                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                            break;
+
+                        case "STRING":
+                            almacen[j]=celda.getStringCellValue();
+                            break;
+                    }
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
+    } 
+    
+    public static void deletePlan(int fila, String name){
+        String ruta = "Plans\\Planes-"+name+".xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            
+            sheet.removeRow(sheet.getRow(fila));
+            
+            FileOutputStream fileout = new FileOutputStream("Plans\\Planes-"+name+".xlsx");
+            wb.write(fileout);
+            fileout.close();    
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public static void EditPlan(String nombre, String newName, String nameEmpresa, String descrip, String precio) throws IOException{
+        String ruta = "Plans\\Planes-"+nameEmpresa+".xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
         XSSFSheet sheet = wb.getSheetAt(0);
         
         int nFilas = sheet.getLastRowNum();
-       
-        return nFilas;
+        
+        for (int i = 1; i <=nFilas; i++) {
+            Row fila = sheet.getRow(i);
+            
+            if (fila != null) {
+                if(fila.getCell(0).getStringCellValue().equals(nombre)){
+                    fila.getCell(0).setCellValue(newName);
+                    fila.getCell(1).setCellValue(descrip);
+                    fila.getCell(2).setCellValue(precio);
+                    break;
+                }
+            }    
+        }
+        
+        FileOutputStream output = new FileOutputStream(ruta);
+        wb.write(output);
+        output.close();
+    }
+    
+    public static int filaSeleccionada(String nombre, String nameEmpresa, String descripcion, String precio) throws IOException{
+        int filaExcel = 0;
+        String ruta = "Plans\\Planes-"+nameEmpresa+".xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFila = sheet.getLastRowNum();
+        
+        for (int i = 1; i <= nFila; i++) {
+            if (sheet.getRow(i) != null) {
+                if(nombre.equals(sheet.getRow(i).getCell(0).getStringCellValue()) && descripcion.equals(sheet.getRow(i).getCell(1).getStringCellValue()) && precio.equals(sheet.getRow(i).getCell(2).getStringCellValue())){
+                    filaExcel = i;
+                }
+            }    
+        }
+        return filaExcel;
+    }
+    
+    public static String[] obtenerDatos(int i, String nameEmpresa){
+        String almacen[] = new String[3];
+        String ruta = "Plans\\Planes-"+nameEmpresa+".xlsx";
+        
+        try {
+            FileInputStream file = new FileInputStream(new File(ruta));
+            
+            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFSheet sheet = wb.getSheetAt(0);
+            
+            for(int j=0; j<almacen.length; j++){
+                Cell celda = sheet.getRow(i).getCell(j);
+
+                switch (celda.getCellTypeEnum().toString()){
+                    case "NUMERIC":
+                        almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                        break;
+                    case "STRING":
+                        almacen[j]=celda.getStringCellValue();
+                        break;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return almacen;
     }
     
 }

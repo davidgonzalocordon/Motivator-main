@@ -39,7 +39,8 @@ public class Empresas {
         sheet.getRow(0).createCell(2).setCellValue("NIT");
         sheet.getRow(0).createCell(3).setCellValue("Contraseña");
         sheet.getRow(0).createCell(4).setCellValue("E-Mail");
-        sheet.getRow(0).createCell(5).setCellValue("Id");
+        sheet.getRow(0).createCell(5).setCellValue("Descripcion");
+        sheet.getRow(0).createCell(6).setCellValue("Id");
 
         try {
             FileOutputStream fileout = new FileOutputStream("Enterprises.xlsx");
@@ -69,7 +70,8 @@ public class Empresas {
                 sheet.getRow(i).createCell(2).setCellValue(nit);
                 sheet.getRow(i).createCell(3).setCellValue(password);
                 sheet.getRow(i).createCell(4).setCellValue(mail);
-                sheet.getRow(i).createCell(5).setCellValue(i);
+                sheet.getRow(i).createCell(5).setCellValue("N/A");
+                sheet.getRow(i).createCell(6).setCellValue(i);
                 break;
             }
             
@@ -80,17 +82,19 @@ public class Empresas {
                 sheet.getRow(nFilas).createCell(2).setCellValue(nit);
                 sheet.getRow(nFilas).createCell(3).setCellValue(password);
                 sheet.getRow(nFilas).createCell(4).setCellValue(mail);
-                sheet.getRow(nFilas).createCell(5).setCellValue(i);
+                sheet.getRow(nFilas).createCell(5).setCellValue("N/A");
+                sheet.getRow(nFilas).createCell(6).setCellValue(i);
             }
         }
         
+        PlanesTuristicos.createPlan(nombre);
         
         FileOutputStream output = new FileOutputStream(ruta);
         wb.write(output);
         output.close();
     }
     
-    public static void EditEnterprise(String nombre, String user, String nit, String password, String mail, int id) throws IOException{
+    public static void EditEnterprise(String nombre, String user, String nit, String password, String mail, String descrip, int id) throws IOException{
         String ruta = "Enterprises.xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -102,13 +106,14 @@ public class Empresas {
             Row fila = sheet.getRow(i);
             
             if (fila != null) {
-                if(id==(int)fila.getCell(5).getNumericCellValue()){
+                if(id==(int)fila.getCell(6).getNumericCellValue()){
 
                     fila.getCell(0).setCellValue(nombre);
                     fila.getCell(1).setCellValue(user);
                     fila.getCell(2).setCellValue(nit);
                     fila.getCell(3).setCellValue(password);
                     fila.getCell(4).setCellValue(mail);
+                    fila.getCell(5).setCellValue(descrip);
                     break;
                 }
             }    
@@ -153,7 +158,7 @@ public class Empresas {
                 }
                 
                 if(user.equals(confirmUser) && pass.equals(confirmPass)){
-                    String id = String.valueOf(sheet.getRow(i).getCell(5).getNumericCellValue());;
+                    String id = String.valueOf(sheet.getRow(i).getCell(6).getNumericCellValue());;
                     return id;
                 }
             }
@@ -222,7 +227,7 @@ public class Empresas {
     
     public static String[] ObtenerDato(int id){
          String ruta = "Enterprises.xlsx";
-         String[] datos = new String[5];
+         String[] datos = new String[6];
         
         try {
             FileInputStream file = new FileInputStream(new File(ruta));
@@ -233,7 +238,7 @@ public class Empresas {
             for(int i=1; i<=sheet.getLastRowNum();i++){
                 if(sheet.getRow(i) != null){
               
-                    if(id == (int)sheet.getRow(i).getCell(5).getNumericCellValue()){
+                    if(id == (int)sheet.getRow(i).getCell(6).getNumericCellValue()){
 
                         for(int j=0; j<datos.length; j++){
                             
@@ -291,7 +296,7 @@ public class Empresas {
     }
     
     public static String[] extraerTodosLosDatos(int i){
-        String almacen[] = new String[6];
+        String almacen[] = new String[7];
         String ruta = "Enterprises.xlsx";
         try {
             FileInputStream file = new FileInputStream(new File(ruta));
@@ -321,7 +326,7 @@ public class Empresas {
         return almacen;
     }
     
-        public static void DeleteUser(int fila){
+        public static void deleteEmpresa(int fila){
         String ruta = "Enterprises.xlsx";
         
         try {

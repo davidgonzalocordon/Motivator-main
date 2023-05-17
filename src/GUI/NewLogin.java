@@ -346,7 +346,7 @@ public class NewLogin extends javax.swing.JFrame {
                    inicioAdmin.setVisible(true);
                    this.setVisible(false);
                }
-               else{
+               else if(lvl == 2 || lvl == 1){
                    level = lvl;
                    ID=(int)(Double.parseDouble(id));
                    this.inicioUsuario = new InicioUsuario();
@@ -354,7 +354,6 @@ public class NewLogin extends javax.swing.JFrame {
                    this.setVisible(false);
                }
             }
-            
         } catch (IOException ex) {
             Logger.getLogger(NewLogin.class.getName()).log(Level.SEVERE, null, ex);
         }

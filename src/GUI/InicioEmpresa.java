@@ -6,6 +6,7 @@ package GUI;
 
 import Classes.Empresas;
 import Classes.Lugares;
+import Classes.PlanesTuristicos;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -31,10 +32,17 @@ public class InicioEmpresa extends javax.swing.JFrame {
             return false;
         }
     };
+    private DefaultTableModel tablaPlanes = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     private Lugares myLugares = new Lugares();
     private EntrarEmpresa myLogin = new EntrarEmpresa();
     private VerLugar verLugar;
     private AgregarPlan addPlan;
+    private PlanesTuristicos myPlans;
     public static int filaExcel;
     public static String nombreEmpresa;
 
@@ -46,7 +54,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         Leer();
-        String datos[] = new String[3];
+        String datos[] = new String[5];
         datos = empresa.ObtenerDato(myLogin.ID);
         nombreEmpresa= datos[0];
         txtNombreAdmin.setText(datos[0]);
@@ -54,8 +62,15 @@ public class InicioEmpresa extends javax.swing.JFrame {
         txtNit.setText(datos[2]);
         txtPasswordAdmin.setText(datos[3]);
         txtEmailAdmin.setText(datos[4]);
+        txtaDescrip.setText(datos[5]);
+        LeerPlanes();
+        filaExcel = -1;
         PanelUsuario.setEnabledAt(0, true);
         PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
+        if(txtaDescrip.getText().equals("N/A")){
+            JOptionPane.showMessageDialog(null, "Recuerde actualizar su descripcion en la pestaña Configuracion");
+        }
     }
 
     public void Leer() throws IOException {
@@ -79,6 +94,25 @@ public class InicioEmpresa extends javax.swing.JFrame {
         }
         tableLugares.setModel(tabla);
     }
+    
+    public void LeerPlanes() throws IOException {
+
+        int filas = myPlans.nfilas(nombreEmpresa);
+        if(filas!=0){
+            tablaPlanes.addColumn("NOMBRE");
+            tablaPlanes.addColumn("DESCRIPCION");
+            tablaPlanes.addColumn("PRECIO");
+            String[] confirm = new String[3];
+
+            for (int i = 1; i <= filas; i++){
+                confirm = myPlans.ReadPlan(i,nombreEmpresa);
+                if (confirm[0] != null){
+                    tablaPlanes.addRow(confirm);
+                }
+            }
+            tablePlanes.setModel(tablaPlanes);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,6 +135,8 @@ public class InicioEmpresa extends javax.swing.JFrame {
         Lugares = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btConfiguracion = new javax.swing.JButton();
+        BtnPlanes = new javax.swing.JPanel();
+        Lugares1 = new javax.swing.JLabel();
         PanelUsuario = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         btVerLugar = new javax.swing.JButton();
@@ -113,7 +149,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         btnBuscarLugar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableLugares = new javax.swing.JTable();
-        btnAgregarlugar = new javax.swing.JButton();
+        btnAgregarPlan = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnDia = new javax.swing.JRadioButton();
         btnNoche = new javax.swing.JRadioButton();
@@ -137,7 +173,16 @@ public class InicioEmpresa extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtaDescrip = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        btEliminarPlan = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablePlanes = new javax.swing.JTable();
+        btEditarPlan = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtaDescripcion = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
 
@@ -235,6 +280,30 @@ public class InicioEmpresa extends javax.swing.JFrame {
             }
         });
 
+        BtnPlanes.setBackground(new java.awt.Color(204, 204, 204));
+        BtnPlanes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BtnPlanes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnPlanesMouseClicked(evt);
+            }
+        });
+
+        Lugares1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        Lugares1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgRegistrar.png"))); // NOI18N
+        Lugares1.setText("Planes turisticos");
+        Lugares1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout BtnPlanesLayout = new javax.swing.GroupLayout(BtnPlanes);
+        BtnPlanes.setLayout(BtnPlanesLayout);
+        BtnPlanesLayout.setHorizontalGroup(
+            BtnPlanesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Lugares1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        BtnPlanesLayout.setVerticalGroup(
+            BtnPlanesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Lugares1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -256,7 +325,9 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnLugares, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnPlanes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         jPanel10Layout.setVerticalGroup(
@@ -269,7 +340,9 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(BtnPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btConfiguracion)
@@ -330,13 +403,13 @@ public class InicioEmpresa extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableLugares);
 
-        btnAgregarlugar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAgregarlugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAgregar.png"))); // NOI18N
-        btnAgregarlugar.setText("Agregar a Ruta");
-        btnAgregarlugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarlugar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnAgregarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAgregar.png"))); // NOI18N
+        btnAgregarPlan.setText("Agregar a Ruta");
+        btnAgregarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarlugarActionPerformed(evt);
+                btnAgregarPlanActionPerformed(evt);
             }
         });
 
@@ -406,7 +479,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
                         .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnAgregarlugar)
+                        .addComponent(btnAgregarPlan)
                         .addGap(50, 50, 50)
                         .addComponent(btVerLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(64, 64, 64)
@@ -440,7 +513,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
                     .addComponent(btnNoche))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarlugar)
+                    .addComponent(btnAgregarPlan)
                     .addComponent(btVerLugar)
                     .addComponent(btnBuscarLugar)
                     .addComponent(btnLimpliar))
@@ -501,9 +574,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel33.setText("DESCRIPCCION");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtaDescrip.setColumns(20);
+        txtaDescrip.setLineWrap(true);
+        txtaDescrip.setRows(5);
+        jScrollPane1.setViewportView(txtaDescrip);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -589,6 +663,112 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
         PanelUsuario.addTab("Configuracion", jPanel9);
 
+        jPanel2.setBackground(new java.awt.Color(217, 152, 141));
+
+        btEliminarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btEliminarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgeliminar.png"))); // NOI18N
+        btEliminarPlan.setText("Eliminar");
+        btEliminarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEliminarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarPlanActionPerformed(evt);
+            }
+        });
+
+        tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Descripcion", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablePlanes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablePlanesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablePlanes);
+
+        btEditarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btEditarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/config.png"))); // NOI18N
+        btEditarPlan.setText("Editar");
+        btEditarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEditarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarPlanActionPerformed(evt);
+            }
+        });
+
+        txtaDescripcion.setEditable(false);
+        txtaDescripcion.setColumns(20);
+        txtaDescripcion.setLineWrap(true);
+        txtaDescripcion.setRows(5);
+        jScrollPane4.setViewportView(txtaDescripcion);
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setText("Planes turisticos:");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setText("Seleccione un plan para ver su descripcion aqui:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btEliminarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEditarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btEditarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btEliminarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
+
+        PanelUsuario.addTab("Planes Turisticos", jPanel2);
+
         jPanel1.add(PanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 880, 500));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/939716.png"))); // NOI18N
@@ -634,11 +814,11 @@ public class InicioEmpresa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarlugarActionPerformed
+    private void btnAgregarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPlanActionPerformed
         addPlan = new AgregarPlan();
         addPlan.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnAgregarlugarActionPerformed
+    }//GEN-LAST:event_btnAgregarPlanActionPerformed
 
     private void btCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSesionActionPerformed
         myLogin.setVisible(true);
@@ -651,23 +831,28 @@ public class InicioEmpresa extends javax.swing.JFrame {
         String contra = txtPasswordAdmin.getText();
         String user = txtUser.getText();
         String nit = txtNit.getText();
+        String descrip = txtaDescrip.getText();
 
-        try
-        {
-            empresa.EditEnterprise(nombre, user, nit, contra, email, myLogin.ID);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+        if(nombre.isEmpty()||email.isEmpty()||contra.isEmpty()||user.isEmpty()||nit.isEmpty()||descrip.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco");
+        }else{
+            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+            if(reply==JOptionPane.YES_OPTION){
+                try{
+                    empresa.EditEnterprise(nombre, user, nit, contra, email, descrip, myLogin.ID);
+                } catch (IOException ex){
+                    Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "Datos Actualizados exitosamente");
+            }            
         }
-        // TODO add your handling code here:
-        // TODO add your handling code here:
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
         PanelUsuario.setSelectedIndex(1);
         PanelUsuario.setEnabledAt(0, false);
         PanelUsuario.setEnabledAt(1, true);
-
+        PanelUsuario.setEnabledAt(2, false);
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
     private void btVerLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerLugarActionPerformed
@@ -778,6 +963,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         PanelUsuario.setSelectedIndex(0);
         PanelUsuario.setEnabledAt(0, true);
         PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
     }//GEN-LAST:event_BtnLugaresMouseClicked
 
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
@@ -804,6 +990,72 @@ public class InicioEmpresa extends javax.swing.JFrame {
         btnClose.setBackground(Color.pink);
         btnClose.setOpaque(false);
     }//GEN-LAST:event_txtCerrarMouseExited
+
+    private void btEliminarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarPlanActionPerformed
+        DefaultTableModel tabla = tablaPlanes;
+        int seleccion = tablePlanes.getSelectedRow();
+        String nombre = String.valueOf(tabla.getValueAt(seleccion, 0));
+        String descrip = String.valueOf(tabla.getValueAt(seleccion, 1));
+        String precio = String.valueOf(tabla.getValueAt(seleccion, 2));
+        
+        if (seleccion != -1){
+                int reply = JOptionPane.showConfirmDialog(null, "Seguro desea borrar este plan turistico?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+                if(reply == JOptionPane.YES_OPTION){
+                    try{
+                        int excelFill = myPlans.filaSeleccionada(nombre, nombreEmpresa, descrip, precio);
+                        myPlans.deletePlan(excelFill,nombreEmpresa);
+
+                    } catch (IOException ex){
+                        Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    tablaPlanes.removeRow(seleccion);
+                    txtaDescripcion.setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
+            }
+    }//GEN-LAST:event_btEliminarPlanActionPerformed
+
+    private void btEditarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarPlanActionPerformed
+        int seleccion = tablePlanes.getSelectedRow();
+
+        if (seleccion != -1)
+        {
+            String nombre = String.valueOf(tablePlanes.getModel().getValueAt(seleccion, 0));
+            String descripcion = String.valueOf(tablePlanes.getModel().getValueAt(seleccion, 1));
+            String precio = String.valueOf(tablePlanes.getModel().getValueAt(seleccion, 2));
+
+            try
+            {
+                filaExcel = myPlans.filaSeleccionada(nombre, nombreEmpresa ,descripcion, precio);
+                addPlan = new AgregarPlan();
+                addPlan.setVisible(true);
+                this.dispose();
+            } catch (IOException ex)
+            {
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione en la tabla que plan turistico desea editar.");
+        }
+    }//GEN-LAST:event_btEditarPlanActionPerformed
+
+    private void BtnPlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnPlanesMouseClicked
+        PanelUsuario.setSelectedIndex(2);
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, true);
+    }//GEN-LAST:event_BtnPlanesMouseClicked
+
+    private void tablePlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePlanesMouseClicked
+        if( tablePlanes.getSelectedRows().length > 0 ) {
+           int seleccion = tablePlanes.getSelectedRow();
+           
+           txtaDescripcion.setText(String.valueOf(tablePlanes.getModel().getValueAt(seleccion, 1)));
+           
+         }
+    }//GEN-LAST:event_tablePlanesMouseClicked
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
@@ -869,15 +1121,19 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BtnLugares;
+    private javax.swing.JPanel BtnPlanes;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Lugares;
+    private javax.swing.JLabel Lugares1;
     private javax.swing.JTabbedPane PanelUsuario;
     private javax.swing.JButton btActualizar;
     private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btConfiguracion;
+    private javax.swing.JButton btEditarPlan;
+    private javax.swing.JButton btEliminarPlan;
     private javax.swing.JButton btVerLugar;
     private javax.swing.JRadioButton btn24h;
-    private javax.swing.JButton btnAgregarlugar;
+    private javax.swing.JButton btnAgregarPlan;
     private javax.swing.JButton btnBuscarLugar;
     private javax.swing.JPanel btnClose;
     private javax.swing.JRadioButton btnDia;
@@ -887,6 +1143,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.ButtonGroup horarioLugar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel27;
@@ -901,16 +1158,20 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tableLugares;
+    private javax.swing.JTable tablePlanes;
     private javax.swing.JLabel txtCerrar;
     private javax.swing.JTextField txtDireccionLugar;
     private javax.swing.JTextField txtEmailAdmin;
@@ -919,5 +1180,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreLugar;
     private javax.swing.JTextField txtPasswordAdmin;
     private javax.swing.JTextField txtUser;
+    private javax.swing.JTextArea txtaDescrip;
+    private javax.swing.JTextArea txtaDescripcion;
     // End of variables declaration//GEN-END:variables
 }

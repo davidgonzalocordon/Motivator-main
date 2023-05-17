@@ -121,18 +121,18 @@ public class VerLugar extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtPuntuacion = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        btnVerComentario = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        btnUbicacion = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        btnAgregarFotos = new javax.swing.JLabel();
         txtTipo = new javax.swing.JTextField();
         txtHorario = new javax.swing.JTextField();
         lblImagen = new javax.swing.JLabel();
         Previous = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        btnPreviousPhoto = new javax.swing.JLabel();
         Next = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
+        btnNextPhoto = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         Close = new javax.swing.JPanel();
         Cerrar = new javax.swing.JLabel();
@@ -209,11 +209,6 @@ public class VerLugar extends javax.swing.JFrame {
 
         txtTelefono.setEditable(false);
         txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(120, 120, 120));
@@ -229,27 +224,17 @@ public class VerLugar extends javax.swing.JFrame {
 
         txtPuntuacion.setEditable(false);
         txtPuntuacion.setBackground(new java.awt.Color(255, 255, 255));
-        txtPuntuacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPuntuacionActionPerformed(evt);
-            }
-        });
-        txtPuntuacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPuntuacionKeyTyped(evt);
-            }
-        });
 
         jPanel2.setBackground(new java.awt.Color(180, 180, 180));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
-        jLabel2.setText("Ver Comentarios");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVerComentario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnVerComentario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnVerComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVer.png"))); // NOI18N
+        btnVerComentario.setText("Ver Comentarios");
+        btnVerComentario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerComentario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                btnVerComentarioMouseClicked(evt);
             }
         });
 
@@ -257,24 +242,24 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnVerComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+            .addComponent(btnVerComentario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(180, 180, 180));
         jPanel3.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgLugares.png"))); // NOI18N
-        jLabel11.setText("Abrir Ubicacion");
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnUbicacion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnUbicacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgLugares.png"))); // NOI18N
+        btnUbicacion.setText("Abrir Ubicacion");
+        btnUbicacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUbicacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                btnUbicacionMouseClicked(evt);
             }
         });
 
@@ -282,24 +267,24 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+            .addComponent(btnUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+            .addComponent(btnUbicacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(180, 180, 180));
         jPanel5.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgFotos.png"))); // NOI18N
-        jLabel12.setText("Agragar Fotos");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregarFotos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnAgregarFotos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnAgregarFotos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgFotos.png"))); // NOI18N
+        btnAgregarFotos.setText("Agragar Fotos");
+        btnAgregarFotos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarFotos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                btnAgregarFotosMouseClicked(evt);
             }
         });
 
@@ -307,28 +292,18 @@ public class VerLugar extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+            .addComponent(btnAgregarFotos, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+            .addComponent(btnAgregarFotos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
 
         txtTipo.setEditable(false);
         txtTipo.setBackground(new java.awt.Color(255, 255, 255));
-        txtTipo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTipoKeyTyped(evt);
-            }
-        });
 
         txtHorario.setEditable(false);
         txtHorario.setBackground(new java.awt.Color(255, 255, 255));
-        txtHorario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHorarioKeyTyped(evt);
-            }
-        });
 
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
@@ -420,14 +395,14 @@ public class VerLugar extends javax.swing.JFrame {
         Previous.setBackground(new java.awt.Color(204, 204, 204));
         Previous.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAnterior.png"))); // NOI18N
-        jLabel14.setText("Anterior Foto");
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnPreviousPhoto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnPreviousPhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPreviousPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAnterior.png"))); // NOI18N
+        btnPreviousPhoto.setText("Anterior Foto");
+        btnPreviousPhoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPreviousPhoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                btnPreviousPhotoMouseClicked(evt);
             }
         });
 
@@ -435,11 +410,11 @@ public class VerLugar extends javax.swing.JFrame {
         Previous.setLayout(PreviousLayout);
         PreviousLayout.setHorizontalGroup(
             PreviousLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(btnPreviousPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         PreviousLayout.setVerticalGroup(
             PreviousLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnPreviousPhoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(Previous, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 470, 150, 50));
@@ -447,14 +422,14 @@ public class VerLugar extends javax.swing.JFrame {
         Next.setBackground(new java.awt.Color(204, 204, 204));
         Next.setPreferredSize(new java.awt.Dimension(138, 67));
 
-        jLabel15.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgSiguiente.png"))); // NOI18N
-        jLabel15.setText("Siguiente Foto");
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNextPhoto.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnNextPhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNextPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgSiguiente.png"))); // NOI18N
+        btnNextPhoto.setText("Siguiente Foto");
+        btnNextPhoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNextPhoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
+                btnNextPhotoMouseClicked(evt);
             }
         });
 
@@ -462,11 +437,11 @@ public class VerLugar extends javax.swing.JFrame {
         Next.setLayout(NextLayout);
         NextLayout.setHorizontalGroup(
             NextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(btnNextPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         NextLayout.setVerticalGroup(
             NextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(btnNextPhoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         jPanel1.add(Next, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 470, 150, 50));
@@ -553,32 +528,7 @@ public class VerLugar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9')
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtTelefonoKeyTyped
-
-    private void txtTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTipoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoKeyTyped
-
-    private void txtHorarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHorarioKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHorarioKeyTyped
-
-    private void txtPuntuacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuntuacionKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPuntuacionKeyTyped
-
-    private void txtPuntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuntuacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPuntuacionActionPerformed
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+    private void btnUbicacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUbicacionMouseClicked
         try {
             lugares.link(linkLugar);
         } catch (IOException ex) {
@@ -586,24 +536,22 @@ public class VerLugar extends javax.swing.JFrame {
         } catch (URISyntaxException ex) {
             Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jLabel11MouseClicked
+    }//GEN-LAST:event_btnUbicacionMouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void btnAgregarFotosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarFotosMouseClicked
         agregarFotos = new AgregarFotos();
         agregarFotos.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_btnAgregarFotosMouseClicked
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         if (NewLogin.level == 3){
-            
             try {
                 this.myAdmin = new InicioAdmin();
             }
             catch (IOException ex) {
                 Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             myAdmin.setVisible(true);
             this.dispose();
         }
@@ -617,16 +565,16 @@ public class VerLugar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVolverMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void btnVerComentarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerComentarioMouseClicked
         try {
             cajaDeComentarios = new CajaDeComentarios();
         } catch (IOException ex) {
             Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
         }
         cajaDeComentarios.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_btnVerComentarioMouseClicked
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+    private void btnPreviousPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviousPhotoMouseClicked
         File carpeta = new File("IMG\\"+nombreLugar);
         File[] lista = carpeta.listFiles();
         contadorImg--;
@@ -635,9 +583,9 @@ public class VerLugar extends javax.swing.JFrame {
         }
         String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
         this.mostrarImagen(lblImagen, ruta);
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_btnPreviousPhotoMouseClicked
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+    private void btnNextPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextPhotoMouseClicked
         File carpeta = new File("IMG\\"+nombreLugar);
         File[] lista = carpeta.listFiles();
         contadorImg++;
@@ -646,7 +594,7 @@ public class VerLugar extends javax.swing.JFrame {
         }
         String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
         this.mostrarImagen(lblImagen, ruta);
-    }//GEN-LAST:event_jLabel15MouseClicked
+    }//GEN-LAST:event_btnNextPhotoMouseClicked
 
     private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked
         System.exit(0);
@@ -739,13 +687,13 @@ public class VerLugar extends javax.swing.JFrame {
     private javax.swing.JPanel Next;
     private javax.swing.JPanel PestañaAnterios;
     private javax.swing.JPanel Previous;
+    private javax.swing.JLabel btnAgregarFotos;
+    private javax.swing.JLabel btnNextPhoto;
+    private javax.swing.JLabel btnPreviousPhoto;
+    private javax.swing.JLabel btnUbicacion;
+    private javax.swing.JLabel btnVerComentario;
     private javax.swing.JLabel btnVolver;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

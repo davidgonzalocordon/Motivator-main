@@ -43,7 +43,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private Usuario myUsuario = new Usuario();
     private NewLogin myLogin = new NewLogin();
     private VerLugar verLugar;
-    private PlanTuristico verEmpresa;
+    private VerEmpresa verEmpresa;
     public static int filaExcel;
     
 
@@ -55,6 +55,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         Leer();
+        LeerEmpresas();
         String datos[] = new String[4];
         datos = myUsuario.ObtenerDato(myLogin.ID);
         txtNombreAdmin.setText(datos[0]);
@@ -63,6 +64,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         txtEmailAdmin.setText(datos[3]);
         PanelUsuario.setEnabledAt(0, true);
         PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
     }
 
     public void Leer() throws IOException {
@@ -127,6 +129,8 @@ public class InicioUsuario extends javax.swing.JFrame {
         Lugares = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btConfiguracion = new javax.swing.JButton();
+        BtnEmpresa = new javax.swing.JPanel();
+        Empresas = new javax.swing.JLabel();
         PanelUsuario = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         btVerLugar = new javax.swing.JButton();
@@ -154,9 +158,9 @@ public class InicioUsuario extends javax.swing.JFrame {
         tableEmpresas = new javax.swing.JTable();
         txtNit = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        btnBuscarLugar1 = new javax.swing.JButton();
+        btnBuscarEmpresa = new javax.swing.JButton();
         btVerEmpresa = new javax.swing.JButton();
-        btnLimpliar1 = new javax.swing.JButton();
+        btnLimpliarEmpresa = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -266,6 +270,31 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
+        BtnEmpresa.setBackground(new java.awt.Color(204, 204, 204));
+        BtnEmpresa.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BtnEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnEmpresaMouseClicked(evt);
+            }
+        });
+
+        Empresas.setBackground(new java.awt.Color(204, 204, 204));
+        Empresas.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        Empresas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgenterprise.png"))); // NOI18N
+        Empresas.setText("Empresas");
+        Empresas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout BtnEmpresaLayout = new javax.swing.GroupLayout(BtnEmpresa);
+        BtnEmpresa.setLayout(BtnEmpresaLayout);
+        BtnEmpresaLayout.setHorizontalGroup(
+            BtnEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Empresas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+        );
+        BtnEmpresaLayout.setVerticalGroup(
+            BtnEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Empresas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -287,7 +316,9 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         jPanel10Layout.setVerticalGroup(
@@ -300,7 +331,9 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(BtnLugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addComponent(BtnEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btConfiguracion)
@@ -487,12 +520,6 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel35.setText("NOMBRE: ");
 
-        txtNombreEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreEmpresaActionPerformed(evt);
-            }
-        });
-
         tableEmpresas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -514,22 +541,16 @@ public class InicioUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableEmpresas);
 
-        txtNit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNitActionPerformed(evt);
-            }
-        });
-
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel36.setText("NIT:");
 
-        btnBuscarLugar1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnBuscarLugar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgsearch.png"))); // NOI18N
-        btnBuscarLugar1.setText("Buscar");
-        btnBuscarLugar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarLugar1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarEmpresa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnBuscarEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imgsearch.png"))); // NOI18N
+        btnBuscarEmpresa.setText("Buscar");
+        btnBuscarEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarLugar1ActionPerformed(evt);
+                btnBuscarEmpresaActionPerformed(evt);
             }
         });
 
@@ -542,13 +563,13 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnLimpliar1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnLimpliar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imglimpiar.png"))); // NOI18N
-        btnLimpliar1.setText("Limpiar");
-        btnLimpliar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLimpliar1.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpliarEmpresa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnLimpliarEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Imglimpiar.png"))); // NOI18N
+        btnLimpliarEmpresa.setText("Limpiar");
+        btnLimpliarEmpresa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpliarEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpliar1ActionPerformed(evt);
+                btnLimpliarEmpresaActionPerformed(evt);
             }
         });
 
@@ -569,7 +590,7 @@ public class InicioUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel36)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnBuscarLugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btVerEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)))
@@ -577,7 +598,7 @@ public class InicioUsuario extends javax.swing.JFrame {
                             .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
-                                .addComponent(btnLimpliar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnLimpliarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 848, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -594,9 +615,9 @@ public class InicioUsuario extends javax.swing.JFrame {
                     .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarLugar1)
+                    .addComponent(btnBuscarEmpresa)
                     .addComponent(btVerEmpresa)
-                    .addComponent(btnLimpliar1))
+                    .addComponent(btnLimpliarEmpresa))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
@@ -628,7 +649,7 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel32.setText("DATOS DEL ADMIN");
+        jLabel32.setText("DATOS USUARIO");
 
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -671,25 +692,24 @@ public class InicioUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPasswordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel32)
-                        .addGap(313, 313, 313))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174)
-                        .addComponent(btCerrarSesion)
-                        .addGap(193, 193, 193))))
+                .addComponent(btActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174)
+                .addComponent(btCerrarSesion)
+                .addGap(193, 193, 193))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel32)
+                .addGap(339, 339, 339))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel32)
-                .addGap(46, 46, 46)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(txtNombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -763,7 +783,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             this.dispose();
         } else
         {
-            JOptionPane.showMessageDialog(null, "NO TIENE PERMISOS SUFICIENTES");
+            JOptionPane.showMessageDialog(null, "No tienes los permisos para agregar un lugar");
         }
     }//GEN-LAST:event_btnAgregarlugarActionPerformed
 
@@ -778,20 +798,21 @@ public class InicioUsuario extends javax.swing.JFrame {
         String email = txtEmailAdmin.getText();
         String contra = txtPasswordAdmin.getText();
 
-        try
-        {
-            myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
-        } catch (IOException ex)
-        {
-            Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        int reply = JOptionPane.showConfirmDialog(null, "¿Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+        if(reply == JOptionPane.YES_OPTION){
+            try{
+                myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, myLogin.level);
+            } catch (IOException ex){
+                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
-        PanelUsuario.setSelectedIndex(1);
+        PanelUsuario.setSelectedIndex(2);
         PanelUsuario.setEnabledAt(0, false);
-        PanelUsuario.setEnabledAt(1, true);
+        PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, true);
 
     }//GEN-LAST:event_btConfiguracionActionPerformed
 
@@ -903,6 +924,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         PanelUsuario.setSelectedIndex(0);
         PanelUsuario.setEnabledAt(0, true);
         PanelUsuario.setEnabledAt(1, false);
+        PanelUsuario.setEnabledAt(2, false);
     }//GEN-LAST:event_BtnLugaresMouseClicked
 
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
@@ -930,22 +952,31 @@ public class InicioUsuario extends javax.swing.JFrame {
         btnClose.setOpaque(false);
     }//GEN-LAST:event_txtCerrarMouseExited
 
-    private void txtNombreEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreEmpresaActionPerformed
+    private void btnBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpresaActionPerformed
+        int j = 0;
+        String buscar = "";
 
-    private void txtNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNitActionPerformed
+        if (txtNit.getText().isEmpty()){
+            buscar = txtNombreEmpresa.getText();
+            j = 0;
+        }else{
+            buscar = txtNit.getText();
+            j = 1;
+        }
+        buscar = buscar.toLowerCase(); // Convertir cadena de búsqueda a minúsculas
 
-    private void btnBuscarLugar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLugar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarLugar1ActionPerformed
+        for (int i = 0; i < tablaEmpresas.getRowCount(); i++){
+            String valorTabla = tablaEmpresas.getValueAt(i, j).toString().toLowerCase(); // Convertir valor de la tabla a minúsculas
+            if (valorTabla.equals(buscar)){
+                tableEmpresas.changeSelection(i, j, false, false);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarEmpresaActionPerformed
 
-    private void btnLimpliar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliar1ActionPerformed
+    private void btnLimpliarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpliarEmpresaActionPerformed
         txtNombreEmpresa.setText("");
         txtNit.setText("");
-    }//GEN-LAST:event_btnLimpliar1ActionPerformed
+    }//GEN-LAST:event_btnLimpliarEmpresaActionPerformed
 
     private void btVerEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerEmpresaActionPerformed
         
@@ -959,7 +990,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             try
             {
                 filaExcel = myEmpresas.filaSeleccionada(nombre, nit);
-                verEmpresa = new PlanTuristico();
+                verEmpresa = new VerEmpresa();
                 verEmpresa.setVisible(true);
                 this.setVisible(false);
 
@@ -972,6 +1003,13 @@ public class InicioUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
         }
     }//GEN-LAST:event_btVerEmpresaActionPerformed
+
+    private void BtnEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEmpresaMouseClicked
+        PanelUsuario.setSelectedIndex(1);
+        PanelUsuario.setEnabledAt(0, false);
+        PanelUsuario.setEnabledAt(1, true);
+        PanelUsuario.setEnabledAt(2, false);
+    }//GEN-LAST:event_BtnEmpresaMouseClicked
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
@@ -1032,7 +1070,9 @@ public class InicioUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BtnEmpresa;
     private javax.swing.JPanel BtnLugares;
+    private javax.swing.JLabel Empresas;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel Lugares;
     private javax.swing.JTabbedPane PanelUsuario;
@@ -1043,12 +1083,12 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btVerLugar;
     private javax.swing.JRadioButton btn24h;
     private javax.swing.JButton btnAgregarlugar;
+    private javax.swing.JButton btnBuscarEmpresa;
     private javax.swing.JButton btnBuscarLugar;
-    private javax.swing.JButton btnBuscarLugar1;
     private javax.swing.JPanel btnClose;
     private javax.swing.JRadioButton btnDia;
     private javax.swing.JButton btnLimpliar;
-    private javax.swing.JButton btnLimpliar1;
+    private javax.swing.JButton btnLimpliarEmpresa;
     private javax.swing.JRadioButton btnNoche;
     private javax.swing.JComboBox<String> cmbCalificacionLugar;
     private javax.swing.JComboBox<String> cmbTipo;

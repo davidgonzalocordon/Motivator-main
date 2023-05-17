@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -269,9 +270,14 @@ public final class CajaDeComentarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComentarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComentarMouseClicked
-        crearComentario = new CrearComentario();
-        crearComentario.setVisible(true);
-        this.setVisible(false);
+        if(NewLogin.ID == 1 || NewLogin.ID == 2 || NewLogin.ID == 3){
+            crearComentario = new CrearComentario();
+            crearComentario.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null,"Las Empresas no pueden crear comentarios");
+        }
+        
     }//GEN-LAST:event_ComentarMouseClicked
 
     private void VolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VolverMouseClicked
