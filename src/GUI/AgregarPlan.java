@@ -52,7 +52,6 @@ public class AgregarPlan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jPanelVolver = new javax.swing.JPanel();
         jLabelVolver = new javax.swing.JLabel();
         jPanelRegistrar = new javax.swing.JPanel();
@@ -69,6 +68,7 @@ public class AgregarPlan extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaDescrip = new javax.swing.JTextArea();
         Header = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,13 +77,10 @@ public class AgregarPlan extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
-        jLabel4.setText("Agregar Plan Turistico");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
-
         jLabelVolver.setBackground(new java.awt.Color(0, 0, 0));
         jLabelVolver.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
         jLabelVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgVolver.png"))); // NOI18N
         jLabelVolver.setText("Volver");
         jLabelVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelVolver.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -96,25 +93,20 @@ public class AgregarPlan extends javax.swing.JFrame {
         jPanelVolver.setLayout(jPanelVolverLayout);
         jPanelVolverLayout.setHorizontalGroup(
             jPanelVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVolverLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         );
         jPanelVolverLayout.setVerticalGroup(
             jPanelVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelVolverLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+            .addComponent(jLabelVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanelVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 400, 110, 40));
+        jPanel1.add(jPanelVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 130, 50));
 
         jLabelRegistrar.setBackground(new java.awt.Color(0, 0, 0));
         jLabelRegistrar.setFont(new java.awt.Font("Quicksand Light", 1, 18)); // NOI18N
         jLabelRegistrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelRegistrar.setText("Registrar");
+        jLabelRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgGuardar.png"))); // NOI18N
+        jLabelRegistrar.setText("Guardar");
         jLabelRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,20 +118,14 @@ public class AgregarPlan extends javax.swing.JFrame {
         jPanelRegistrar.setLayout(jPanelRegistrarLayout);
         jPanelRegistrarLayout.setHorizontalGroup(
             jPanelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRegistrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabelRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         jPanelRegistrarLayout.setVerticalGroup(
             jPanelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelRegistrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+            .addComponent(jLabelRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 110, 40));
+        jPanel1.add(jPanelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 140, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImagenAgregarPlan.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 340, 520));
@@ -233,15 +219,23 @@ public class AgregarPlan extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 3, 24)); // NOI18N
+        jLabel4.setText("Plan Turistico");
+
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap(537, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(115, 115, 115))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(jLabel4))
         );
 
         jPanel1.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 40));
