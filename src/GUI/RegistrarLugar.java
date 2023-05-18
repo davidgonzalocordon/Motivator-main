@@ -259,6 +259,11 @@ public class RegistrarLugar extends javax.swing.JFrame {
         txtaDescripcion.setColumns(20);
         txtaDescripcion.setLineWrap(true);
         txtaDescripcion.setRows(5);
+        txtaDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtaDescripcionMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(txtaDescripcion);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -637,6 +642,10 @@ public class RegistrarLugar extends javax.swing.JFrame {
             txtLinkGoogleMaps.setText("");
             txtLinkGoogleMaps.setForeground(Color.BLACK);
         }
+        if (txtLinkGoogleMaps.getText().isEmpty()) {
+            txtLinkGoogleMaps.setText("Ingrese enlace de google maps del sitio");
+            txtLinkGoogleMaps.setForeground(Color.GRAY);
+        }
     }//GEN-LAST:event_txtLinkGoogleMapsMousePressed
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
@@ -647,6 +656,23 @@ public class RegistrarLugar extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtaDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtaDescripcionMouseClicked
+        if (txtNombreLugar.getText().isEmpty()) {
+            txtNombreLugar.setText("Ingrese nombre del sitio");
+            txtNombreLugar.setForeground(Color.GRAY);
+        }
+        
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Ingrese dirección del sitio");
+            txtDireccion.setForeground(Color.GRAY);
+        }
+        
+        if (txtTelefono.getText().isEmpty()) {
+            txtTelefono.setText("Ingrese telefono del sitio");
+            txtTelefono.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_txtaDescripcionMouseClicked
 
     /**
      * @param args the command line arguments

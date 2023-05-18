@@ -244,7 +244,6 @@ public class Lugares {
                 }
             }    
         }
-        System.out.println(filaExcel);
         return filaExcel;
     }
     

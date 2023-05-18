@@ -845,15 +845,19 @@ public class InicioEmpresa extends javax.swing.JFrame {
         if(nombre.isEmpty()||email.isEmpty()||contra.isEmpty()||user.isEmpty()||nit.isEmpty()||descrip.isEmpty()){
             JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco");
         }else{
-            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
-            if(reply==JOptionPane.YES_OPTION){
-                try{
-                    empresa.EditEnterprise(nombre, user, nit, contra, email, descrip, myLogin.ID);
-                } catch (IOException ex){
-                    Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null, "Datos Actualizados exitosamente");
-            }            
+            if (email.matches("[-\\w\\.]+@\\w+\\.\\w+")) {
+                int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+                if(reply==JOptionPane.YES_OPTION){
+                    try{
+                        empresa.EditEnterprise(nombre, user, nit, contra, email, descrip, myLogin.ID);
+                    } catch (IOException ex){
+                        Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Datos Actualizados exitosamente");
+                }  
+            }else{
+                JOptionPane.showMessageDialog(null, "Su correo no es valido");
+            }        
         }
     }//GEN-LAST:event_btActualizarActionPerformed
 

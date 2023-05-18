@@ -795,6 +795,7 @@ public class InicioUsuario extends javax.swing.JFrame {
 
     private void btCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSesionActionPerformed
         myLogin.setVisible(true);
+        myLogin.level = 0;
         this.dispose();
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
