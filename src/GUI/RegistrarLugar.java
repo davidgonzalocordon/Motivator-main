@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,8 +52,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
         txtNombreLugar = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescripcion = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         cmdTipo = new javax.swing.JComboBox<>();
@@ -70,7 +69,9 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        btnRegistrarLugar = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtaDescripcion = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,9 +178,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
         jLabel1.setText("Descripcion: ");
 
-        txtDescripcion.setForeground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setViewportView(txtDescripcion);
-
         jLabel7.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
         jLabel7.setText("Telefono: ");
 
@@ -192,6 +190,11 @@ public class RegistrarLugar extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtTelefonoMousePressed(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
             }
         });
 
@@ -240,14 +243,14 @@ public class RegistrarLugar extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgRegistrar.png"))); // NOI18N
-        jLabel12.setText("Registrar Sitio");
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistrarLugar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        btnRegistrarLugar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRegistrarLugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgRegistrar.png"))); // NOI18N
+        btnRegistrarLugar.setText("Registrar Sitio");
+        btnRegistrarLugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarLugar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                btnRegistrarLugarMouseClicked(evt);
             }
         });
 
@@ -255,21 +258,22 @@ public class RegistrarLugar extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+            .addComponent(btnRegistrarLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(btnRegistrarLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
+
+        txtaDescripcion.setColumns(20);
+        txtaDescripcion.setLineWrap(true);
+        txtaDescripcion.setRows(5);
+        jScrollPane2.setViewportView(txtaDescripcion);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,9 +312,17 @@ public class RegistrarLugar extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreLugar, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLinkGoogleMaps, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(47, 47, Short.MAX_VALUE))))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,8 +369,8 @@ public class RegistrarLugar extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
         );
@@ -373,10 +385,13 @@ public class RegistrarLugar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void btnRegistrarLugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLugarMouseClicked
         String name = txtNombreLugar.getText();
         String adress = txtDireccion.getText();
         String cellphone = txtTelefono.getText();
+        if(cellphone.isEmpty()){
+            cellphone = "N/A";
+        }
         String horario = "";
         if(btDiurno.isSelected()){
             horario = "Diurno";
@@ -388,31 +403,56 @@ public class RegistrarLugar extends javax.swing.JFrame {
             horario = "24 horas";
         }
         String link = txtLinkGoogleMaps.getText();
-        String descripcion = txtDescripcion.getText();
+        if(link.isEmpty()){
+            link = "N/A";
+        }
+        String descripcion = txtaDescripcion.getText();
         String tipo = (String) cmdTipo.getSelectedItem();
         int puntuacion =  Integer.parseInt((String) cmbCalificacion.getSelectedItem());
         
         if(!horario.equals("")){
-            try {
-                if(lugares.linkExist(link)){
-                    lugares.addSite(name, adress, tipo, horario, puntuacion, link, cellphone, descripcion);
-                    if(login.level == 3){
-                        inicioAdmin = new InicioAdmin();
-                        inicioAdmin.setVisible(true);
-                        this.dispose();
+            if(!name.equals("Ingrese nombre del sitio")){
+                if(!adress.equals("Ingrese dirección del sitio")){
+                    if(!cellphone.equals("Ingrese telefono del sitio")){
+                        if(!link.equals("Ingrese enlace de google maps del sitio")){
+                            if(!descripcion.isEmpty()){
+                                try {
+                                    if(lugares.linkExist(link)){
+                                        lugares.addSite(name, adress, tipo, horario, puntuacion, link, cellphone, descripcion);
+                                        if(login.level == 3){
+                                            inicioAdmin = new InicioAdmin();
+                                            inicioAdmin.setVisible(true);
+                                            this.dispose();
+                                        }
+                                        else{
+                                            inicioUsuario = new InicioUsuario();
+                                            inicioUsuario.setVisible(true);
+                                            this.dispose();
+                                        }
+                                        this.dispose();
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(RegistrarLugar.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(null, "Ingrese una descripcion del sitio");
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Ingrese un enlace de Google Maps, si no tiene uno deje este campo en blanco");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Ingrese un telefono, si no tiene uno deje este campo en blanco");
                     }
-                    else{
-                        inicioUsuario = new InicioUsuario();
-                        inicioUsuario.setVisible(true);
-                        this.dispose();
-                    }
-                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ingrese una direccion");
                 }
-            } catch (IOException ex) {
-                Logger.getLogger(RegistrarLugar.class.getName()).log(Level.SEVERE, null, ex);
+            }else{
+                JOptionPane.showMessageDialog(null, "Ingrese un nombre");
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un horario");
         }
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_btnRegistrarLugarMouseClicked
 
     private void NavBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NavBarMousePressed
         mouseX = evt.getX();
@@ -615,6 +655,15 @@ public class RegistrarLugar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtLinkGoogleMapsMousePressed
 
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char key = evt.getKeyChar();
+        boolean permitido = Character.isDigit(key) || !Character.isLetterOrDigit(key);
+
+        if (!permitido) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -666,12 +715,12 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JRadioButton btNocturno;
     private javax.swing.JRadioButton btSiempre;
     private javax.swing.JPanel btnClose;
+    private javax.swing.JLabel btnRegistrarLugar;
     private javax.swing.JComboBox<String> cmbCalificacion;
     private javax.swing.JComboBox<String> cmdTipo;
     private javax.swing.ButtonGroup horario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -683,16 +732,16 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel txtClose;
-    private javax.swing.JTextPane txtDescripcion;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtLinkGoogleMaps;
     private javax.swing.JTextField txtNombreLugar;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextArea txtaDescripcion;
     // End of variables declaration//GEN-END:variables
 }

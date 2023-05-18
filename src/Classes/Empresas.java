@@ -334,11 +334,15 @@ public class Empresas {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
             
+            File excel= new File("Plans\\Planes-" + sheet.getRow(fila).getCell(0).getStringCellValue() +".xlsx");
+            excel.delete();
+            
             sheet.removeRow(sheet.getRow(fila));
             
             FileOutputStream fileout = new FileOutputStream("Enterprises.xlsx");
             wb.write(fileout);
-            fileout.close();    
+            fileout.close();
+            
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Lugares.class.getName()).log(Level.SEVERE, null, ex);

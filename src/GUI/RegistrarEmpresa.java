@@ -167,6 +167,11 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
                 txtNitMouseClicked(evt);
             }
         });
+        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNitKeyTyped(evt);
+            }
+        });
 
         labelNit.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         labelNit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -739,6 +744,15 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha ingresado el nombre de la empresa nombre.");
         }
     }//GEN-LAST:event_jLabelRegistrarMouseClicked
+
+    private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
+        char key = evt.getKeyChar();
+        boolean permitido = Character.isDigit(key) || !Character.isLetterOrDigit(key);
+
+        if (!permitido) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNitKeyTyped
 
     /**
      * @param args the command line arguments

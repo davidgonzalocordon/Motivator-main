@@ -181,8 +181,8 @@
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblImagen" alignment="0" min="-2" pref="328" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblSucceded" min="-2" pref="166" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                      <Component id="lblSucceded" min="-2" pref="239" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jPanel7" min="-2" pref="94" max="-2" attributes="0"/>
                                   </Group>
                               </Group>

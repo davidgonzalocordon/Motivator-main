@@ -60,6 +60,10 @@ public class InicioAdmin extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        tablaUser.addColumn("NOMBRE");
+        tablaUser.addColumn("USUARIO");
+        tablaUser.addColumn("EMAIL");
+        tablaUser.addColumn("NIVEL");
         Leer();
         LeerUser();
         LeerEmpresas();
@@ -98,11 +102,15 @@ public class InicioAdmin extends javax.swing.JFrame {
     }
 
     public void LeerUser() throws IOException {
+        int rows = tableUsuarios.getRowCount();
+        
+        if(rows != 0){
+            for(int i = rows-1;i>=0;i--){
+                tablaUser.removeRow(i);
+            }
+        }
+        
         int filas = myUsuario.nfilasUser();
-        tablaUser.addColumn("NOMBRE");
-        tablaUser.addColumn("USUARIO");
-        tablaUser.addColumn("EMAIL");
-        tablaUser.addColumn("NIVEL");
         String[] confirm = new String[4];
 
         for (int i = 1; i <= filas; i++){
@@ -884,6 +892,12 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel32.setText("DATOS DEL ADMIN");
 
+        txtNombreAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreAdminKeyTyped(evt);
+            }
+        });
+
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel28.setText("NOMBRE:");
@@ -1003,12 +1017,15 @@ public class InicioAdmin extends javax.swing.JFrame {
         if(nombre.isEmpty()||usuario.isEmpty()||email.isEmpty()||contra.isEmpty()){
             JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco");
         }else{
-            int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
-            if(reply == JOptionPane.YES_OPTION){
-                try{
-                    myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
-                } catch (IOException ex){
-                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            if (email.matches("[-\\w\\.]+@\\w+\\.\\w+")) {
+                int reply = JOptionPane.showConfirmDialog(null, "Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+                if(reply == JOptionPane.YES_OPTION){
+                    try{
+                        myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, 3);
+                        LeerUser();
+                    } catch (IOException ex){
+                        Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }
@@ -1073,7 +1090,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                     filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
                     String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
                     if (Integer.parseInt(datosUsu[4]) == 3){
-                        JOptionPane.showMessageDialog(null, "El usuario ya es un admin no se puede acender mas");
+                        JOptionPane.showMessageDialog(null, "No se puede ascender mas");
                     }else{
                         int lvl = Integer.parseInt(datosUsu[4]) + 1;
                         int id = Integer.parseInt(datosUsu[5]);
@@ -1288,7 +1305,7 @@ public class InicioAdmin extends javax.swing.JFrame {
                     filaExcel = myUsuario.filaSeleccionada(nombreSeleccionado, usuSelec, mailSeleccionado);
                     String[] datosUsu = myUsuario.extraerTodosLosDatos(filaExcel);
                     if (Integer.parseInt(datosUsu[4]) == 1){
-                        JOptionPane.showMessageDialog(null, "no se puede desenser usuraio");
+                        JOptionPane.showMessageDialog(null, "No se puede descender mas");
                     }else{
                         int lvl = Integer.parseInt(datosUsu[4]) - 1;
                         int id = Integer.parseInt(datosUsu[5]);
@@ -1434,6 +1451,18 @@ public class InicioAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione de la lista el lugar que desea ver.");
         }
     }//GEN-LAST:event_btVerEmpresaActionPerformed
+
+    private void txtNombreAdminKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdminKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+         if (!(minusculas || mayusculas || espacio)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreAdminKeyTyped
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);

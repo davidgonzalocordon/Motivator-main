@@ -57,7 +57,8 @@ public class VerLugar extends javax.swing.JFrame {
             setDatos(myUsuario.filaExcel);
         }
         else{
-            setDatos(myEmpresa.filaExcel);
+            System.out.println(myEmpresa.filadeExcel);
+            setDatos(myEmpresa.filadeExcel);
         }
         txtNombreLugar.setText(nombreLugar);
         txtDescipcion.setText(descripcionLugar);
@@ -568,6 +569,7 @@ public class VerLugar extends javax.swing.JFrame {
     private void btnVerComentarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerComentarioMouseClicked
         try {
             cajaDeComentarios = new CajaDeComentarios();
+            
         } catch (IOException ex) {
             Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -577,23 +579,27 @@ public class VerLugar extends javax.swing.JFrame {
     private void btnPreviousPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviousPhotoMouseClicked
         File carpeta = new File("IMG\\"+nombreLugar);
         File[] lista = carpeta.listFiles();
-        contadorImg--;
-        if(contadorImg==0){
-            contadorImg=lista.length-1;
+        if(lista.length != 1){
+            contadorImg--;
+            if(contadorImg==0){
+                contadorImg=lista.length-1;
+            }
+            String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
+            this.mostrarImagen(lblImagen, ruta);
         }
-        String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
-        this.mostrarImagen(lblImagen, ruta);
     }//GEN-LAST:event_btnPreviousPhotoMouseClicked
 
     private void btnNextPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextPhotoMouseClicked
         File carpeta = new File("IMG\\"+nombreLugar);
         File[] lista = carpeta.listFiles();
-        contadorImg++;
-        if(contadorImg>(lista.length-1)){
-            contadorImg=1;
+        if(lista.length != 1){
+            contadorImg++;
+            if(contadorImg>(lista.length-1)){
+                contadorImg=1;
+            }
+            String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
+            this.mostrarImagen(lblImagen, ruta);
         }
-        String ruta = "IMG\\"+nombreLugar+"\\"+contadorImg+".jpg";
-        this.mostrarImagen(lblImagen, ruta);
     }//GEN-LAST:event_btnNextPhotoMouseClicked
 
     private void CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarMouseClicked

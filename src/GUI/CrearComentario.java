@@ -265,7 +265,7 @@ public class CrearComentario extends javax.swing.JFrame {
     private void BtnEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEnviarMouseClicked
         String comentario = txtComentario.getText();
         int puntuacion = Integer.parseInt((String) cmbCalificacionLugar.getSelectedItem());
-        String autor = myUsuario.ObtenerDato(myLogin.ID)[0];
+        String autor = myUsuario.ObtenerDato(myLogin.ID)[1];
         //ObtenerDato retorna un array con la info del usuario, en este caso, del usuario logueado. En la posicion 0 indica el nombre del usuario
         String nombre = verLugar.nombreLugar;
         

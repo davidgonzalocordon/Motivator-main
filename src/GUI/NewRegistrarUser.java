@@ -139,6 +139,11 @@ public class NewRegistrarUser extends javax.swing.JFrame {
                 txtNameMouseClicked(evt);
             }
         });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
 
         jSeparatorName.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -171,6 +176,11 @@ public class NewRegistrarUser extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtEdadMouseClicked(evt);
+            }
+        });
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
             }
         });
 
@@ -508,7 +518,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         
         if(!name.equals("Ingrese Nombre")&&!name.isEmpty()){
             if(!user.equals("Ingrese Usuario")&&!user.isEmpty()){
-                if(age.matches("\\d{1,2}")){
+                if(age.matches("\\d{1,2}")&&!age.equals("0")){
                     if(pass.length()>7){
                         if(RBsi.isSelected()){
                             if(pass.equals(confirmPass)){
@@ -779,6 +789,34 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabelVolverMouseClicked
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+         if (!(minusculas || mayusculas || espacio))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros)
+        {
+            evt.consume();
+        }
+
+        if (txtEdad.getText().trim().length() == 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEdadKeyTyped
 
     /**
      * @param args the command line arguments

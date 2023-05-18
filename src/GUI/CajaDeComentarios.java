@@ -270,7 +270,7 @@ public final class CajaDeComentarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComentarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComentarMouseClicked
-        if(NewLogin.ID == 1 || NewLogin.ID == 2 || NewLogin.ID == 3){
+        if(NewLogin.level == 1 || NewLogin.level == 2 || NewLogin.level == 3){
             crearComentario = new CrearComentario();
             crearComentario.setVisible(true);
             this.setVisible(false);

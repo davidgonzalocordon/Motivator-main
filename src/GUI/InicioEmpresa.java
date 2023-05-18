@@ -44,6 +44,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     private AgregarPlan addPlan;
     private PlanesTuristicos myPlans;
     public static int filaExcel;
+    public static int filadeExcel;
     public static String nombreEmpresa;
 
     /**
@@ -149,7 +150,6 @@ public class InicioEmpresa extends javax.swing.JFrame {
         btnBuscarLugar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableLugares = new javax.swing.JTable();
-        btnAgregarPlan = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnDia = new javax.swing.JRadioButton();
         btnNoche = new javax.swing.JRadioButton();
@@ -166,6 +166,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
         txtaDescripcion = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        btnAgregarPlan = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btActualizar = new javax.swing.JButton();
         btCerrarSesion = new javax.swing.JButton();
@@ -403,16 +404,6 @@ public class InicioEmpresa extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableLugares);
 
-        btnAgregarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        btnAgregarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAgregar.png"))); // NOI18N
-        btnAgregarPlan.setText("Agregar a Ruta");
-        btnAgregarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarPlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarPlanActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("Horario: ");
 
@@ -448,41 +439,40 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(btnBuscarLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel3)
-                        .addGap(13, 13, 13)
-                        .addComponent(txtDireccionLugar)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel18))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel8)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn24h, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel21)
-                        .addGap(35, 35, 35)
-                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnAgregarPlan)
-                        .addGap(50, 50, 50)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel3)
+                                .addGap(13, 13, 13)
+                                .addComponent(txtDireccionLugar)
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel18))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel8)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn24h, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel21)
+                                .addGap(35, 35, 35)
+                                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnBuscarLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btVerLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
+                        .addGap(116, 116, 116)
                         .addComponent(btnLimpliar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbCalificacionLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,7 +503,6 @@ public class InicioEmpresa extends javax.swing.JFrame {
                     .addComponent(btnNoche))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarPlan)
                     .addComponent(btVerLugar)
                     .addComponent(btnBuscarLugar)
                     .addComponent(btnLimpliar))
@@ -538,10 +527,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
 
         tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Descripcion", "Precio"
@@ -584,29 +570,39 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("Seleccione un plan para ver su descripcion aqui:");
 
+        btnAgregarPlan.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        btnAgregarPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/ImgAgregar.png"))); // NOI18N
+        btnAgregarPlan.setText("Agregar");
+        btnAgregarPlan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPlanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(152, 152, 152)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btEliminarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEditarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btEditarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btEliminarPlan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,12 +610,13 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAgregarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btEditarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btEliminarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
+                        .addGap(18, 18, 18)
+                        .addComponent(btEliminarPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jLabel10)
@@ -656,6 +653,12 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel32.setText("DATOS DE LA EMPRESA");
 
+        txtNombreAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreAdminKeyTyped(evt);
+            }
+        });
+
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel28.setText("NOMBRE:");
@@ -667,6 +670,12 @@ public class InicioEmpresa extends javax.swing.JFrame {
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel27.setText("CLAVE: ");
+
+        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNitKeyTyped(evt);
+            }
+        });
 
         jLabel31.setBackground(new java.awt.Color(255, 255, 255));
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -849,7 +858,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_btActualizarActionPerformed
 
     private void btConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfiguracionActionPerformed
-        PanelUsuario.setSelectedIndex(1);
+        PanelUsuario.setSelectedIndex(2);
         PanelUsuario.setEnabledAt(0, false);
         PanelUsuario.setEnabledAt(1, false);
         PanelUsuario.setEnabledAt(2, true);
@@ -867,11 +876,10 @@ public class InicioEmpresa extends javax.swing.JFrame {
             
             try
             {
-                filaExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
+                filadeExcel = myLugares.filaSeleccionada(nombreSeleccionado, direccionSeleccionada, tipoSeleccionado);
                 verLugar = new VerLugar();
                 verLugar.setVisible(true);
                 this.setVisible(false);
-
             } catch (IOException ex)
             {
                 Logger.getLogger(InicioEmpresa.class.getName()).log(Level.SEVERE, null, ex);
@@ -1030,7 +1038,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
                 filaExcel = myPlans.filaSeleccionada(nombre, nombreEmpresa ,descripcion, precio);
                 addPlan = new AgregarPlan();
                 addPlan.setVisible(true);
-                this.dispose();
+                this.setVisible(false);
             } catch (IOException ex)
             {
                 Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -1042,7 +1050,7 @@ public class InicioEmpresa extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarPlanActionPerformed
 
     private void BtnPlanesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnPlanesMouseClicked
-        PanelUsuario.setSelectedIndex(2);
+        PanelUsuario.setSelectedIndex(1);
         PanelUsuario.setEnabledAt(0, false);
         PanelUsuario.setEnabledAt(1, true);
         PanelUsuario.setEnabledAt(2, false);
@@ -1056,6 +1064,28 @@ public class InicioEmpresa extends javax.swing.JFrame {
            
          }
     }//GEN-LAST:event_tablePlanesMouseClicked
+
+    private void txtNombreAdminKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdminKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+         if (!(minusculas || mayusculas || espacio))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreAdminKeyTyped
+
+    private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
+        char key = evt.getKeyChar();
+        boolean permitido = Character.isDigit(key) || !Character.isLetterOrDigit(key);
+
+        if (!permitido) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNitKeyTyped
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);

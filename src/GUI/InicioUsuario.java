@@ -651,6 +651,12 @@ public class InicioUsuario extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel32.setText("DATOS USUARIO");
 
+        txtNombreAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreAdminKeyTyped(evt);
+            }
+        });
+
         jLabel28.setBackground(new java.awt.Color(255, 255, 255));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel28.setText("NOMBRE:");
@@ -798,13 +804,17 @@ public class InicioUsuario extends javax.swing.JFrame {
         String email = txtEmailAdmin.getText();
         String contra = txtPasswordAdmin.getText();
 
-        int reply = JOptionPane.showConfirmDialog(null, "¿Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
-        if(reply == JOptionPane.YES_OPTION){
-            try{
-                myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, myLogin.level);
-            } catch (IOException ex){
-                Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        if (email.matches("[-\\w\\.]+@\\w+\\.\\w+")) {
+            int reply = JOptionPane.showConfirmDialog(null, "¿Seguro desea actualizar sus datos?", "Aviso!!!", JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION){
+                try{
+                    myUsuario.EditUser(nombre, usuario, contra, email, myLogin.ID, myLogin.level);
+                } catch (IOException ex){
+                    Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Su correo no es valido");
         }
     }//GEN-LAST:event_btActualizarActionPerformed
 
@@ -967,7 +977,7 @@ public class InicioUsuario extends javax.swing.JFrame {
 
         for (int i = 0; i < tablaEmpresas.getRowCount(); i++){
             String valorTabla = tablaEmpresas.getValueAt(i, j).toString().toLowerCase(); // Convertir valor de la tabla a minúsculas
-            if (valorTabla.equals(buscar)){
+            if (valorTabla.contains(buscar)){
                 tableEmpresas.changeSelection(i, j, false, false);
             }
         }
@@ -1010,6 +1020,19 @@ public class InicioUsuario extends javax.swing.JFrame {
         PanelUsuario.setEnabledAt(1, true);
         PanelUsuario.setEnabledAt(2, false);
     }//GEN-LAST:event_BtnEmpresaMouseClicked
+
+    private void txtNombreAdminKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdminKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+         if (!(minusculas || mayusculas || espacio))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreAdminKeyTyped
 
     private void SetImg(JLabel labelName, String ruta) {
         ImageIcon image = new ImageIcon(ruta);
