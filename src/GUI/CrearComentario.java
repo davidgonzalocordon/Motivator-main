@@ -272,7 +272,9 @@ public class CrearComentario extends javax.swing.JFrame {
         try {
             myComentario.addComment(nombre,autor,comentario,puntuacion);
             JOptionPane.showMessageDialog(null,"Comentario enviado exitosamente");
-            txtComentario.setText(" ");
+            cajaDeComentarios = new CajaDeComentarios();
+            cajaDeComentarios.setVisible(true);
+            this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(CrearComentario.class.getName()).log(Level.SEVERE, null, ex);
         }

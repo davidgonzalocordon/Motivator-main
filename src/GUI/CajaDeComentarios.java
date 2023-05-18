@@ -20,7 +20,13 @@ public final class CajaDeComentarios extends javax.swing.JFrame {
     int mouseX, mouseY;
     private CrearComentario crearComentario;
     private Comentarios myComentario = new Comentarios();
-    private DefaultTableModel tabla = new DefaultTableModel();
+    private DefaultTableModel tabla = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+    private VerLugar verLugar;
     /**
      * Creates new form CajaDeComentarios
      */
@@ -281,7 +287,13 @@ public final class CajaDeComentarios extends javax.swing.JFrame {
     }//GEN-LAST:event_ComentarMouseClicked
 
     private void VolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VolverMouseClicked
-        this.dispose();
+        try {
+            verLugar = new VerLugar();
+            verLugar.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(CajaDeComentarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_VolverMouseClicked
 
     private void NavBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NavBarMousePressed

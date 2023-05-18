@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Classes.Comentarios;
 import Classes.Lugares;
 import java.awt.Color;
 import java.awt.Image;
@@ -40,6 +41,7 @@ public class VerLugar extends javax.swing.JFrame {
     private InicioAdmin myAdmin = new InicioAdmin();
     private InicioEmpresa myEmpresa = new InicioEmpresa();
     private CajaDeComentarios cajaDeComentarios;
+    private static Comentarios myComentario;
     private int contadorImg=1;
     
     
@@ -57,7 +59,6 @@ public class VerLugar extends javax.swing.JFrame {
             setDatos(myUsuario.filaExcel);
         }
         else{
-            System.out.println(myEmpresa.filadeExcel);
             setDatos(myEmpresa.filadeExcel);
         }
         txtNombreLugar.setText(nombreLugar);
@@ -70,17 +71,22 @@ public class VerLugar extends javax.swing.JFrame {
         setImg(nombreLugar);
     }
     
-    public static void setDatos(int filaExcel){
+    public static void setDatos(int filaExcel) throws IOException{
         String info[] = new String[8];
         info = lugares.obtenerSite(filaExcel);
+        int nFilas = myComentario.nfilas(info[0]);
         nombreLugar = info[0];
         direccionLugar = info[1];
         tipoLugar = info[2];
         horarioLugar = info[3];
-        puntuacionLugar = info[4];
         linkLugar = info[5];
         telefonoLugar = info[6];
         descripcionLugar = info[7];
+        if(nFilas!=0){
+            puntuacionLugar = String.valueOf(myComentario.puntuacion(info[0]));
+        }else{
+            puntuacionLugar = info[4];
+        }
     }
     
     public void setImg(String lugar){
@@ -569,11 +575,11 @@ public class VerLugar extends javax.swing.JFrame {
     private void btnVerComentarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerComentarioMouseClicked
         try {
             cajaDeComentarios = new CajaDeComentarios();
-            
+            cajaDeComentarios.setVisible(true);
+            this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(VerLugar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        cajaDeComentarios.setVisible(true);
     }//GEN-LAST:event_btnVerComentarioMouseClicked
 
     private void btnPreviousPhotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviousPhotoMouseClicked

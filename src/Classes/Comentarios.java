@@ -125,4 +125,21 @@ public class Comentarios {
        
         return nFilas;
     }
+    
+    public static float puntuacion(String name) throws IOException{
+        String ruta = "Comments\\Comentarios-"+name+".xlsx";
+        FileInputStream file = new FileInputStream(new File(ruta));
+        XSSFWorkbook wb = new XSSFWorkbook(file);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        
+        int nFilas = sheet.getLastRowNum();
+        int suma=0;
+        
+        for(int i=1;i<=nFilas;i++){
+            Cell celda = sheet.getRow(i).getCell(2);
+            suma += celda.getNumericCellValue();
+        }
+        float puntuacion = (float) (Math.round(suma / (float) nFilas * 10.0) / 10.0);
+        return puntuacion;
+    }
 }

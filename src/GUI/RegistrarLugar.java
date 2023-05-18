@@ -60,8 +60,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
         btDiurno = new javax.swing.JRadioButton();
         btNocturno = new javax.swing.JRadioButton();
         btSiempre = new javax.swing.JRadioButton();
-        jLabel9 = new javax.swing.JLabel();
-        cmbCalificacion = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         txtLinkGoogleMaps = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -221,13 +219,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
         btSiempre.setForeground(new java.awt.Color(51, 51, 51));
         btSiempre.setText("Ambos");
 
-        jLabel9.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
-        jLabel9.setText("Estrellas:");
-
-        cmbCalificacion.setFont(new java.awt.Font("Quicksand", 0, 12)); // NOI18N
-        cmbCalificacion.setForeground(new java.awt.Color(51, 51, 51));
-        cmbCalificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-
         jLabel10.setFont(new java.awt.Font("Quicksand Light", 0, 18)); // NOI18N
         jLabel10.setText("Link Google Maps: ");
 
@@ -279,11 +270,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(32, 32, 32)
-                                .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,9 +336,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cmbCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmdTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -408,7 +392,7 @@ public class RegistrarLugar extends javax.swing.JFrame {
         }
         String descripcion = txtaDescripcion.getText();
         String tipo = (String) cmdTipo.getSelectedItem();
-        int puntuacion =  Integer.parseInt((String) cmbCalificacion.getSelectedItem());
+        int puntuacion =  5;
         
         if(!horario.equals("")){
             if(!name.equals("Ingrese nombre del sitio")){
@@ -716,7 +700,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JRadioButton btSiempre;
     private javax.swing.JPanel btnClose;
     private javax.swing.JLabel btnRegistrarLugar;
-    private javax.swing.JComboBox<String> cmbCalificacion;
     private javax.swing.JComboBox<String> cmdTipo;
     private javax.swing.ButtonGroup horario;
     private javax.swing.JLabel jLabel1;
@@ -728,7 +711,6 @@ public class RegistrarLugar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
