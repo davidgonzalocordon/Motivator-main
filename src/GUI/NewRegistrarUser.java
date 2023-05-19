@@ -510,7 +510,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
     private void jLabelRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegistrarMouseClicked
         String name = txtName.getText();
         String user = txtUser.getText();
-        String age = txtEdad.getText();
+        int age = Integer.parseInt(txtEdad.getText());
         String pass = txtClave.getText();
         String confirmPass = txtConfirmClave.getText();
         String mail = txtEmail.getText();
@@ -518,7 +518,7 @@ public class NewRegistrarUser extends javax.swing.JFrame {
         
         if(!name.equals("Ingrese Nombre")&&!name.isEmpty()){
             if(!user.equals("Ingrese Usuario")&&!user.isEmpty()){
-                if(age.matches("\\d{1,2}")&&!age.equals("0")){
+                if(age>=18&&age<100){
                     if(pass.length()>7){
                         if(RBsi.isSelected()){
                             if(pass.equals(confirmPass)){

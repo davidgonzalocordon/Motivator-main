@@ -129,10 +129,7 @@ public class VerEmpresa extends javax.swing.JFrame {
 
         tablePlanes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Descripcion", "Precio"

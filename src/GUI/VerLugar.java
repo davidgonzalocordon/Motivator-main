@@ -52,6 +52,7 @@ public class VerLugar extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
         if (NewLogin.level == 3){
             setDatos(myAdmin.filaExcel);
         }
@@ -74,19 +75,14 @@ public class VerLugar extends javax.swing.JFrame {
     public static void setDatos(int filaExcel) throws IOException{
         String info[] = new String[8];
         info = lugares.obtenerSite(filaExcel);
-        int nFilas = myComentario.nfilas(info[0]);
         nombreLugar = info[0];
         direccionLugar = info[1];
         tipoLugar = info[2];
         horarioLugar = info[3];
+        puntuacionLugar = info[4];
         linkLugar = info[5];
         telefonoLugar = info[6];
         descripcionLugar = info[7];
-        if(nFilas!=0){
-            puntuacionLugar = String.valueOf(myComentario.puntuacion(info[0]));
-        }else{
-            puntuacionLugar = info[4];
-        }
     }
     
     public void setImg(String lugar){

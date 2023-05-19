@@ -126,7 +126,7 @@ public class Comentarios {
         return nFilas;
     }
     
-    public static float puntuacion(String name) throws IOException{
+    public static void puntuacion(String name) throws IOException{
         String ruta = "Comments\\Comentarios-"+name+".xlsx";
         FileInputStream file = new FileInputStream(new File(ruta));
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -140,6 +140,24 @@ public class Comentarios {
             suma += celda.getNumericCellValue();
         }
         float puntuacion = (float) (Math.round(suma / (float) nFilas * 10.0) / 10.0);
-        return puntuacion;
+        
+        String ruta2 = "Sites.xlsx";
+        FileInputStream file2 = new FileInputStream(new File(ruta2));
+        XSSFWorkbook wb2 = new XSSFWorkbook(file2);
+        XSSFSheet sheet2 = wb2.getSheetAt(0);
+        
+        int nFilas2 = sheet2.getLastRowNum();
+        
+        for(int i=1;i<=nFilas2;i++){
+            Row fila2 = sheet2.getRow(i);
+            if(fila2.getCell(0).getStringCellValue().equals(name)){
+                fila2.getCell(4).setCellValue(puntuacion);
+                break;
+            }
+        }
+        
+        FileOutputStream output = new FileOutputStream(ruta2);
+        wb2.write(output);
+        output.close();
     }
 }

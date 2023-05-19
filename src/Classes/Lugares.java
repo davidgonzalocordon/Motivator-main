@@ -182,7 +182,7 @@ public class Lugares {
     public static String[] ReadSite(int i){
         String almacen[] = new String[5];
         String ruta = "Sites.xlsx";
-        
+      
         try {
             FileInputStream file = new FileInputStream(new File(ruta));
             
@@ -197,13 +197,14 @@ public class Lugares {
                     
                         switch (celda.getCellTypeEnum().toString()){
                             case "NUMERIC":
-                                almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                                almacen[j]=String.valueOf((float)celda.getNumericCellValue());
                                 break;
 
                             case "STRING":
                                 almacen[j]=celda.getStringCellValue();
                                 break;
                         }
+                        
                     }
                     
                 
@@ -263,7 +264,7 @@ public class Lugares {
                     
                     switch (celda.getCellTypeEnum().toString()){
                         case "NUMERIC":
-                            almacen[j]=String.valueOf((int)celda.getNumericCellValue());
+                            almacen[j]=String.valueOf((float)celda.getNumericCellValue());
                             
                             break;
                             

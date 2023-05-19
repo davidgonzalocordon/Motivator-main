@@ -1173,7 +1173,11 @@ public class InicioAdmin extends javax.swing.JFrame {
                     } catch (IOException ex){
                         Logger.getLogger(InicioUsuario.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    tablaUser.removeRow(usuarioSeleccionado);
+                    try {
+                        LeerUser();
+                    } catch (IOException ex) {
+                        Logger.getLogger(InicioAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "No ha seleccionado fila");
